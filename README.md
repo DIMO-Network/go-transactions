@@ -86,9 +86,7 @@ fmt.Println(hexutil.Encode(*result.TxHash))
 
 #### Minting Vehicle IDs with Synthetic Devices in batches
 
-```go
-fmt.Println(hexutil.Encode(*result.TxHash))
-```
+TODO
 
 ### User-based transactions
 
