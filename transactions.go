@@ -1,6 +1,7 @@
 package transactions
 
 import (
+	"crypto/ecdsa"
 	"github.com/DIMO-Network/go-transactions/contracts/sdid"
 	"github.com/DIMO-Network/go-transactions/contracts/vehicleid"
 	"github.com/ethereum/go-ethereum"
@@ -15,23 +16,21 @@ import (
 )
 
 type ClientConfig struct {
-	SenderAddress            *common.Address
-	SenderSigner             zerodev.Signer
-	EntryPointVersion        string
+	AccountAddress           common.Address
+	AccountPK                *ecdsa.PrivateKey
 	RpcURL                   *url.URL
 	PaymasterURL             *url.URL
 	BundlerURL               *url.URL
 	ChainID                  *big.Int
-	RegistryAddress          *common.Address
-	VehicleIdAddress         *common.Address
-	SyntheticDeviceIdAddress *common.Address
+	RegistryAddress          common.Address
+	VehicleIdAddress         common.Address
+	SyntheticDeviceIdAddress common.Address
 }
 
 type Client struct {
-	SenderAddress            *common.Address
-	RegistryAddress          *common.Address
-	VehicleIdAddress         *common.Address
-	SyntheticDeviceIdAddress *common.Address
+	RegistryAddress          common.Address
+	VehicleIdAddress         common.Address
+	SyntheticDeviceIdAddress common.Address
 	Registry                 *registry.Registry
 	VehicleId                *vehicleid.Vehicleid
 	SyntheticDeviceId        *sdid.Sdid
@@ -40,9 +39,9 @@ type Client struct {
 
 func NewClient(config *ClientConfig) (*Client, error) {
 	zerodevConfig := zerodev.ClientConfig{
-		Sender:            config.SenderAddress,
-		SenderSigner:      config.SenderSigner,
-		EntryPointVersion: config.EntryPointVersion,
+		AccountAddress:    config.AccountAddress,
+		AccountPK:         config.AccountPK,
+		EntryPointVersion: zerodev.EntryPointVersion07,
 		RpcURL:            config.RpcURL,
 		PaymasterURL:      config.PaymasterURL,
 		BundlerURL:        config.BundlerURL,
@@ -55,7 +54,6 @@ func NewClient(config *ClientConfig) (*Client, error) {
 	}
 
 	return &Client{
-		SenderAddress:            config.SenderAddress,
 		RegistryAddress:          config.RegistryAddress,
 		VehicleIdAddress:         config.VehicleIdAddress,
 		SyntheticDeviceIdAddress: config.SyntheticDeviceIdAddress,
@@ -72,7 +70,7 @@ func (c *Client) Close() {
 
 func (c *Client) ExecuteUserOperation(callData []byte) (result *zerodev.UserOperationResult, err error) {
 	encodedCall, err := zerodev.EncodeExecuteCall(&ethereum.CallMsg{
-		To:    c.RegistryAddress,
+		To:    &c.RegistryAddress,
 		Value: big.NewInt(0),
 		Data:  callData,
 	})
@@ -113,10 +111,10 @@ func (c *Client) MintVehicleAndSdWithDdInputBatch(data []registry.MintVehicleAnd
 	return c.ExecuteUserOperation(userOpData)
 }
 
-func (c *Client) GetBurnVehicleByOwnerUserOperationAndHash(owner *common.Address, vehicleTokenId *big.Int) (op *zerodev.UserOperation, hash *common.Hash, err error) {
+func (c *Client) GetBurnVehicleByOwnerUserOperationAndHash(owner common.Address, vehicleTokenId *big.Int) (op *zerodev.UserOperation, hash *common.Hash, err error) {
 	callData := c.VehicleId.PackBurn(vehicleTokenId)
 	encodedCall, err := zerodev.EncodeExecuteCall(&ethereum.CallMsg{
-		To:    c.VehicleIdAddress,
+		To:    &c.VehicleIdAddress,
 		Value: big.NewInt(0),
 		Data:  callData,
 	})
@@ -128,10 +126,10 @@ func (c *Client) GetBurnVehicleByOwnerUserOperationAndHash(owner *common.Address
 	return c.ZerodevClient.GetUserOperationAndHashToSign(owner, encodedCall)
 }
 
-func (c *Client) GetBurnSdByOwnerUserOperationAndHash(owner *common.Address, syntheticDeviceTokenId *big.Int) (op *zerodev.UserOperation, hash *common.Hash, err error) {
+func (c *Client) GetBurnSdByOwnerUserOperationAndHash(owner common.Address, syntheticDeviceTokenId *big.Int) (op *zerodev.UserOperation, hash *common.Hash, err error) {
 	callData := c.SyntheticDeviceId.PackBurn(syntheticDeviceTokenId)
 	encodedCall, err := zerodev.EncodeExecuteCall(&ethereum.CallMsg{
-		To:    c.SyntheticDeviceIdAddress,
+		To:    &c.SyntheticDeviceIdAddress,
 		Value: big.NewInt(0),
 		Data:  callData,
 	})
@@ -175,7 +173,7 @@ func (c *Client) GetMintVehicleAndSdTypedData(integrationNode *big.Int) *signer.
 }
 
 // GetMintVehicleWithDeviceDefinitionTypedData generates TypedData for signing by Vehicle owner whenever Vehicle with Device Definition is minted
-func (c *Client) GetMintVehicleWithDeviceDefinitionTypedData(manufacturerNode *big.Int, owner *common.Address, deviceDefinitionId string, attributeInfoPairs []registry.AttributeInfoPair) *signer.TypedData {
+func (c *Client) GetMintVehicleWithDeviceDefinitionTypedData(manufacturerNode *big.Int, owner common.Address, deviceDefinitionId string, attributeInfoPairs []registry.AttributeInfoPair) *signer.TypedData {
 	attributes := []string{}
 	infos := []string{}
 

@@ -6,6 +6,7 @@ Go SDK for DIMO transactions
 
 - Only small amount of DIMO protocol transactions is currently implemented
 - Requires already deployed AA wallet
+- Works only with entrypoint 0.7 and Kernel 3.1.0 accounts
 
 ## Usage
 
@@ -18,9 +19,8 @@ import (
 )
 
 clientConfig := transactions.ClientConfig{
-    SenderAddress:            <DEFAULT_SENDER_AA_WALLET_ADDRESS>,
-    SenderSigner:             <DEFAULT_SENDER_SIGNER>,
-    EntryPointVersion:        zerodev.EntryPointVersion07,
+    AccountAddress:           <DEFAULT_SENDER_AA_WALLET_ADDRESS>,
+    AccountPK:                <DEFAULT_SENDER_PK>,
     RpcURL:                   <RPC_URL>,
     PaymasterURL:             <PAYMASTER_URL>,
     BundlerURL:               <BUNDLER_URL>,
@@ -96,12 +96,12 @@ Those transactions are sent on behalf of the user (e.g. Vehicle owner). They hav
 
 ```go
 // Get the UserOperation and its hash to sign
-op, hash, err := client.GetBurnVehicleByOwnerUserOperationAndHash(&ownerAAAddress, <Vehicle TokenID>)
+op, hash, err := client.GetBurnVehicleByOwnerUserOperationAndHash(ownerAAAddress, <Vehicle TokenID>)
 if err != nil {
     panic(err)
 }
 
-// Get hash signature from the user
+// Get hash signature from the owner
 signature := <USER_SIGNATURE>
 
 // Add signature to UserOperation
@@ -121,12 +121,12 @@ fmt.Println(hexutil.Encode(*result.TxHash))
 
 ```go
 // Get the UserOperation and its hash to sign
-op, hash, err := client.GetBurnSdByOwnerUserOperationAndHash(&ownerAAAddress, <Synthetic Device TokenID>)
+op, hash, err := client.GetBurnSdByOwnerUserOperationAndHash(ownerAAAddress, <Synthetic Device TokenID>)
 if err != nil {
     panic(err)
 }
 
-// Get hash signature from the user
+// Get hash signature from the owner
 signature := <USER_SIGNATURE>
 
 // Add signature to UserOperation
