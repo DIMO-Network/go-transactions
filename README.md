@@ -6,7 +6,7 @@ Go SDK for DIMO transactions
 
 - Only small amount of DIMO protocol transactions is currently implemented
 - Requires already deployed AA wallet
-- Works only with entrypoint 0.7 and Kernel 3.1.0 accounts
+- Works only with entrypoint 0.7 and Kernel 0.3.1 accounts
 
 ## Usage
 
