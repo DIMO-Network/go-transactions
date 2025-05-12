@@ -221,9 +221,55 @@ func (c *Client) MintVehicleAndSDWithDDAndSACD(data *registry.MintVehicleAndSdWi
 // MintVehicleAndSDWithDDBatch mints vehicles and paired synthetic devices in batches using data with a device definition and SACD input.
 // Requires SD signature of typed data returned by GetMintVehicleAndSDTypedData
 // Requires Vehicle Owner signature of typed data returned by GetMintVehicleWithDDTypedData
-func (c *Client) MintVehicleAndSDWithDDBatch(data []registry.MintVehicleAndSdWithDdInputBatch, waitForReceipt bool) (result *zerodev.UserOperationResult, err error) {
+func (c *Client) MintVehicleAndSDWithDDBatch(data []registry.MintVehicleAndSdWithDdInputBatch, waitForReceipt bool, getResult bool) (*zerodev.UserOperationResult, error) {
 	userOpData := c.Registry.PackMintVehicleAndSdWithDeviceDefinitionSignBatch(data)
 	return c.executeUserOperation(userOpData, waitForReceipt)
+}
+
+type MintSDResult struct {
+	registry.RegistrySyntheticDeviceNodeMinted
+}
+
+func (c *Client) MintSD(data *registry.MintSyntheticDeviceInput, waitForReceipt bool, getResult bool) (*zerodev.UserOperationResult, *MintSDResult, error) {
+	userOpData := c.Registry.PackMintSyntheticDeviceSign(*data)
+	opResult, err := c.executeUserOperation(userOpData, waitForReceipt)
+
+	var mintResult *MintSDResult
+	if getResult {
+		mintResult, _ = c.GetMintSDResult(opResult)
+	}
+
+	return opResult, mintResult, err
+}
+
+func (c *Client) GetMintSDResult(result *zerodev.UserOperationResult) (*MintSDResult, error) {
+	if result == nil || result.Receipt == nil {
+		return nil, errors.New("no receipt to get the result")
+	}
+
+	var err error
+	var event *registry.RegistrySyntheticDeviceNodeMinted
+
+	for _, log := range result.Receipt.Logs {
+		// we want to check only registry events
+		if log.Address != c.RegistryAddress {
+			continue
+		}
+
+		event, err = c.Registry.UnpackSyntheticDeviceNodeMintedEvent(&log)
+		if err != nil {
+			continue
+		}
+		break
+	}
+
+	if event != nil {
+		return &MintSDResult{
+			RegistrySyntheticDeviceNodeMinted: *event,
+		}, nil
+	}
+
+	return nil, errors.New("no result found")
 }
 
 func (c *Client) GetBurnVehicleByOwnerUserOperationAndHash(owner common.Address, vehicleTokenId *big.Int) (op *zerodev.UserOperation, hash *common.Hash, err error) {
@@ -394,6 +440,35 @@ func (c *Client) GetMintVehicleWithDDTypedData(manufacturerNode *big.Int, owner 
 			"deviceDefinitionId": deviceDefinitionId,
 			"attributes":         attributes,
 			"infos":              infos,
+		},
+	}
+}
+
+// GetMintSDTypedData generates TypedData for signing by Vehicle owner whenever a Synthetic Device for this vehicle is minted
+func (c *Client) GetMintSDTypedData(integrationNode *big.Int, vehicleNode *big.Int) *signer.TypedData {
+	return &signer.TypedData{
+		Types: signer.Types{
+			"EIP712Domain": []signer.Type{
+				{Name: "name", Type: "string"},
+				{Name: "version", Type: "string"},
+				{Name: "chainId", Type: "uint256"},
+				{Name: "verifyingContract", Type: "address"},
+			},
+			"MintSyntheticDeviceSign": []signer.Type{
+				{Name: "integrationNode", Type: "uint256"},
+				{Name: "vehicleNode", Type: "uint256"},
+			},
+		},
+		PrimaryType: "MintSyntheticDeviceSign",
+		Domain: signer.TypedDataDomain{
+			Name:              "DIMO",
+			Version:           "1",
+			ChainId:           math.NewHexOrDecimal256(c.ZerodevClient.ChainID.Int64()),
+			VerifyingContract: c.RegistryAddress.String(),
+		},
+		Message: signer.TypedDataMessage{
+			"integrationNode": math.NewHexOrDecimal256(integrationNode.Int64()),
+			"vehicleNode":     math.NewHexOrDecimal256(vehicleNode.Int64()),
 		},
 	}
 }
