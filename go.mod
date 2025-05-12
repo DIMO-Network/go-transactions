@@ -3,7 +3,7 @@ module github.com/DIMO-Network/go-transactions
 go 1.24.0
 
 require (
-	github.com/DIMO-Network/go-zerodev v0.4.0
+	github.com/DIMO-Network/go-zerodev v0.4.1
 	github.com/ethereum/go-ethereum v1.15.7
 )
 
