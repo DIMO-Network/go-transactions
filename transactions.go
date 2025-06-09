@@ -401,6 +401,34 @@ func (c *Client) GetMintVehicleAndSDTypedData(integrationNode *big.Int) *signer.
 	}
 }
 
+// GetMintVehicleAndSDTypedDataV2 generates TypedData for signing by Synthetic Device (SD) whenever Vehicle with SD is minted
+// (V2 is using connectionId instead of integration node)
+func (c *Client) GetMintVehicleAndSDTypedDataV2(connectionID *big.Int) *signer.TypedData {
+	return &signer.TypedData{
+		Types: signer.Types{
+			"EIP712Domain": []signer.Type{
+				{Name: "name", Type: "string"},
+				{Name: "version", Type: "string"},
+				{Name: "chainId", Type: "uint256"},
+				{Name: "verifyingContract", Type: "address"},
+			},
+			"MintVehicleAndSdSign": []signer.Type{
+				{Name: "connectionId", Type: "uint256"},
+			},
+		},
+		PrimaryType: "MintVehicleAndSdSign",
+		Domain: signer.TypedDataDomain{
+			Name:              "DIMO",
+			Version:           "1",
+			ChainId:           math.NewHexOrDecimal256(c.ZerodevClient.ChainID.Int64()),
+			VerifyingContract: c.RegistryAddress.String(),
+		},
+		Message: signer.TypedDataMessage{
+			"connectionId": (*math.HexOrDecimal256)(connectionID),
+		},
+	}
+}
+
 // GetMintVehicleWithDDTypedData generates TypedData for signing by Vehicle owner whenever Vehicle with Device Definition is minted
 func (c *Client) GetMintVehicleWithDDTypedData(manufacturerNode *big.Int, owner common.Address, deviceDefinitionId string, attributeInfoPairs []registry.AttributeInfoPair) *signer.TypedData {
 	attributes := []string{}
@@ -469,6 +497,36 @@ func (c *Client) GetMintSDTypedData(integrationNode *big.Int, vehicleNode *big.I
 		Message: signer.TypedDataMessage{
 			"integrationNode": math.NewHexOrDecimal256(integrationNode.Int64()),
 			"vehicleNode":     math.NewHexOrDecimal256(vehicleNode.Int64()),
+		},
+	}
+}
+
+// GetMintSDTypedDataV2 generates TypedData for signing by Vehicle owner whenever a Synthetic Device for this vehicle is minted
+// (V2 is using connectionId instead of integration node)
+func (c *Client) GetMintSDTypedDataV2(connectionID *big.Int, vehicleNode *big.Int) *signer.TypedData {
+	return &signer.TypedData{
+		Types: signer.Types{
+			"EIP712Domain": []signer.Type{
+				{Name: "name", Type: "string"},
+				{Name: "version", Type: "string"},
+				{Name: "chainId", Type: "uint256"},
+				{Name: "verifyingContract", Type: "address"},
+			},
+			"MintSyntheticDeviceSign": []signer.Type{
+				{Name: "connectionId", Type: "uint256"},
+				{Name: "vehicleNode", Type: "uint256"},
+			},
+		},
+		PrimaryType: "MintSyntheticDeviceSign",
+		Domain: signer.TypedDataDomain{
+			Name:              "DIMO",
+			Version:           "1",
+			ChainId:           math.NewHexOrDecimal256(c.ZerodevClient.ChainID.Int64()),
+			VerifyingContract: c.RegistryAddress.String(),
+		},
+		Message: signer.TypedDataMessage{
+			"connectionId": (*math.HexOrDecimal256)(connectionID),
+			"vehicleNode":  math.NewHexOrDecimal256(vehicleNode.Int64()),
 		},
 	}
 }
