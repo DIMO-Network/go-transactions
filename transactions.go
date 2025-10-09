@@ -3,6 +3,9 @@ package transactions
 import (
 	"crypto/ecdsa"
 	"errors"
+	"math/big"
+	"net/url"
+
 	"github.com/DIMO-Network/go-transactions/contracts"
 	"github.com/DIMO-Network/go-transactions/contracts/sdid"
 	"github.com/DIMO-Network/go-transactions/contracts/vehicleid"
@@ -11,8 +14,6 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/math"
 	signer "github.com/ethereum/go-ethereum/signer/core/apitypes"
-	"math/big"
-	"net/url"
 )
 
 type ClientConfig struct {
