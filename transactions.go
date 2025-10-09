@@ -7,12 +7,14 @@ import (
 	"net/url"
 
 	"github.com/DIMO-Network/go-transactions/contracts"
+	"github.com/DIMO-Network/go-transactions/contracts/sacd"
 	"github.com/DIMO-Network/go-transactions/contracts/sdid"
 	"github.com/DIMO-Network/go-transactions/contracts/vehicleid"
 	"github.com/DIMO-Network/go-zerodev"
 	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/math"
+	"github.com/ethereum/go-ethereum/core/types"
 	signer "github.com/ethereum/go-ethereum/signer/core/apitypes"
 )
 
@@ -202,6 +204,21 @@ func (c *Client) GetMintVehicleAndSDWithDDResult(result *zerodev.UserOperationRe
 	}
 
 	return nil, errors.New("no result found")
+}
+
+func (c *Client) SetPermissions(sacdInput sacd.SacdPermissionsSet) (*zerodev.UserOperationResult, error) {
+	// 2) Bind to the proxy address using the implementation ABI
+	proxyAddr := common.HexToAddress("0x3c152B5d96769661008Ff404224d6530FCAC766d")
+	svc, err := sacd.NewSacd(proxyAddr, c.ZerodevClient.RpcClients.Network)
+	if err != nil {
+		return nil, err
+	}
+	// need to use zerodev to send the call
+	transaction, err := svc.SetPermissions(nil, sacdInput.Asset, sacdInput.TokenId, sacdInput.Grantee, sacdInput.Permissions, sacdInput.Expiration, sacdInput.Source)
+	if err != nil {
+		return nil, err
+	}
+
 }
 
 // MintVehicleAndSDWithDDAndSACD mints a vehicle and paired synthetic device using data with a device definition and separate SACD.
