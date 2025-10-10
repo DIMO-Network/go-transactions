@@ -2,6 +2,15 @@
 
 Go SDK for DIMO transactions
 
+### Generating ABI code
+
+`go install github.com/ethereum/go-ethereum/cmd/abigen@latest`
+
+Source is here where we have JSON definitions of the contracts:
+https://github.com/DIMO-Network/sacd/tree/main/abis/contracts/Sacd.sol
+
+To generate the code run eg.: `abigen --abi sacd.abi.json --pkg sacd --type Sacd --out sacd.go --v2`
+
 ## Limitations
 
 - Only small amount of DIMO protocol transactions is currently implemented

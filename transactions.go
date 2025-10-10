@@ -3,7 +3,11 @@ package transactions
 import (
 	"crypto/ecdsa"
 	"errors"
+	"math/big"
+	"net/url"
+
 	"github.com/DIMO-Network/go-transactions/contracts"
+	"github.com/DIMO-Network/go-transactions/contracts/sacd"
 	"github.com/DIMO-Network/go-transactions/contracts/sdid"
 	"github.com/DIMO-Network/go-transactions/contracts/vehicleid"
 	"github.com/DIMO-Network/go-zerodev"
@@ -11,20 +15,20 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/math"
 	signer "github.com/ethereum/go-ethereum/signer/core/apitypes"
-	"math/big"
-	"net/url"
 )
 
 type ClientConfig struct {
-	AccountAddress             common.Address
-	AccountPK                  *ecdsa.PrivateKey
-	RpcURL                     *url.URL
-	PaymasterURL               *url.URL
-	BundlerURL                 *url.URL
-	ChainID                    *big.Int
-	RegistryAddress            common.Address
-	VehicleIdAddress           common.Address
-	SyntheticDeviceIdAddress   common.Address
+	AccountAddress           common.Address
+	AccountPK                *ecdsa.PrivateKey
+	RpcURL                   *url.URL
+	PaymasterURL             *url.URL
+	BundlerURL               *url.URL
+	ChainID                  *big.Int
+	RegistryAddress          common.Address
+	VehicleIdAddress         common.Address
+	SyntheticDeviceIdAddress common.Address
+	// contract address for sacd, eg in polygon prod: 0x3c152B5d96769661008Ff404224d6530FCAC766d
+	SacdAddress                common.Address
 	ReceiptPollingDelaySeconds int
 	ReceiptPollingRetries      int
 }
@@ -34,10 +38,12 @@ type Client struct {
 	VehicleIdAddress         common.Address
 	SyntheticDeviceIdAddress common.Address
 	Registry                 *registry.Registry
+	SacdRegistry             *sacd.Sacd
 	VehicleId                *vehicleid.Vehicleid
 	SyntheticDeviceId        *sdid.Sdid
 	ZerodevClient            *zerodev.Client
 	Config                   ClientConfig
+	SacdAddress              common.Address
 }
 
 func NewClient(config *ClientConfig) (*Client, error) {
@@ -62,7 +68,9 @@ func NewClient(config *ClientConfig) (*Client, error) {
 		RegistryAddress:          config.RegistryAddress,
 		VehicleIdAddress:         config.VehicleIdAddress,
 		SyntheticDeviceIdAddress: config.SyntheticDeviceIdAddress,
+		SacdAddress:              config.SacdAddress,
 		Registry:                 registry.NewRegistry(),
+		SacdRegistry:             sacd.NewSacd(),
 		VehicleId:                vehicleid.NewVehicleid(),
 		SyntheticDeviceId:        sdid.NewSdid(),
 		ZerodevClient:            zerodevClient,
@@ -74,9 +82,25 @@ func (c *Client) Close() {
 	c.ZerodevClient.Close()
 }
 
+// executeUserOperation used to execute user operations on the Vehicle Registry contract
 func (c *Client) executeUserOperation(callData []byte, waitForReceipt bool) (result *zerodev.UserOperationResult, err error) {
 	encodedCall, err := zerodev.EncodeExecuteCall(&ethereum.CallMsg{
 		To:    &c.RegistryAddress,
+		Value: big.NewInt(0),
+		Data:  callData,
+	})
+
+	if err != nil {
+		return nil, err
+	}
+
+	return c.ZerodevClient.SendUserOperation(encodedCall, waitForReceipt)
+}
+
+// executeUserOperationSacd used to execute user operations on the SACD contract
+func (c *Client) executeUserOperationSacd(callData []byte, waitForReceipt bool) (result *zerodev.UserOperationResult, err error) {
+	encodedCall, err := zerodev.EncodeExecuteCall(&ethereum.CallMsg{
+		To:    &c.SacdAddress,
 		Value: big.NewInt(0),
 		Data:  callData,
 	})
@@ -201,6 +225,24 @@ func (c *Client) GetMintVehicleAndSDWithDDResult(result *zerodev.UserOperationRe
 	}
 
 	return nil, errors.New("no result found")
+}
+
+func (c *Client) SetPermissions(sacdInput registry.SetPermissionsSacdInput) (*zerodev.UserOperationResult, error) {
+	// the asset parameter is the address of the vehicle nft contract, it is configured in the constructor
+	asset := c.VehicleIdAddress
+
+	permissions0 := c.SacdRegistry.PackSetPermissions0(asset, sacdInput.VehicleTokenId, sacdInput.Grantee, sacdInput.Permissions, sacdInput.Expiration, sacdInput.Source)
+	result, err := c.executeUserOperationSacd(permissions0, true)
+	if err != nil {
+		return nil, err
+	}
+	return result, nil
+}
+
+func (c *Client) SafeTransferFrom(from common.Address, to common.Address, tokenId *big.Int) (*zerodev.UserOperationResult, error) {
+	// todo implement userOperation
+	
+	return nil, nil
 }
 
 // MintVehicleAndSDWithDDAndSACD mints a vehicle and paired synthetic device using data with a device definition and separate SACD.

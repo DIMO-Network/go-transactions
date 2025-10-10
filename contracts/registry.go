@@ -1461,6 +1461,16 @@ func (registry *Registry) PackMintVehicleAndSdWithDeviceDefinitionSign(data Mint
 	return enc
 }
 
+func (registry *Registry) PackSetPermissions(data SacdInput) ([]byte, error) {
+	enc, err := registry.abi.Pack("setPermissions", data)
+	// but would pack find this? Methods won't be populated for this registry
+	// since it is a different registry for sacd
+	if err != nil {
+		return nil, err
+	}
+	return enc, nil
+}
+
 // PackMintVehicleAndSdWithDeviceDefinitionSignAndSacd is the Go binding used to pack the parameters required for calling
 // the contract method with ID 0x58657dcc.
 //
