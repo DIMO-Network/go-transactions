@@ -227,6 +227,7 @@ func (c *Client) GetMintVehicleAndSDWithDDResult(result *zerodev.UserOperationRe
 	return nil, errors.New("no result found")
 }
 
+// SetPermissions sets permissions on a vehicle using the SACD contract. No signature is needed because it checks if the tokenId is owned by the NFT owner.
 func (c *Client) SetPermissions(sacdInput registry.SetPermissionsSacdInput) (*zerodev.UserOperationResult, error) {
 	// the asset parameter is the address of the vehicle nft contract, it is configured in the constructor
 	asset := c.VehicleIdAddress
@@ -241,7 +242,7 @@ func (c *Client) SetPermissions(sacdInput registry.SetPermissionsSacdInput) (*ze
 
 func (c *Client) SafeTransferFrom(from common.Address, to common.Address, tokenId *big.Int) (*zerodev.UserOperationResult, error) {
 	// todo implement userOperation
-	
+
 	return nil, nil
 }
 
