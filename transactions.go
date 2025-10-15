@@ -227,7 +227,7 @@ func (c *Client) GetMintVehicleAndSDWithDDResult(result *zerodev.UserOperationRe
 	return nil, errors.New("no result found")
 }
 
-// SetPermissions sets permissions on a vehicle using the SACD contract. No signature is needed because it checks if the tokenId is owned by the NFT owner.
+// SetPermissions sets permissions on a vehicle using the SACD contract. No signature is needed because it checks if the tokenId is owned by the NFT owner and same as the caller.
 func (c *Client) SetPermissions(sacdInput registry.SetPermissionsSacdInput) (*zerodev.UserOperationResult, error) {
 	// the asset parameter is the address of the vehicle nft contract, it is configured in the constructor
 	asset := c.VehicleIdAddress
@@ -240,10 +240,20 @@ func (c *Client) SetPermissions(sacdInput registry.SetPermissionsSacdInput) (*ze
 	return result, nil
 }
 
+// SafeTransferFrom transfers a vehicle from one address to another using the VehicleID contract. No signature is needed because it checks if the tokenId / from address is same as the caller.
 func (c *Client) SafeTransferFrom(from common.Address, to common.Address, tokenId *big.Int) (*zerodev.UserOperationResult, error) {
-	// todo implement userOperation
+	transfer := c.VehicleId.PackSafeTransferFrom(from, to, tokenId)
 
-	return nil, nil
+	encodedCall, err := zerodev.EncodeExecuteCall(&ethereum.CallMsg{
+		To:    &c.VehicleIdAddress,
+		Value: big.NewInt(0),
+		Data:  transfer,
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	return c.ZerodevClient.SendUserOperation(encodedCall, true)
 }
 
 // MintVehicleAndSDWithDDAndSACD mints a vehicle and paired synthetic device using data with a device definition and separate SACD.
