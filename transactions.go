@@ -11,6 +11,7 @@ import (
 	"github.com/DIMO-Network/go-transactions/contracts/sdid"
 	"github.com/DIMO-Network/go-transactions/contracts/vehicleid"
 	"github.com/DIMO-Network/go-zerodev"
+	"github.com/DIMO-Network/go-zerodev/account"
 	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/math"
@@ -44,6 +45,8 @@ type Client struct {
 	ZerodevClient            *zerodev.Client
 	Config                   ClientConfig
 	SacdAddress              common.Address
+	// ZerodevSigner is used in cases where eg. backend is doing the payload signing with an AA account. Used in Oracle where oracle owns the vehicles, so we sign mint payload
+	ZerodevSigner *account.SmartAccountPrivateKeySigner
 }
 
 func NewClient(config *ClientConfig) (*Client, error) {
@@ -63,6 +66,11 @@ func NewClient(config *ClientConfig) (*Client, error) {
 	if err != nil {
 		return nil, err
 	}
+	// assuming what this wants is the rpc client for the network.
+	zerodevSigner, err := account.NewSmartAccountPrivateKeySigner(zerodevClient.RpcClients.Network, config.AccountAddress, config.AccountPK)
+	if err != nil {
+		return nil, err
+	}
 
 	return &Client{
 		RegistryAddress:          config.RegistryAddress,
@@ -75,6 +83,7 @@ func NewClient(config *ClientConfig) (*Client, error) {
 		SyntheticDeviceId:        sdid.NewSdid(),
 		ZerodevClient:            zerodevClient,
 		Config:                   *config,
+		ZerodevSigner:            zerodevSigner,
 	}, nil
 }
 
