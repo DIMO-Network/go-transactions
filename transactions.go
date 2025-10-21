@@ -106,21 +106,6 @@ func (c *Client) executeUserOperation(callData []byte, waitForReceipt bool) (res
 	return c.ZerodevClient.SendUserOperation(encodedCall, waitForReceipt)
 }
 
-// executeUserOperationSacd used to execute user operations on the SACD contract
-func (c *Client) executeUserOperationSacd(callData []byte, waitForReceipt bool) (result *zerodev.UserOperationResult, err error) {
-	encodedCall, err := zerodev.EncodeExecuteCall(&ethereum.CallMsg{
-		To:    &c.SacdAddress,
-		Value: big.NewInt(0),
-		Data:  callData,
-	})
-
-	if err != nil {
-		return nil, err
-	}
-
-	return c.ZerodevClient.SendUserOperation(encodedCall, waitForReceipt)
-}
-
 func (c *Client) GetReceipt(result *zerodev.UserOperationResult) (receipt *zerodev.UserOperationReceipt, err error) {
 	return c.ZerodevClient.GetUserOperationReceipt(result)
 }
@@ -265,6 +250,42 @@ func (c *Client) GetSafeTransferFromUserOperationAndHash(from common.Address, to
 	}
 
 	return c.ZerodevClient.GetUserOperationAndHashToSign(from, encodedCall)
+}
+
+// SafeTransferFromResult used to represnet the vehicle transfer event when we call GetSafeTransferFromResult
+type SafeTransferFromResult struct {
+	vehicleid.VehicleidTransfer
+}
+
+// GetSafeTransferFromResult used to interpret the result after submitting the transaction for SafeTransferFromUserOperationAndHash
+func (c *Client) GetSafeTransferFromResult(result *zerodev.UserOperationResult) (*SafeTransferFromResult, error) {
+	if result == nil || result.Receipt == nil {
+		return nil, errors.New("no receipt to get the result")
+	}
+
+	var err error
+	var event *vehicleid.VehicleidTransfer
+
+	for _, log := range result.Receipt.Logs {
+		// we want to check only registry events
+		if log.Address != c.RegistryAddress {
+			continue
+		}
+
+		event, err = c.VehicleId.UnpackTransferEvent(&log)
+		if err != nil {
+			continue
+		}
+		break
+	}
+
+	if event != nil {
+		return &SafeTransferFromResult{
+			VehicleidTransfer: *event,
+		}, nil
+	}
+
+	return nil, errors.New("no result found")
 }
 
 // MintVehicleAndSDWithDDAndSACD mints a vehicle and paired synthetic device using data with a device definition and separate SACD.
