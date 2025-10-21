@@ -237,32 +237,34 @@ func (c *Client) GetMintVehicleAndSDWithDDResult(result *zerodev.UserOperationRe
 }
 
 // SetPermissions sets permissions on a vehicle using the SACD contract. No signature is needed because it checks if the tokenId is owned by the NFT owner and same as the caller.
-func (c *Client) SetPermissions(sacdInput registry.SetPermissionsSacdInput) (*zerodev.UserOperationResult, error) {
-	// the asset parameter is the address of the vehicle nft contract, it is configured in the constructor
-	asset := c.VehicleIdAddress
+// todo this must be signed by user, needs same flow as delete vehicle
+//func (c *Client) SetPermissions(sacdInput registry.SetPermissionsSacdInput) (*zerodev.UserOperationResult, error) {
+//	// the asset parameter is the address of the vehicle nft contract, it is configured in the constructor
+//	asset := c.VehicleIdAddress
+//
+//	permissions0 := c.SacdRegistry.PackSetPermissions0(asset, sacdInput.VehicleTokenId, sacdInput.Grantee, sacdInput.Permissions, sacdInput.Expiration, sacdInput.Source)
+//	result, err := c.executeUserOperationSacd(permissions0, true)
+//	if err != nil {
+//		return nil, err
+//	}
+//	return result, nil
+//}
 
-	permissions0 := c.SacdRegistry.PackSetPermissions0(asset, sacdInput.VehicleTokenId, sacdInput.Grantee, sacdInput.Permissions, sacdInput.Expiration, sacdInput.Source)
-	result, err := c.executeUserOperationSacd(permissions0, true)
-	if err != nil {
-		return nil, err
-	}
-	return result, nil
-}
-
-// SafeTransferFrom transfers a vehicle from one address to another using the VehicleID contract. No signature is needed because it checks if the tokenId / from address is same as the caller.
-func (c *Client) SafeTransferFrom(from common.Address, to common.Address, tokenId *big.Int) (*zerodev.UserOperationResult, error) {
-	transfer := c.VehicleId.PackSafeTransferFrom(from, to, tokenId)
+// GetSafeTransferFromUserOperationAndHash gets the data to be signed by the owner (from address) to transfer a vehicle tokenId to another address (to address)
+func (c *Client) GetSafeTransferFromUserOperationAndHash(from common.Address, to common.Address, tokenId *big.Int) (op *zerodev.UserOperation, hash *common.Hash, err error) {
+	callData := c.VehicleId.PackSafeTransferFrom(from, to, tokenId)
 
 	encodedCall, err := zerodev.EncodeExecuteCall(&ethereum.CallMsg{
 		To:    &c.VehicleIdAddress,
 		Value: big.NewInt(0),
-		Data:  transfer,
+		Data:  callData,
 	})
+
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
-	return c.ZerodevClient.SendUserOperation(encodedCall, true)
+	return c.ZerodevClient.GetUserOperationAndHashToSign(from, encodedCall)
 }
 
 // MintVehicleAndSDWithDDAndSACD mints a vehicle and paired synthetic device using data with a device definition and separate SACD.
