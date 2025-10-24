@@ -42,7 +42,7 @@ type VehicleIdSacdInput struct {
 
 // VehicleidMetaData contains all meta data concerning the Vehicleid contract.
 var VehicleidMetaData = bind.MetaData{
-	ABI: "[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"idProxy\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"errorMessage\",\"type\":\"string\"}],\"name\":\"TransferFailed\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"Unauthorized\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ZeroAddress\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"previousAdmin\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newAdmin\",\"type\":\"address\"}],\"name\":\"AdminChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"approved\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"approved\",\"type\":\"bool\"}],\"name\":\"ApprovalForAll\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_fromTokenId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_toTokenId\",\"type\":\"uint256\"}],\"name\":\"BatchMetadataUpdate\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"beacon\",\"type\":\"address\"}],\"name\":\"BeaconUpgraded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"version\",\"type\":\"uint8\"}],\"name\":\"Initialized\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"}],\"name\":\"MetadataUpdate\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"privilegeId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"enabled\",\"type\":\"bool\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"}],\"name\":\"PrivilegeCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"privilegeId\",\"type\":\"uint256\"}],\"name\":\"PrivilegeDisabled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"privilegeId\",\"type\":\"uint256\"}],\"name\":\"PrivilegeEnabled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"version\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"privId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"expires\",\"type\":\"uint256\"}],\"name\":\"PrivilegeSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"previousAdminRole\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"newAdminRole\",\"type\":\"bytes32\"}],\"name\":\"RoleAdminChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"RoleGranted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"RoleRevoked\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"implementation\",\"type\":\"address\"}],\"name\":\"Upgraded\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"ADMIN_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"BURNER_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"DEFAULT_ADMIN_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"MINTER_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"SAFE_TRANSFER_FROM\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"TRANSFERER_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"UPGRADER_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"_dimoRegistry\",\"outputs\":[{\"internalType\":\"contractIDimoRegistry\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"burn\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bool\",\"name\":\"enabled\",\"type\":\"bool\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"}],\"name\":\"createPrivilege\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"privId\",\"type\":\"uint256\"}],\"name\":\"disablePrivilege\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"privId\",\"type\":\"uint256\"}],\"name\":\"enablePrivilege\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"exists\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"getApproved\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"getDataURI\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"dataURI\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"getDefinitionURI\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"definitionURI\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"}],\"name\":\"getRoleAdmin\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"grantRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"privId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"hasPrivilege\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"hasRole\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name_\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"symbol_\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"baseUri_\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"dimoRegistry_\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"syntheticDeviceId_\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"sacd_\",\"type\":\"address\"},{\"internalType\":\"address[]\",\"name\":\"trustedForwarders_\",\"type\":\"address[]\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"}],\"name\":\"isApprovedForAll\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"ownerOf\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"privilegeEntry\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"privId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"privilegeExpiresAt\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"privilegeRecord\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"enabled\",\"type\":\"bool\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"proxiableUUID\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"renounceRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"revokeRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"sacd\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"safeMint\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"uri\",\"type\":\"string\"}],\"name\":\"safeMint\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"safeTransferFrom\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"safeTransferFrom\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"approved\",\"type\":\"bool\"}],\"name\":\"setApprovalForAll\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"baseURI_\",\"type\":\"string\"}],\"name\":\"setBaseURI\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"setDimoRegistryAddress\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"privId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"expires\",\"type\":\"uint256\"}],\"name\":\"setPrivilege\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"privId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"expires\",\"type\":\"uint256\"}],\"internalType\":\"structMultiPrivilege.SetPrivilegeData[]\",\"name\":\"privData\",\"type\":\"tuple[]\"}],\"name\":\"setPrivileges\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"grantee\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"permissions\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"expiration\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"source\",\"type\":\"string\"}],\"internalType\":\"structVehicleId.SacdInput\",\"name\":\"sacdInput\",\"type\":\"tuple\"}],\"name\":\"setSacd\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"setSacdAddress\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"setSyntheticDeviceIdAddress\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"trusted\",\"type\":\"bool\"}],\"name\":\"setTrustedForwarder\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes4\",\"name\":\"interfaceId\",\"type\":\"bytes4\"}],\"name\":\"supportsInterface\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"syntheticDeviceId\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"tokenIdToVersion\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"tokenURI\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"trustedForwarders\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newImplementation\",\"type\":\"address\"}],\"name\":\"upgradeTo\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newImplementation\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"upgradeToAndCall\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}]",
+	ABI: "[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"idProxy\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"errorMessage\",\"type\":\"string\"}],\"name\":\"TransferFailed\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"Unauthorized\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ZeroAddress\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"previousAdmin\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newAdmin\",\"type\":\"address\"}],\"name\":\"AdminChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"approved\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"approved\",\"type\":\"bool\"}],\"name\":\"ApprovalForAll\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_fromTokenId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_toTokenId\",\"type\":\"uint256\"}],\"name\":\"BatchMetadataUpdate\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"beacon\",\"type\":\"address\"}],\"name\":\"BeaconUpgraded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"version\",\"type\":\"uint8\"}],\"name\":\"Initialized\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"}],\"name\":\"MetadataUpdate\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"privilegeId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"enabled\",\"type\":\"bool\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"}],\"name\":\"PrivilegeCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"privilegeId\",\"type\":\"uint256\"}],\"name\":\"PrivilegeDisabled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"privilegeId\",\"type\":\"uint256\"}],\"name\":\"PrivilegeEnabled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"version\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"privId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"expires\",\"type\":\"uint256\"}],\"name\":\"PrivilegeSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"previousAdminRole\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"newAdminRole\",\"type\":\"bytes32\"}],\"name\":\"RoleAdminChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"RoleGranted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"RoleRevoked\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"implementation\",\"type\":\"address\"}],\"name\":\"Upgraded\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"ADMIN_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"BURNER_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"DEFAULT_ADMIN_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"MINTER_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"SAFE_TRANSFER_FROM\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"TRANSFERER_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"UPGRADER_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"_dimoRegistry\",\"outputs\":[{\"internalType\":\"contractIDimoRegistry\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"burn\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bool\",\"name\":\"enabled\",\"type\":\"bool\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"}],\"name\":\"createPrivilege\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"privId\",\"type\":\"uint256\"}],\"name\":\"disablePrivilege\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"privId\",\"type\":\"uint256\"}],\"name\":\"enablePrivilege\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"exists\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"getApproved\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"getDefinitionURI\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"definitionURI\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"}],\"name\":\"getRoleAdmin\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"grantRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"privId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"hasPrivilege\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"hasRole\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name_\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"symbol_\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"baseUri_\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"dimoRegistry_\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"syntheticDeviceId_\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"sacd_\",\"type\":\"address\"},{\"internalType\":\"address[]\",\"name\":\"trustedForwarders_\",\"type\":\"address[]\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"}],\"name\":\"isApprovedForAll\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"ownerOf\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"privilegeEntry\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"privId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"privilegeExpiresAt\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"privilegeRecord\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"enabled\",\"type\":\"bool\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"proxiableUUID\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"renounceRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"revokeRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"sacd\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"safeMint\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"uri\",\"type\":\"string\"}],\"name\":\"safeMint\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"safeTransferFrom\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"safeTransferFrom\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"operator\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"approved\",\"type\":\"bool\"}],\"name\":\"setApprovalForAll\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"baseURI_\",\"type\":\"string\"}],\"name\":\"setBaseURI\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"setDimoRegistryAddress\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"privId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"expires\",\"type\":\"uint256\"}],\"name\":\"setPrivilege\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"privId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"expires\",\"type\":\"uint256\"}],\"internalType\":\"structMultiPrivilege.SetPrivilegeData[]\",\"name\":\"privData\",\"type\":\"tuple[]\"}],\"name\":\"setPrivileges\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"grantee\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"permissions\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"expiration\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"source\",\"type\":\"string\"}],\"internalType\":\"structVehicleId.SacdInput\",\"name\":\"sacdInput\",\"type\":\"tuple\"}],\"name\":\"setSacd\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"setSacdAddress\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"setSyntheticDeviceIdAddress\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"trusted\",\"type\":\"bool\"}],\"name\":\"setTrustedForwarder\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes4\",\"name\":\"interfaceId\",\"type\":\"bytes4\"}],\"name\":\"supportsInterface\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"syntheticDeviceId\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"tokenIdToVersion\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"tokenURI\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"trustedForwarders\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newImplementation\",\"type\":\"address\"}],\"name\":\"upgradeTo\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newImplementation\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"upgradeToAndCall\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}]",
 	ID:  "Vehicleid",
 }
 
@@ -67,7 +67,8 @@ func (c *Vehicleid) Instance(backend bind.ContractBackend, addr common.Address) 
 }
 
 // PackADMINROLE is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x75b238fc.
+// the contract method with ID 0x75b238fc.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function ADMIN_ROLE() view returns(bytes32)
 func (vehicleid *Vehicleid) PackADMINROLE() []byte {
@@ -76,6 +77,15 @@ func (vehicleid *Vehicleid) PackADMINROLE() []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackADMINROLE is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x75b238fc.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function ADMIN_ROLE() view returns(bytes32)
+func (vehicleid *Vehicleid) TryPackADMINROLE() ([]byte, error) {
+	return vehicleid.abi.Pack("ADMIN_ROLE")
 }
 
 // UnpackADMINROLE is the Go binding that unpacks the parameters returned
@@ -88,11 +98,12 @@ func (vehicleid *Vehicleid) UnpackADMINROLE(data []byte) ([32]byte, error) {
 		return *new([32]byte), err
 	}
 	out0 := *abi.ConvertType(out[0], new([32]byte)).(*[32]byte)
-	return out0, err
+	return out0, nil
 }
 
 // PackBURNERROLE is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x282c51f3.
+// the contract method with ID 0x282c51f3.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function BURNER_ROLE() view returns(bytes32)
 func (vehicleid *Vehicleid) PackBURNERROLE() []byte {
@@ -101,6 +112,15 @@ func (vehicleid *Vehicleid) PackBURNERROLE() []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackBURNERROLE is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x282c51f3.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function BURNER_ROLE() view returns(bytes32)
+func (vehicleid *Vehicleid) TryPackBURNERROLE() ([]byte, error) {
+	return vehicleid.abi.Pack("BURNER_ROLE")
 }
 
 // UnpackBURNERROLE is the Go binding that unpacks the parameters returned
@@ -113,11 +133,12 @@ func (vehicleid *Vehicleid) UnpackBURNERROLE(data []byte) ([32]byte, error) {
 		return *new([32]byte), err
 	}
 	out0 := *abi.ConvertType(out[0], new([32]byte)).(*[32]byte)
-	return out0, err
+	return out0, nil
 }
 
 // PackDEFAULTADMINROLE is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xa217fddf.
+// the contract method with ID 0xa217fddf.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function DEFAULT_ADMIN_ROLE() view returns(bytes32)
 func (vehicleid *Vehicleid) PackDEFAULTADMINROLE() []byte {
@@ -126,6 +147,15 @@ func (vehicleid *Vehicleid) PackDEFAULTADMINROLE() []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackDEFAULTADMINROLE is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xa217fddf.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function DEFAULT_ADMIN_ROLE() view returns(bytes32)
+func (vehicleid *Vehicleid) TryPackDEFAULTADMINROLE() ([]byte, error) {
+	return vehicleid.abi.Pack("DEFAULT_ADMIN_ROLE")
 }
 
 // UnpackDEFAULTADMINROLE is the Go binding that unpacks the parameters returned
@@ -138,11 +168,12 @@ func (vehicleid *Vehicleid) UnpackDEFAULTADMINROLE(data []byte) ([32]byte, error
 		return *new([32]byte), err
 	}
 	out0 := *abi.ConvertType(out[0], new([32]byte)).(*[32]byte)
-	return out0, err
+	return out0, nil
 }
 
 // PackMINTERROLE is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xd5391393.
+// the contract method with ID 0xd5391393.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function MINTER_ROLE() view returns(bytes32)
 func (vehicleid *Vehicleid) PackMINTERROLE() []byte {
@@ -151,6 +182,15 @@ func (vehicleid *Vehicleid) PackMINTERROLE() []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackMINTERROLE is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xd5391393.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function MINTER_ROLE() view returns(bytes32)
+func (vehicleid *Vehicleid) TryPackMINTERROLE() ([]byte, error) {
+	return vehicleid.abi.Pack("MINTER_ROLE")
 }
 
 // UnpackMINTERROLE is the Go binding that unpacks the parameters returned
@@ -163,11 +203,12 @@ func (vehicleid *Vehicleid) UnpackMINTERROLE(data []byte) ([32]byte, error) {
 		return *new([32]byte), err
 	}
 	out0 := *abi.ConvertType(out[0], new([32]byte)).(*[32]byte)
-	return out0, err
+	return out0, nil
 }
 
 // PackSAFETRANSFERFROM is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xe4cdbfdb.
+// the contract method with ID 0xe4cdbfdb.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function SAFE_TRANSFER_FROM() view returns(bytes4)
 func (vehicleid *Vehicleid) PackSAFETRANSFERFROM() []byte {
@@ -176,6 +217,15 @@ func (vehicleid *Vehicleid) PackSAFETRANSFERFROM() []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackSAFETRANSFERFROM is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xe4cdbfdb.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function SAFE_TRANSFER_FROM() view returns(bytes4)
+func (vehicleid *Vehicleid) TryPackSAFETRANSFERFROM() ([]byte, error) {
+	return vehicleid.abi.Pack("SAFE_TRANSFER_FROM")
 }
 
 // UnpackSAFETRANSFERFROM is the Go binding that unpacks the parameters returned
@@ -188,11 +238,12 @@ func (vehicleid *Vehicleid) UnpackSAFETRANSFERFROM(data []byte) ([4]byte, error)
 		return *new([4]byte), err
 	}
 	out0 := *abi.ConvertType(out[0], new([4]byte)).(*[4]byte)
-	return out0, err
+	return out0, nil
 }
 
 // PackTRANSFERERROLE is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x0ade7dc1.
+// the contract method with ID 0x0ade7dc1.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function TRANSFERER_ROLE() view returns(bytes32)
 func (vehicleid *Vehicleid) PackTRANSFERERROLE() []byte {
@@ -201,6 +252,15 @@ func (vehicleid *Vehicleid) PackTRANSFERERROLE() []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackTRANSFERERROLE is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x0ade7dc1.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function TRANSFERER_ROLE() view returns(bytes32)
+func (vehicleid *Vehicleid) TryPackTRANSFERERROLE() ([]byte, error) {
+	return vehicleid.abi.Pack("TRANSFERER_ROLE")
 }
 
 // UnpackTRANSFERERROLE is the Go binding that unpacks the parameters returned
@@ -213,11 +273,12 @@ func (vehicleid *Vehicleid) UnpackTRANSFERERROLE(data []byte) ([32]byte, error) 
 		return *new([32]byte), err
 	}
 	out0 := *abi.ConvertType(out[0], new([32]byte)).(*[32]byte)
-	return out0, err
+	return out0, nil
 }
 
 // PackUPGRADERROLE is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xf72c0d8b.
+// the contract method with ID 0xf72c0d8b.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function UPGRADER_ROLE() view returns(bytes32)
 func (vehicleid *Vehicleid) PackUPGRADERROLE() []byte {
@@ -226,6 +287,15 @@ func (vehicleid *Vehicleid) PackUPGRADERROLE() []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackUPGRADERROLE is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xf72c0d8b.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function UPGRADER_ROLE() view returns(bytes32)
+func (vehicleid *Vehicleid) TryPackUPGRADERROLE() ([]byte, error) {
+	return vehicleid.abi.Pack("UPGRADER_ROLE")
 }
 
 // UnpackUPGRADERROLE is the Go binding that unpacks the parameters returned
@@ -238,11 +308,12 @@ func (vehicleid *Vehicleid) UnpackUPGRADERROLE(data []byte) ([32]byte, error) {
 		return *new([32]byte), err
 	}
 	out0 := *abi.ConvertType(out[0], new([32]byte)).(*[32]byte)
-	return out0, err
+	return out0, nil
 }
 
 // PackDimoRegistry is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x7625c605.
+// the contract method with ID 0x7625c605.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function _dimoRegistry() view returns(address)
 func (vehicleid *Vehicleid) PackDimoRegistry() []byte {
@@ -251,6 +322,15 @@ func (vehicleid *Vehicleid) PackDimoRegistry() []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackDimoRegistry is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x7625c605.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function _dimoRegistry() view returns(address)
+func (vehicleid *Vehicleid) TryPackDimoRegistry() ([]byte, error) {
+	return vehicleid.abi.Pack("_dimoRegistry")
 }
 
 // UnpackDimoRegistry is the Go binding that unpacks the parameters returned
@@ -263,11 +343,12 @@ func (vehicleid *Vehicleid) UnpackDimoRegistry(data []byte) (common.Address, err
 		return *new(common.Address), err
 	}
 	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-	return out0, err
+	return out0, nil
 }
 
 // PackApprove is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x095ea7b3.
+// the contract method with ID 0x095ea7b3.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function approve(address to, uint256 tokenId) returns()
 func (vehicleid *Vehicleid) PackApprove(to common.Address, tokenId *big.Int) []byte {
@@ -278,8 +359,18 @@ func (vehicleid *Vehicleid) PackApprove(to common.Address, tokenId *big.Int) []b
 	return enc
 }
 
+// TryPackApprove is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x095ea7b3.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function approve(address to, uint256 tokenId) returns()
+func (vehicleid *Vehicleid) TryPackApprove(to common.Address, tokenId *big.Int) ([]byte, error) {
+	return vehicleid.abi.Pack("approve", to, tokenId)
+}
+
 // PackBalanceOf is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x70a08231.
+// the contract method with ID 0x70a08231.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function balanceOf(address owner) view returns(uint256)
 func (vehicleid *Vehicleid) PackBalanceOf(owner common.Address) []byte {
@@ -288,6 +379,15 @@ func (vehicleid *Vehicleid) PackBalanceOf(owner common.Address) []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackBalanceOf is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x70a08231.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function balanceOf(address owner) view returns(uint256)
+func (vehicleid *Vehicleid) TryPackBalanceOf(owner common.Address) ([]byte, error) {
+	return vehicleid.abi.Pack("balanceOf", owner)
 }
 
 // UnpackBalanceOf is the Go binding that unpacks the parameters returned
@@ -300,11 +400,12 @@ func (vehicleid *Vehicleid) UnpackBalanceOf(data []byte) (*big.Int, error) {
 		return new(big.Int), err
 	}
 	out0 := abi.ConvertType(out[0], new(big.Int)).(*big.Int)
-	return out0, err
+	return out0, nil
 }
 
 // PackBurn is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x42966c68.
+// the contract method with ID 0x42966c68.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function burn(uint256 tokenId) returns()
 func (vehicleid *Vehicleid) PackBurn(tokenId *big.Int) []byte {
@@ -315,8 +416,18 @@ func (vehicleid *Vehicleid) PackBurn(tokenId *big.Int) []byte {
 	return enc
 }
 
+// TryPackBurn is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x42966c68.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function burn(uint256 tokenId) returns()
+func (vehicleid *Vehicleid) TryPackBurn(tokenId *big.Int) ([]byte, error) {
+	return vehicleid.abi.Pack("burn", tokenId)
+}
+
 // PackCreatePrivilege is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xc1d58b3b.
+// the contract method with ID 0xc1d58b3b.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function createPrivilege(bool enabled, string description) returns()
 func (vehicleid *Vehicleid) PackCreatePrivilege(enabled bool, description string) []byte {
@@ -327,8 +438,18 @@ func (vehicleid *Vehicleid) PackCreatePrivilege(enabled bool, description string
 	return enc
 }
 
+// TryPackCreatePrivilege is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xc1d58b3b.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function createPrivilege(bool enabled, string description) returns()
+func (vehicleid *Vehicleid) TryPackCreatePrivilege(enabled bool, description string) ([]byte, error) {
+	return vehicleid.abi.Pack("createPrivilege", enabled, description)
+}
+
 // PackDisablePrivilege is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x1a153ed0.
+// the contract method with ID 0x1a153ed0.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function disablePrivilege(uint256 privId) returns()
 func (vehicleid *Vehicleid) PackDisablePrivilege(privId *big.Int) []byte {
@@ -339,8 +460,18 @@ func (vehicleid *Vehicleid) PackDisablePrivilege(privId *big.Int) []byte {
 	return enc
 }
 
+// TryPackDisablePrivilege is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x1a153ed0.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function disablePrivilege(uint256 privId) returns()
+func (vehicleid *Vehicleid) TryPackDisablePrivilege(privId *big.Int) ([]byte, error) {
+	return vehicleid.abi.Pack("disablePrivilege", privId)
+}
+
 // PackEnablePrivilege is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x831ba696.
+// the contract method with ID 0x831ba696.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function enablePrivilege(uint256 privId) returns()
 func (vehicleid *Vehicleid) PackEnablePrivilege(privId *big.Int) []byte {
@@ -351,8 +482,18 @@ func (vehicleid *Vehicleid) PackEnablePrivilege(privId *big.Int) []byte {
 	return enc
 }
 
+// TryPackEnablePrivilege is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x831ba696.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function enablePrivilege(uint256 privId) returns()
+func (vehicleid *Vehicleid) TryPackEnablePrivilege(privId *big.Int) ([]byte, error) {
+	return vehicleid.abi.Pack("enablePrivilege", privId)
+}
+
 // PackExists is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x4f558e79.
+// the contract method with ID 0x4f558e79.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function exists(uint256 tokenId) view returns(bool)
 func (vehicleid *Vehicleid) PackExists(tokenId *big.Int) []byte {
@@ -361,6 +502,15 @@ func (vehicleid *Vehicleid) PackExists(tokenId *big.Int) []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackExists is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x4f558e79.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function exists(uint256 tokenId) view returns(bool)
+func (vehicleid *Vehicleid) TryPackExists(tokenId *big.Int) ([]byte, error) {
+	return vehicleid.abi.Pack("exists", tokenId)
 }
 
 // UnpackExists is the Go binding that unpacks the parameters returned
@@ -373,11 +523,12 @@ func (vehicleid *Vehicleid) UnpackExists(data []byte) (bool, error) {
 		return *new(bool), err
 	}
 	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
-	return out0, err
+	return out0, nil
 }
 
 // PackGetApproved is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x081812fc.
+// the contract method with ID 0x081812fc.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function getApproved(uint256 tokenId) view returns(address)
 func (vehicleid *Vehicleid) PackGetApproved(tokenId *big.Int) []byte {
@@ -386,6 +537,15 @@ func (vehicleid *Vehicleid) PackGetApproved(tokenId *big.Int) []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackGetApproved is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x081812fc.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getApproved(uint256 tokenId) view returns(address)
+func (vehicleid *Vehicleid) TryPackGetApproved(tokenId *big.Int) ([]byte, error) {
+	return vehicleid.abi.Pack("getApproved", tokenId)
 }
 
 // UnpackGetApproved is the Go binding that unpacks the parameters returned
@@ -398,36 +558,12 @@ func (vehicleid *Vehicleid) UnpackGetApproved(data []byte) (common.Address, erro
 		return *new(common.Address), err
 	}
 	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-	return out0, err
-}
-
-// PackGetDataURI is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xd5e305ca.
-//
-// Solidity: function getDataURI(uint256 tokenId) view returns(string dataURI)
-func (vehicleid *Vehicleid) PackGetDataURI(tokenId *big.Int) []byte {
-	enc, err := vehicleid.abi.Pack("getDataURI", tokenId)
-	if err != nil {
-		panic(err)
-	}
-	return enc
-}
-
-// UnpackGetDataURI is the Go binding that unpacks the parameters returned
-// from invoking the contract method with ID 0xd5e305ca.
-//
-// Solidity: function getDataURI(uint256 tokenId) view returns(string dataURI)
-func (vehicleid *Vehicleid) UnpackGetDataURI(data []byte) (string, error) {
-	out, err := vehicleid.abi.Unpack("getDataURI", data)
-	if err != nil {
-		return *new(string), err
-	}
-	out0 := *abi.ConvertType(out[0], new(string)).(*string)
-	return out0, err
+	return out0, nil
 }
 
 // PackGetDefinitionURI is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x9b12f1c9.
+// the contract method with ID 0x9b12f1c9.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function getDefinitionURI(uint256 tokenId) view returns(string definitionURI)
 func (vehicleid *Vehicleid) PackGetDefinitionURI(tokenId *big.Int) []byte {
@@ -436,6 +572,15 @@ func (vehicleid *Vehicleid) PackGetDefinitionURI(tokenId *big.Int) []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackGetDefinitionURI is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x9b12f1c9.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getDefinitionURI(uint256 tokenId) view returns(string definitionURI)
+func (vehicleid *Vehicleid) TryPackGetDefinitionURI(tokenId *big.Int) ([]byte, error) {
+	return vehicleid.abi.Pack("getDefinitionURI", tokenId)
 }
 
 // UnpackGetDefinitionURI is the Go binding that unpacks the parameters returned
@@ -448,11 +593,12 @@ func (vehicleid *Vehicleid) UnpackGetDefinitionURI(data []byte) (string, error) 
 		return *new(string), err
 	}
 	out0 := *abi.ConvertType(out[0], new(string)).(*string)
-	return out0, err
+	return out0, nil
 }
 
 // PackGetRoleAdmin is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x248a9ca3.
+// the contract method with ID 0x248a9ca3.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function getRoleAdmin(bytes32 role) view returns(bytes32)
 func (vehicleid *Vehicleid) PackGetRoleAdmin(role [32]byte) []byte {
@@ -461,6 +607,15 @@ func (vehicleid *Vehicleid) PackGetRoleAdmin(role [32]byte) []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackGetRoleAdmin is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x248a9ca3.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getRoleAdmin(bytes32 role) view returns(bytes32)
+func (vehicleid *Vehicleid) TryPackGetRoleAdmin(role [32]byte) ([]byte, error) {
+	return vehicleid.abi.Pack("getRoleAdmin", role)
 }
 
 // UnpackGetRoleAdmin is the Go binding that unpacks the parameters returned
@@ -473,11 +628,12 @@ func (vehicleid *Vehicleid) UnpackGetRoleAdmin(data []byte) ([32]byte, error) {
 		return *new([32]byte), err
 	}
 	out0 := *abi.ConvertType(out[0], new([32]byte)).(*[32]byte)
-	return out0, err
+	return out0, nil
 }
 
 // PackGrantRole is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x2f2ff15d.
+// the contract method with ID 0x2f2ff15d.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function grantRole(bytes32 role, address account) returns()
 func (vehicleid *Vehicleid) PackGrantRole(role [32]byte, account common.Address) []byte {
@@ -488,8 +644,18 @@ func (vehicleid *Vehicleid) PackGrantRole(role [32]byte, account common.Address)
 	return enc
 }
 
+// TryPackGrantRole is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x2f2ff15d.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function grantRole(bytes32 role, address account) returns()
+func (vehicleid *Vehicleid) TryPackGrantRole(role [32]byte, account common.Address) ([]byte, error) {
+	return vehicleid.abi.Pack("grantRole", role, account)
+}
+
 // PackHasPrivilege is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x05d80b00.
+// the contract method with ID 0x05d80b00.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function hasPrivilege(uint256 tokenId, uint256 privId, address user) view returns(bool)
 func (vehicleid *Vehicleid) PackHasPrivilege(tokenId *big.Int, privId *big.Int, user common.Address) []byte {
@@ -498,6 +664,15 @@ func (vehicleid *Vehicleid) PackHasPrivilege(tokenId *big.Int, privId *big.Int, 
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackHasPrivilege is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x05d80b00.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function hasPrivilege(uint256 tokenId, uint256 privId, address user) view returns(bool)
+func (vehicleid *Vehicleid) TryPackHasPrivilege(tokenId *big.Int, privId *big.Int, user common.Address) ([]byte, error) {
+	return vehicleid.abi.Pack("hasPrivilege", tokenId, privId, user)
 }
 
 // UnpackHasPrivilege is the Go binding that unpacks the parameters returned
@@ -510,11 +685,12 @@ func (vehicleid *Vehicleid) UnpackHasPrivilege(data []byte) (bool, error) {
 		return *new(bool), err
 	}
 	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
-	return out0, err
+	return out0, nil
 }
 
 // PackHasRole is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x91d14854.
+// the contract method with ID 0x91d14854.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function hasRole(bytes32 role, address account) view returns(bool)
 func (vehicleid *Vehicleid) PackHasRole(role [32]byte, account common.Address) []byte {
@@ -523,6 +699,15 @@ func (vehicleid *Vehicleid) PackHasRole(role [32]byte, account common.Address) [
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackHasRole is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x91d14854.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function hasRole(bytes32 role, address account) view returns(bool)
+func (vehicleid *Vehicleid) TryPackHasRole(role [32]byte, account common.Address) ([]byte, error) {
+	return vehicleid.abi.Pack("hasRole", role, account)
 }
 
 // UnpackHasRole is the Go binding that unpacks the parameters returned
@@ -535,11 +720,12 @@ func (vehicleid *Vehicleid) UnpackHasRole(data []byte) (bool, error) {
 		return *new(bool), err
 	}
 	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
-	return out0, err
+	return out0, nil
 }
 
 // PackInitialize is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x6b2ab28a.
+// the contract method with ID 0x6b2ab28a.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function initialize(string name_, string symbol_, string baseUri_, address dimoRegistry_, address syntheticDeviceId_, address sacd_, address[] trustedForwarders_) returns()
 func (vehicleid *Vehicleid) PackInitialize(name string, symbol string, baseUri string, dimoRegistry common.Address, syntheticDeviceId common.Address, sacd common.Address, trustedForwarders []common.Address) []byte {
@@ -550,8 +736,18 @@ func (vehicleid *Vehicleid) PackInitialize(name string, symbol string, baseUri s
 	return enc
 }
 
+// TryPackInitialize is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x6b2ab28a.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function initialize(string name_, string symbol_, string baseUri_, address dimoRegistry_, address syntheticDeviceId_, address sacd_, address[] trustedForwarders_) returns()
+func (vehicleid *Vehicleid) TryPackInitialize(name string, symbol string, baseUri string, dimoRegistry common.Address, syntheticDeviceId common.Address, sacd common.Address, trustedForwarders []common.Address) ([]byte, error) {
+	return vehicleid.abi.Pack("initialize", name, symbol, baseUri, dimoRegistry, syntheticDeviceId, sacd, trustedForwarders)
+}
+
 // PackIsApprovedForAll is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xe985e9c5.
+// the contract method with ID 0xe985e9c5.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function isApprovedForAll(address owner, address operator) view returns(bool)
 func (vehicleid *Vehicleid) PackIsApprovedForAll(owner common.Address, operator common.Address) []byte {
@@ -560,6 +756,15 @@ func (vehicleid *Vehicleid) PackIsApprovedForAll(owner common.Address, operator 
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackIsApprovedForAll is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xe985e9c5.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function isApprovedForAll(address owner, address operator) view returns(bool)
+func (vehicleid *Vehicleid) TryPackIsApprovedForAll(owner common.Address, operator common.Address) ([]byte, error) {
+	return vehicleid.abi.Pack("isApprovedForAll", owner, operator)
 }
 
 // UnpackIsApprovedForAll is the Go binding that unpacks the parameters returned
@@ -572,11 +777,12 @@ func (vehicleid *Vehicleid) UnpackIsApprovedForAll(data []byte) (bool, error) {
 		return *new(bool), err
 	}
 	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
-	return out0, err
+	return out0, nil
 }
 
 // PackName is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x06fdde03.
+// the contract method with ID 0x06fdde03.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function name() view returns(string)
 func (vehicleid *Vehicleid) PackName() []byte {
@@ -585,6 +791,15 @@ func (vehicleid *Vehicleid) PackName() []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackName is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x06fdde03.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function name() view returns(string)
+func (vehicleid *Vehicleid) TryPackName() ([]byte, error) {
+	return vehicleid.abi.Pack("name")
 }
 
 // UnpackName is the Go binding that unpacks the parameters returned
@@ -597,11 +812,12 @@ func (vehicleid *Vehicleid) UnpackName(data []byte) (string, error) {
 		return *new(string), err
 	}
 	out0 := *abi.ConvertType(out[0], new(string)).(*string)
-	return out0, err
+	return out0, nil
 }
 
 // PackOwnerOf is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x6352211e.
+// the contract method with ID 0x6352211e.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function ownerOf(uint256 tokenId) view returns(address)
 func (vehicleid *Vehicleid) PackOwnerOf(tokenId *big.Int) []byte {
@@ -610,6 +826,15 @@ func (vehicleid *Vehicleid) PackOwnerOf(tokenId *big.Int) []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackOwnerOf is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x6352211e.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function ownerOf(uint256 tokenId) view returns(address)
+func (vehicleid *Vehicleid) TryPackOwnerOf(tokenId *big.Int) ([]byte, error) {
+	return vehicleid.abi.Pack("ownerOf", tokenId)
 }
 
 // UnpackOwnerOf is the Go binding that unpacks the parameters returned
@@ -622,11 +847,12 @@ func (vehicleid *Vehicleid) UnpackOwnerOf(data []byte) (common.Address, error) {
 		return *new(common.Address), err
 	}
 	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-	return out0, err
+	return out0, nil
 }
 
 // PackPrivilegeEntry is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x48db4640.
+// the contract method with ID 0x48db4640.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function privilegeEntry(uint256 , uint256 , uint256 , address ) view returns(uint256)
 func (vehicleid *Vehicleid) PackPrivilegeEntry(arg0 *big.Int, arg1 *big.Int, arg2 *big.Int, arg3 common.Address) []byte {
@@ -635,6 +861,15 @@ func (vehicleid *Vehicleid) PackPrivilegeEntry(arg0 *big.Int, arg1 *big.Int, arg
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackPrivilegeEntry is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x48db4640.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function privilegeEntry(uint256 , uint256 , uint256 , address ) view returns(uint256)
+func (vehicleid *Vehicleid) TryPackPrivilegeEntry(arg0 *big.Int, arg1 *big.Int, arg2 *big.Int, arg3 common.Address) ([]byte, error) {
+	return vehicleid.abi.Pack("privilegeEntry", arg0, arg1, arg2, arg3)
 }
 
 // UnpackPrivilegeEntry is the Go binding that unpacks the parameters returned
@@ -647,11 +882,12 @@ func (vehicleid *Vehicleid) UnpackPrivilegeEntry(data []byte) (*big.Int, error) 
 		return new(big.Int), err
 	}
 	out0 := abi.ConvertType(out[0], new(big.Int)).(*big.Int)
-	return out0, err
+	return out0, nil
 }
 
 // PackPrivilegeExpiresAt is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xd0f8f5f6.
+// the contract method with ID 0xd0f8f5f6.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function privilegeExpiresAt(uint256 tokenId, uint256 privId, address user) view returns(uint256)
 func (vehicleid *Vehicleid) PackPrivilegeExpiresAt(tokenId *big.Int, privId *big.Int, user common.Address) []byte {
@@ -660,6 +896,15 @@ func (vehicleid *Vehicleid) PackPrivilegeExpiresAt(tokenId *big.Int, privId *big
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackPrivilegeExpiresAt is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xd0f8f5f6.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function privilegeExpiresAt(uint256 tokenId, uint256 privId, address user) view returns(uint256)
+func (vehicleid *Vehicleid) TryPackPrivilegeExpiresAt(tokenId *big.Int, privId *big.Int, user common.Address) ([]byte, error) {
+	return vehicleid.abi.Pack("privilegeExpiresAt", tokenId, privId, user)
 }
 
 // UnpackPrivilegeExpiresAt is the Go binding that unpacks the parameters returned
@@ -672,11 +917,12 @@ func (vehicleid *Vehicleid) UnpackPrivilegeExpiresAt(data []byte) (*big.Int, err
 		return new(big.Int), err
 	}
 	out0 := abi.ConvertType(out[0], new(big.Int)).(*big.Int)
-	return out0, err
+	return out0, nil
 }
 
 // PackPrivilegeRecord is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xf9ad3efe.
+// the contract method with ID 0xf9ad3efe.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function privilegeRecord(uint256 ) view returns(bool enabled, string description)
 func (vehicleid *Vehicleid) PackPrivilegeRecord(arg0 *big.Int) []byte {
@@ -685,6 +931,15 @@ func (vehicleid *Vehicleid) PackPrivilegeRecord(arg0 *big.Int) []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackPrivilegeRecord is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xf9ad3efe.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function privilegeRecord(uint256 ) view returns(bool enabled, string description)
+func (vehicleid *Vehicleid) TryPackPrivilegeRecord(arg0 *big.Int) ([]byte, error) {
+	return vehicleid.abi.Pack("privilegeRecord", arg0)
 }
 
 // PrivilegeRecordOutput serves as a container for the return parameters of contract
@@ -706,12 +961,12 @@ func (vehicleid *Vehicleid) UnpackPrivilegeRecord(data []byte) (PrivilegeRecordO
 	}
 	outstruct.Enabled = *abi.ConvertType(out[0], new(bool)).(*bool)
 	outstruct.Description = *abi.ConvertType(out[1], new(string)).(*string)
-	return *outstruct, err
-
+	return *outstruct, nil
 }
 
 // PackProxiableUUID is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x52d1902d.
+// the contract method with ID 0x52d1902d.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function proxiableUUID() view returns(bytes32)
 func (vehicleid *Vehicleid) PackProxiableUUID() []byte {
@@ -720,6 +975,15 @@ func (vehicleid *Vehicleid) PackProxiableUUID() []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackProxiableUUID is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x52d1902d.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function proxiableUUID() view returns(bytes32)
+func (vehicleid *Vehicleid) TryPackProxiableUUID() ([]byte, error) {
+	return vehicleid.abi.Pack("proxiableUUID")
 }
 
 // UnpackProxiableUUID is the Go binding that unpacks the parameters returned
@@ -732,11 +996,12 @@ func (vehicleid *Vehicleid) UnpackProxiableUUID(data []byte) ([32]byte, error) {
 		return *new([32]byte), err
 	}
 	out0 := *abi.ConvertType(out[0], new([32]byte)).(*[32]byte)
-	return out0, err
+	return out0, nil
 }
 
 // PackRenounceRole is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x36568abe.
+// the contract method with ID 0x36568abe.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function renounceRole(bytes32 role, address account) returns()
 func (vehicleid *Vehicleid) PackRenounceRole(role [32]byte, account common.Address) []byte {
@@ -747,8 +1012,18 @@ func (vehicleid *Vehicleid) PackRenounceRole(role [32]byte, account common.Addre
 	return enc
 }
 
+// TryPackRenounceRole is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x36568abe.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function renounceRole(bytes32 role, address account) returns()
+func (vehicleid *Vehicleid) TryPackRenounceRole(role [32]byte, account common.Address) ([]byte, error) {
+	return vehicleid.abi.Pack("renounceRole", role, account)
+}
+
 // PackRevokeRole is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xd547741f.
+// the contract method with ID 0xd547741f.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function revokeRole(bytes32 role, address account) returns()
 func (vehicleid *Vehicleid) PackRevokeRole(role [32]byte, account common.Address) []byte {
@@ -759,8 +1034,18 @@ func (vehicleid *Vehicleid) PackRevokeRole(role [32]byte, account common.Address
 	return enc
 }
 
+// TryPackRevokeRole is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xd547741f.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function revokeRole(bytes32 role, address account) returns()
+func (vehicleid *Vehicleid) TryPackRevokeRole(role [32]byte, account common.Address) ([]byte, error) {
+	return vehicleid.abi.Pack("revokeRole", role, account)
+}
+
 // PackSacd is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x18973db8.
+// the contract method with ID 0x18973db8.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function sacd() view returns(address)
 func (vehicleid *Vehicleid) PackSacd() []byte {
@@ -769,6 +1054,15 @@ func (vehicleid *Vehicleid) PackSacd() []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackSacd is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x18973db8.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function sacd() view returns(address)
+func (vehicleid *Vehicleid) TryPackSacd() ([]byte, error) {
+	return vehicleid.abi.Pack("sacd")
 }
 
 // UnpackSacd is the Go binding that unpacks the parameters returned
@@ -781,11 +1075,12 @@ func (vehicleid *Vehicleid) UnpackSacd(data []byte) (common.Address, error) {
 		return *new(common.Address), err
 	}
 	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-	return out0, err
+	return out0, nil
 }
 
 // PackSafeMint is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x40d097c3.
+// the contract method with ID 0x40d097c3.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function safeMint(address to) returns(uint256 tokenId)
 func (vehicleid *Vehicleid) PackSafeMint(to common.Address) []byte {
@@ -794,6 +1089,15 @@ func (vehicleid *Vehicleid) PackSafeMint(to common.Address) []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackSafeMint is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x40d097c3.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function safeMint(address to) returns(uint256 tokenId)
+func (vehicleid *Vehicleid) TryPackSafeMint(to common.Address) ([]byte, error) {
+	return vehicleid.abi.Pack("safeMint", to)
 }
 
 // UnpackSafeMint is the Go binding that unpacks the parameters returned
@@ -806,11 +1110,12 @@ func (vehicleid *Vehicleid) UnpackSafeMint(data []byte) (*big.Int, error) {
 		return new(big.Int), err
 	}
 	out0 := abi.ConvertType(out[0], new(big.Int)).(*big.Int)
-	return out0, err
+	return out0, nil
 }
 
 // PackSafeMint0 is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xd204c45e.
+// the contract method with ID 0xd204c45e.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function safeMint(address to, string uri) returns(uint256 tokenId)
 func (vehicleid *Vehicleid) PackSafeMint0(to common.Address, uri string) []byte {
@@ -819,6 +1124,15 @@ func (vehicleid *Vehicleid) PackSafeMint0(to common.Address, uri string) []byte 
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackSafeMint0 is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xd204c45e.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function safeMint(address to, string uri) returns(uint256 tokenId)
+func (vehicleid *Vehicleid) TryPackSafeMint0(to common.Address, uri string) ([]byte, error) {
+	return vehicleid.abi.Pack("safeMint0", to, uri)
 }
 
 // UnpackSafeMint0 is the Go binding that unpacks the parameters returned
@@ -831,11 +1145,12 @@ func (vehicleid *Vehicleid) UnpackSafeMint0(data []byte) (*big.Int, error) {
 		return new(big.Int), err
 	}
 	out0 := abi.ConvertType(out[0], new(big.Int)).(*big.Int)
-	return out0, err
+	return out0, nil
 }
 
 // PackSafeTransferFrom is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x42842e0e.
+// the contract method with ID 0x42842e0e.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function safeTransferFrom(address from, address to, uint256 tokenId) returns()
 func (vehicleid *Vehicleid) PackSafeTransferFrom(from common.Address, to common.Address, tokenId *big.Int) []byte {
@@ -846,8 +1161,18 @@ func (vehicleid *Vehicleid) PackSafeTransferFrom(from common.Address, to common.
 	return enc
 }
 
+// TryPackSafeTransferFrom is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x42842e0e.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function safeTransferFrom(address from, address to, uint256 tokenId) returns()
+func (vehicleid *Vehicleid) TryPackSafeTransferFrom(from common.Address, to common.Address, tokenId *big.Int) ([]byte, error) {
+	return vehicleid.abi.Pack("safeTransferFrom", from, to, tokenId)
+}
+
 // PackSafeTransferFrom0 is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xb88d4fde.
+// the contract method with ID 0xb88d4fde.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function safeTransferFrom(address from, address to, uint256 tokenId, bytes data) returns()
 func (vehicleid *Vehicleid) PackSafeTransferFrom0(from common.Address, to common.Address, tokenId *big.Int, data []byte) []byte {
@@ -858,8 +1183,18 @@ func (vehicleid *Vehicleid) PackSafeTransferFrom0(from common.Address, to common
 	return enc
 }
 
+// TryPackSafeTransferFrom0 is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xb88d4fde.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function safeTransferFrom(address from, address to, uint256 tokenId, bytes data) returns()
+func (vehicleid *Vehicleid) TryPackSafeTransferFrom0(from common.Address, to common.Address, tokenId *big.Int, data []byte) ([]byte, error) {
+	return vehicleid.abi.Pack("safeTransferFrom0", from, to, tokenId, data)
+}
+
 // PackSetApprovalForAll is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xa22cb465.
+// the contract method with ID 0xa22cb465.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setApprovalForAll(address operator, bool approved) returns()
 func (vehicleid *Vehicleid) PackSetApprovalForAll(operator common.Address, approved bool) []byte {
@@ -870,8 +1205,18 @@ func (vehicleid *Vehicleid) PackSetApprovalForAll(operator common.Address, appro
 	return enc
 }
 
+// TryPackSetApprovalForAll is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xa22cb465.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setApprovalForAll(address operator, bool approved) returns()
+func (vehicleid *Vehicleid) TryPackSetApprovalForAll(operator common.Address, approved bool) ([]byte, error) {
+	return vehicleid.abi.Pack("setApprovalForAll", operator, approved)
+}
+
 // PackSetBaseURI is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x55f804b3.
+// the contract method with ID 0x55f804b3.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setBaseURI(string baseURI_) returns()
 func (vehicleid *Vehicleid) PackSetBaseURI(baseURI string) []byte {
@@ -882,8 +1227,18 @@ func (vehicleid *Vehicleid) PackSetBaseURI(baseURI string) []byte {
 	return enc
 }
 
+// TryPackSetBaseURI is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x55f804b3.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setBaseURI(string baseURI_) returns()
+func (vehicleid *Vehicleid) TryPackSetBaseURI(baseURI string) ([]byte, error) {
+	return vehicleid.abi.Pack("setBaseURI", baseURI)
+}
+
 // PackSetDimoRegistryAddress is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x0db857ea.
+// the contract method with ID 0x0db857ea.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setDimoRegistryAddress(address addr) returns()
 func (vehicleid *Vehicleid) PackSetDimoRegistryAddress(addr common.Address) []byte {
@@ -894,8 +1249,18 @@ func (vehicleid *Vehicleid) PackSetDimoRegistryAddress(addr common.Address) []by
 	return enc
 }
 
+// TryPackSetDimoRegistryAddress is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x0db857ea.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setDimoRegistryAddress(address addr) returns()
+func (vehicleid *Vehicleid) TryPackSetDimoRegistryAddress(addr common.Address) ([]byte, error) {
+	return vehicleid.abi.Pack("setDimoRegistryAddress", addr)
+}
+
 // PackSetPrivilege is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xeca3221a.
+// the contract method with ID 0xeca3221a.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setPrivilege(uint256 tokenId, uint256 privId, address user, uint256 expires) returns()
 func (vehicleid *Vehicleid) PackSetPrivilege(tokenId *big.Int, privId *big.Int, user common.Address, expires *big.Int) []byte {
@@ -906,8 +1271,18 @@ func (vehicleid *Vehicleid) PackSetPrivilege(tokenId *big.Int, privId *big.Int, 
 	return enc
 }
 
+// TryPackSetPrivilege is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xeca3221a.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setPrivilege(uint256 tokenId, uint256 privId, address user, uint256 expires) returns()
+func (vehicleid *Vehicleid) TryPackSetPrivilege(tokenId *big.Int, privId *big.Int, user common.Address, expires *big.Int) ([]byte, error) {
+	return vehicleid.abi.Pack("setPrivilege", tokenId, privId, user, expires)
+}
+
 // PackSetPrivileges is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x57ae9754.
+// the contract method with ID 0x57ae9754.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setPrivileges((uint256,uint256,address,uint256)[] privData) returns()
 func (vehicleid *Vehicleid) PackSetPrivileges(privData []MultiPrivilegeSetPrivilegeData) []byte {
@@ -918,8 +1293,18 @@ func (vehicleid *Vehicleid) PackSetPrivileges(privData []MultiPrivilegeSetPrivil
 	return enc
 }
 
+// TryPackSetPrivileges is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x57ae9754.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setPrivileges((uint256,uint256,address,uint256)[] privData) returns()
+func (vehicleid *Vehicleid) TryPackSetPrivileges(privData []MultiPrivilegeSetPrivilegeData) ([]byte, error) {
+	return vehicleid.abi.Pack("setPrivileges", privData)
+}
+
 // PackSetSacd is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x75209e38.
+// the contract method with ID 0x75209e38.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setSacd(uint256 tokenId, (address,uint256,uint256,string) sacdInput) returns()
 func (vehicleid *Vehicleid) PackSetSacd(tokenId *big.Int, sacdInput VehicleIdSacdInput) []byte {
@@ -930,8 +1315,18 @@ func (vehicleid *Vehicleid) PackSetSacd(tokenId *big.Int, sacdInput VehicleIdSac
 	return enc
 }
 
+// TryPackSetSacd is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x75209e38.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setSacd(uint256 tokenId, (address,uint256,uint256,string) sacdInput) returns()
+func (vehicleid *Vehicleid) TryPackSetSacd(tokenId *big.Int, sacdInput VehicleIdSacdInput) ([]byte, error) {
+	return vehicleid.abi.Pack("setSacd", tokenId, sacdInput)
+}
+
 // PackSetSacdAddress is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x555b4c8a.
+// the contract method with ID 0x555b4c8a.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setSacdAddress(address addr) returns()
 func (vehicleid *Vehicleid) PackSetSacdAddress(addr common.Address) []byte {
@@ -942,8 +1337,18 @@ func (vehicleid *Vehicleid) PackSetSacdAddress(addr common.Address) []byte {
 	return enc
 }
 
+// TryPackSetSacdAddress is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x555b4c8a.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setSacdAddress(address addr) returns()
+func (vehicleid *Vehicleid) TryPackSetSacdAddress(addr common.Address) ([]byte, error) {
+	return vehicleid.abi.Pack("setSacdAddress", addr)
+}
+
 // PackSetSyntheticDeviceIdAddress is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xaa531530.
+// the contract method with ID 0xaa531530.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setSyntheticDeviceIdAddress(address addr) returns()
 func (vehicleid *Vehicleid) PackSetSyntheticDeviceIdAddress(addr common.Address) []byte {
@@ -954,8 +1359,18 @@ func (vehicleid *Vehicleid) PackSetSyntheticDeviceIdAddress(addr common.Address)
 	return enc
 }
 
+// TryPackSetSyntheticDeviceIdAddress is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xaa531530.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setSyntheticDeviceIdAddress(address addr) returns()
+func (vehicleid *Vehicleid) TryPackSetSyntheticDeviceIdAddress(addr common.Address) ([]byte, error) {
+	return vehicleid.abi.Pack("setSyntheticDeviceIdAddress", addr)
+}
+
 // PackSetTrustedForwarder is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xe691d03b.
+// the contract method with ID 0xe691d03b.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setTrustedForwarder(address addr, bool trusted) returns()
 func (vehicleid *Vehicleid) PackSetTrustedForwarder(addr common.Address, trusted bool) []byte {
@@ -966,8 +1381,18 @@ func (vehicleid *Vehicleid) PackSetTrustedForwarder(addr common.Address, trusted
 	return enc
 }
 
+// TryPackSetTrustedForwarder is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xe691d03b.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setTrustedForwarder(address addr, bool trusted) returns()
+func (vehicleid *Vehicleid) TryPackSetTrustedForwarder(addr common.Address, trusted bool) ([]byte, error) {
+	return vehicleid.abi.Pack("setTrustedForwarder", addr, trusted)
+}
+
 // PackSupportsInterface is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x01ffc9a7.
+// the contract method with ID 0x01ffc9a7.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function supportsInterface(bytes4 interfaceId) view returns(bool)
 func (vehicleid *Vehicleid) PackSupportsInterface(interfaceId [4]byte) []byte {
@@ -976,6 +1401,15 @@ func (vehicleid *Vehicleid) PackSupportsInterface(interfaceId [4]byte) []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackSupportsInterface is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x01ffc9a7.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function supportsInterface(bytes4 interfaceId) view returns(bool)
+func (vehicleid *Vehicleid) TryPackSupportsInterface(interfaceId [4]byte) ([]byte, error) {
+	return vehicleid.abi.Pack("supportsInterface", interfaceId)
 }
 
 // UnpackSupportsInterface is the Go binding that unpacks the parameters returned
@@ -988,11 +1422,12 @@ func (vehicleid *Vehicleid) UnpackSupportsInterface(data []byte) (bool, error) {
 		return *new(bool), err
 	}
 	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
-	return out0, err
+	return out0, nil
 }
 
 // PackSymbol is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x95d89b41.
+// the contract method with ID 0x95d89b41.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function symbol() view returns(string)
 func (vehicleid *Vehicleid) PackSymbol() []byte {
@@ -1001,6 +1436,15 @@ func (vehicleid *Vehicleid) PackSymbol() []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackSymbol is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x95d89b41.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function symbol() view returns(string)
+func (vehicleid *Vehicleid) TryPackSymbol() ([]byte, error) {
+	return vehicleid.abi.Pack("symbol")
 }
 
 // UnpackSymbol is the Go binding that unpacks the parameters returned
@@ -1013,11 +1457,12 @@ func (vehicleid *Vehicleid) UnpackSymbol(data []byte) (string, error) {
 		return *new(string), err
 	}
 	out0 := *abi.ConvertType(out[0], new(string)).(*string)
-	return out0, err
+	return out0, nil
 }
 
 // PackSyntheticDeviceId is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x8ea5f4cd.
+// the contract method with ID 0x8ea5f4cd.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function syntheticDeviceId() view returns(address)
 func (vehicleid *Vehicleid) PackSyntheticDeviceId() []byte {
@@ -1026,6 +1471,15 @@ func (vehicleid *Vehicleid) PackSyntheticDeviceId() []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackSyntheticDeviceId is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x8ea5f4cd.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function syntheticDeviceId() view returns(address)
+func (vehicleid *Vehicleid) TryPackSyntheticDeviceId() ([]byte, error) {
+	return vehicleid.abi.Pack("syntheticDeviceId")
 }
 
 // UnpackSyntheticDeviceId is the Go binding that unpacks the parameters returned
@@ -1038,11 +1492,12 @@ func (vehicleid *Vehicleid) UnpackSyntheticDeviceId(data []byte) (common.Address
 		return *new(common.Address), err
 	}
 	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-	return out0, err
+	return out0, nil
 }
 
 // PackTokenIdToVersion is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xf1a9d41c.
+// the contract method with ID 0xf1a9d41c.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function tokenIdToVersion(uint256 ) view returns(uint256)
 func (vehicleid *Vehicleid) PackTokenIdToVersion(arg0 *big.Int) []byte {
@@ -1051,6 +1506,15 @@ func (vehicleid *Vehicleid) PackTokenIdToVersion(arg0 *big.Int) []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackTokenIdToVersion is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xf1a9d41c.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function tokenIdToVersion(uint256 ) view returns(uint256)
+func (vehicleid *Vehicleid) TryPackTokenIdToVersion(arg0 *big.Int) ([]byte, error) {
+	return vehicleid.abi.Pack("tokenIdToVersion", arg0)
 }
 
 // UnpackTokenIdToVersion is the Go binding that unpacks the parameters returned
@@ -1063,11 +1527,12 @@ func (vehicleid *Vehicleid) UnpackTokenIdToVersion(data []byte) (*big.Int, error
 		return new(big.Int), err
 	}
 	out0 := abi.ConvertType(out[0], new(big.Int)).(*big.Int)
-	return out0, err
+	return out0, nil
 }
 
 // PackTokenURI is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xc87b56dd.
+// the contract method with ID 0xc87b56dd.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function tokenURI(uint256 tokenId) view returns(string)
 func (vehicleid *Vehicleid) PackTokenURI(tokenId *big.Int) []byte {
@@ -1076,6 +1541,15 @@ func (vehicleid *Vehicleid) PackTokenURI(tokenId *big.Int) []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackTokenURI is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xc87b56dd.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function tokenURI(uint256 tokenId) view returns(string)
+func (vehicleid *Vehicleid) TryPackTokenURI(tokenId *big.Int) ([]byte, error) {
+	return vehicleid.abi.Pack("tokenURI", tokenId)
 }
 
 // UnpackTokenURI is the Go binding that unpacks the parameters returned
@@ -1088,11 +1562,12 @@ func (vehicleid *Vehicleid) UnpackTokenURI(data []byte) (string, error) {
 		return *new(string), err
 	}
 	out0 := *abi.ConvertType(out[0], new(string)).(*string)
-	return out0, err
+	return out0, nil
 }
 
 // PackTransferFrom is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x23b872dd.
+// the contract method with ID 0x23b872dd.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function transferFrom(address from, address to, uint256 tokenId) returns()
 func (vehicleid *Vehicleid) PackTransferFrom(from common.Address, to common.Address, tokenId *big.Int) []byte {
@@ -1103,8 +1578,18 @@ func (vehicleid *Vehicleid) PackTransferFrom(from common.Address, to common.Addr
 	return enc
 }
 
+// TryPackTransferFrom is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x23b872dd.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function transferFrom(address from, address to, uint256 tokenId) returns()
+func (vehicleid *Vehicleid) TryPackTransferFrom(from common.Address, to common.Address, tokenId *big.Int) ([]byte, error) {
+	return vehicleid.abi.Pack("transferFrom", from, to, tokenId)
+}
+
 // PackTrustedForwarders is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x54776bb9.
+// the contract method with ID 0x54776bb9.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function trustedForwarders(address ) view returns(bool)
 func (vehicleid *Vehicleid) PackTrustedForwarders(arg0 common.Address) []byte {
@@ -1113,6 +1598,15 @@ func (vehicleid *Vehicleid) PackTrustedForwarders(arg0 common.Address) []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackTrustedForwarders is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x54776bb9.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function trustedForwarders(address ) view returns(bool)
+func (vehicleid *Vehicleid) TryPackTrustedForwarders(arg0 common.Address) ([]byte, error) {
+	return vehicleid.abi.Pack("trustedForwarders", arg0)
 }
 
 // UnpackTrustedForwarders is the Go binding that unpacks the parameters returned
@@ -1125,11 +1619,12 @@ func (vehicleid *Vehicleid) UnpackTrustedForwarders(data []byte) (bool, error) {
 		return *new(bool), err
 	}
 	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
-	return out0, err
+	return out0, nil
 }
 
 // PackUpgradeTo is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x3659cfe6.
+// the contract method with ID 0x3659cfe6.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function upgradeTo(address newImplementation) returns()
 func (vehicleid *Vehicleid) PackUpgradeTo(newImplementation common.Address) []byte {
@@ -1140,8 +1635,18 @@ func (vehicleid *Vehicleid) PackUpgradeTo(newImplementation common.Address) []by
 	return enc
 }
 
+// TryPackUpgradeTo is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x3659cfe6.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function upgradeTo(address newImplementation) returns()
+func (vehicleid *Vehicleid) TryPackUpgradeTo(newImplementation common.Address) ([]byte, error) {
+	return vehicleid.abi.Pack("upgradeTo", newImplementation)
+}
+
 // PackUpgradeToAndCall is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x4f1ef286.
+// the contract method with ID 0x4f1ef286.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function upgradeToAndCall(address newImplementation, bytes data) payable returns()
 func (vehicleid *Vehicleid) PackUpgradeToAndCall(newImplementation common.Address, data []byte) []byte {
@@ -1150,6 +1655,15 @@ func (vehicleid *Vehicleid) PackUpgradeToAndCall(newImplementation common.Addres
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackUpgradeToAndCall is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x4f1ef286.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function upgradeToAndCall(address newImplementation, bytes data) payable returns()
+func (vehicleid *Vehicleid) TryPackUpgradeToAndCall(newImplementation common.Address, data []byte) ([]byte, error) {
+	return vehicleid.abi.Pack("upgradeToAndCall", newImplementation, data)
 }
 
 // VehicleidAdminChanged represents a AdminChanged event raised by the Vehicleid contract.
@@ -1172,7 +1686,7 @@ func (VehicleidAdminChanged) ContractEventName() string {
 // Solidity: event AdminChanged(address previousAdmin, address newAdmin)
 func (vehicleid *Vehicleid) UnpackAdminChangedEvent(log *types.Log) (*VehicleidAdminChanged, error) {
 	event := "AdminChanged"
-	if log.Topics[0] != vehicleid.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != vehicleid.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(VehicleidAdminChanged)
@@ -1215,7 +1729,7 @@ func (VehicleidApproval) ContractEventName() string {
 // Solidity: event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId)
 func (vehicleid *Vehicleid) UnpackApprovalEvent(log *types.Log) (*VehicleidApproval, error) {
 	event := "Approval"
-	if log.Topics[0] != vehicleid.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != vehicleid.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(VehicleidApproval)
@@ -1258,7 +1772,7 @@ func (VehicleidApprovalForAll) ContractEventName() string {
 // Solidity: event ApprovalForAll(address indexed owner, address indexed operator, bool approved)
 func (vehicleid *Vehicleid) UnpackApprovalForAllEvent(log *types.Log) (*VehicleidApprovalForAll, error) {
 	event := "ApprovalForAll"
-	if log.Topics[0] != vehicleid.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != vehicleid.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(VehicleidApprovalForAll)
@@ -1300,7 +1814,7 @@ func (VehicleidBatchMetadataUpdate) ContractEventName() string {
 // Solidity: event BatchMetadataUpdate(uint256 _fromTokenId, uint256 _toTokenId)
 func (vehicleid *Vehicleid) UnpackBatchMetadataUpdateEvent(log *types.Log) (*VehicleidBatchMetadataUpdate, error) {
 	event := "BatchMetadataUpdate"
-	if log.Topics[0] != vehicleid.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != vehicleid.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(VehicleidBatchMetadataUpdate)
@@ -1341,7 +1855,7 @@ func (VehicleidBeaconUpgraded) ContractEventName() string {
 // Solidity: event BeaconUpgraded(address indexed beacon)
 func (vehicleid *Vehicleid) UnpackBeaconUpgradedEvent(log *types.Log) (*VehicleidBeaconUpgraded, error) {
 	event := "BeaconUpgraded"
-	if log.Topics[0] != vehicleid.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != vehicleid.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(VehicleidBeaconUpgraded)
@@ -1382,7 +1896,7 @@ func (VehicleidInitialized) ContractEventName() string {
 // Solidity: event Initialized(uint8 version)
 func (vehicleid *Vehicleid) UnpackInitializedEvent(log *types.Log) (*VehicleidInitialized, error) {
 	event := "Initialized"
-	if log.Topics[0] != vehicleid.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != vehicleid.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(VehicleidInitialized)
@@ -1423,7 +1937,7 @@ func (VehicleidMetadataUpdate) ContractEventName() string {
 // Solidity: event MetadataUpdate(uint256 _tokenId)
 func (vehicleid *Vehicleid) UnpackMetadataUpdateEvent(log *types.Log) (*VehicleidMetadataUpdate, error) {
 	event := "MetadataUpdate"
-	if log.Topics[0] != vehicleid.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != vehicleid.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(VehicleidMetadataUpdate)
@@ -1466,7 +1980,7 @@ func (VehicleidPrivilegeCreated) ContractEventName() string {
 // Solidity: event PrivilegeCreated(uint256 indexed privilegeId, bool enabled, string description)
 func (vehicleid *Vehicleid) UnpackPrivilegeCreatedEvent(log *types.Log) (*VehicleidPrivilegeCreated, error) {
 	event := "PrivilegeCreated"
-	if log.Topics[0] != vehicleid.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != vehicleid.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(VehicleidPrivilegeCreated)
@@ -1507,7 +2021,7 @@ func (VehicleidPrivilegeDisabled) ContractEventName() string {
 // Solidity: event PrivilegeDisabled(uint256 indexed privilegeId)
 func (vehicleid *Vehicleid) UnpackPrivilegeDisabledEvent(log *types.Log) (*VehicleidPrivilegeDisabled, error) {
 	event := "PrivilegeDisabled"
-	if log.Topics[0] != vehicleid.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != vehicleid.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(VehicleidPrivilegeDisabled)
@@ -1548,7 +2062,7 @@ func (VehicleidPrivilegeEnabled) ContractEventName() string {
 // Solidity: event PrivilegeEnabled(uint256 indexed privilegeId)
 func (vehicleid *Vehicleid) UnpackPrivilegeEnabledEvent(log *types.Log) (*VehicleidPrivilegeEnabled, error) {
 	event := "PrivilegeEnabled"
-	if log.Topics[0] != vehicleid.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != vehicleid.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(VehicleidPrivilegeEnabled)
@@ -1593,7 +2107,7 @@ func (VehicleidPrivilegeSet) ContractEventName() string {
 // Solidity: event PrivilegeSet(uint256 indexed tokenId, uint256 version, uint256 indexed privId, address indexed user, uint256 expires)
 func (vehicleid *Vehicleid) UnpackPrivilegeSetEvent(log *types.Log) (*VehicleidPrivilegeSet, error) {
 	event := "PrivilegeSet"
-	if log.Topics[0] != vehicleid.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != vehicleid.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(VehicleidPrivilegeSet)
@@ -1636,7 +2150,7 @@ func (VehicleidRoleAdminChanged) ContractEventName() string {
 // Solidity: event RoleAdminChanged(bytes32 indexed role, bytes32 indexed previousAdminRole, bytes32 indexed newAdminRole)
 func (vehicleid *Vehicleid) UnpackRoleAdminChangedEvent(log *types.Log) (*VehicleidRoleAdminChanged, error) {
 	event := "RoleAdminChanged"
-	if log.Topics[0] != vehicleid.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != vehicleid.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(VehicleidRoleAdminChanged)
@@ -1679,7 +2193,7 @@ func (VehicleidRoleGranted) ContractEventName() string {
 // Solidity: event RoleGranted(bytes32 indexed role, address indexed account, address indexed sender)
 func (vehicleid *Vehicleid) UnpackRoleGrantedEvent(log *types.Log) (*VehicleidRoleGranted, error) {
 	event := "RoleGranted"
-	if log.Topics[0] != vehicleid.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != vehicleid.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(VehicleidRoleGranted)
@@ -1722,7 +2236,7 @@ func (VehicleidRoleRevoked) ContractEventName() string {
 // Solidity: event RoleRevoked(bytes32 indexed role, address indexed account, address indexed sender)
 func (vehicleid *Vehicleid) UnpackRoleRevokedEvent(log *types.Log) (*VehicleidRoleRevoked, error) {
 	event := "RoleRevoked"
-	if log.Topics[0] != vehicleid.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != vehicleid.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(VehicleidRoleRevoked)
@@ -1765,7 +2279,7 @@ func (VehicleidTransfer) ContractEventName() string {
 // Solidity: event Transfer(address indexed from, address indexed to, uint256 indexed tokenId)
 func (vehicleid *Vehicleid) UnpackTransferEvent(log *types.Log) (*VehicleidTransfer, error) {
 	event := "Transfer"
-	if log.Topics[0] != vehicleid.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != vehicleid.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(VehicleidTransfer)
@@ -1806,7 +2320,7 @@ func (VehicleidUpgraded) ContractEventName() string {
 // Solidity: event Upgraded(address indexed implementation)
 func (vehicleid *Vehicleid) UnpackUpgradedEvent(log *types.Log) (*VehicleidUpgraded, error) {
 	event := "Upgraded"
-	if log.Topics[0] != vehicleid.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != vehicleid.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(VehicleidUpgraded)
