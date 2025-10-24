@@ -8,8 +8,13 @@ Go SDK for DIMO transactions
 
 Source is here where we have JSON definitions of the contracts:
 https://github.com/DIMO-Network/sacd/tree/main/abis/contracts/Sacd.sol
+https://github.com/DIMO-Network/dimo-identity/blob/main/abis/contracts/NFTs/VehicleId.sol/VehicleId.json
 
-To generate the code run eg.: `abigen --abi sacd.abi.json --pkg sacd --type Sacd --out sacd.go --v2`
+To generate the code run eg.: 
+`abigen --abi sacd.abi.json --pkg sacd --type Sacd --out sacd.go --v2`
+
+Vehicleid ABI:
+`abigen --abi vehicleId.abi.json --pkg vehicleid --type Vehicleid --out vehicleid.go --v2`
 
 ## Limitations
 
