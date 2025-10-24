@@ -237,6 +237,12 @@ func (c *Client) GetMintVehicleAndSDWithDDResult(result *zerodev.UserOperationRe
 
 // GetSafeTransferFromUserOperationAndHash gets the data to be signed by the owner (from address) to transfer a vehicle tokenId to another address (to address)
 func (c *Client) GetSafeTransferFromUserOperationAndHash(from common.Address, to common.Address, tokenId *big.Int) (op *zerodev.UserOperation, hash *common.Hash, err error) {
+	if to.Hex() == "0x0000000000000000000000000000000000000000" {
+		return nil, nil, errors.New("to address cannot be 0x0")
+	}
+	if from.Cmp(to) == 0 {
+		return nil, nil, errors.New("from address cannot be the same as to address")
+	}
 	callData := c.VehicleId.PackSafeTransferFrom(from, to, tokenId)
 
 	encodedCall, err := zerodev.EncodeExecuteCall(&ethereum.CallMsg{
