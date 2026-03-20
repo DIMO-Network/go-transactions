@@ -221,19 +221,75 @@ func (c *Client) GetMintVehicleAndSDWithDDResult(result *zerodev.UserOperationRe
 	return nil, errors.New("no result found")
 }
 
-// SetPermissions sets permissions on a vehicle using the SACD contract. No signature is needed because it checks if the tokenId is owned by the NFT owner and same as the caller.
-// todo this must be signed by user, needs same flow as delete vehicle
-//func (c *Client) SetPermissions(sacdInput registry.SetPermissionsSacdInput) (*zerodev.UserOperationResult, error) {
-//	// the asset parameter is the address of the vehicle nft contract, it is configured in the constructor
-//	asset := c.VehicleIdAddress
+// GetSetPermissionsUserOperationAndHash generates a UserOperation and hash for the vehicle owner to sign,
+// to grant or revoke permissions on a vehicle token via the SACD contract.
+// This follows the same two-step signature flow as vehicle transfer and burn operations:
+// 1. Call this method to get the UserOperation and hash
+// 2. Have the vehicle owner sign the hash
+// 3. Submit via SendSignedUserOperation
 //
-//	permissions0 := c.SacdRegistry.PackSetPermissions0(asset, sacdInput.VehicleTokenId, sacdInput.Grantee, sacdInput.Permissions, sacdInput.Expiration, sacdInput.Source)
-//	result, err := c.executeUserOperationSacd(permissions0, true)
-//	if err != nil {
-//		return nil, err
-//	}
-//	return result, nil
-//}
+// Parameters:
+//   - owner: the address of the vehicle token owner who must sign the operation
+//   - sacdInput: contains the permission details:
+//   - VehicleTokenId: the token ID of the vehicle to set permissions on
+//   - Grantee: the address being granted (or revoked) permissions
+//   - Permissions: a bitmask representing the set of permissions to grant
+//   - Expiration: unix timestamp after which the permissions expire
+//   - Source: a URI string identifying the source/context of the permission grant
+//
+// The asset parameter (ERC721 contract address) is automatically set to the configured VehicleIdAddress.
+func (c *Client) GetSetPermissionsUserOperationAndHash(owner common.Address, sacdInput registry.SetPermissionsSacdInput) (op *zerodev.UserOperation, hash *common.Hash, err error) {
+	asset := c.VehicleIdAddress
+
+	callData := c.SacdRegistry.PackSetPermissions0(asset, sacdInput.VehicleTokenId, sacdInput.Grantee, sacdInput.Permissions, sacdInput.Expiration, sacdInput.Source)
+
+	encodedCall, err := zerodev.EncodeExecuteCall(&ethereum.CallMsg{
+		To:    &c.SacdAddress,
+		Value: big.NewInt(0),
+		Data:  callData,
+	})
+
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return c.ZerodevClient.GetUserOperationAndHashToSign(owner, encodedCall)
+}
+
+// SetPermissionsResult represents the PermissionsSet event emitted after a successful SetPermissions transaction.
+type SetPermissionsResult struct {
+	sacd.SacdPermissionsSet
+}
+
+// GetSetPermissionsResult extracts the PermissionsSet event from a completed SetPermissions transaction receipt.
+func (c *Client) GetSetPermissionsResult(result *zerodev.UserOperationResult) (*SetPermissionsResult, error) {
+	if result == nil || result.Receipt == nil {
+		return nil, errors.New("no receipt to get the result")
+	}
+
+	var err error
+	var event *sacd.SacdPermissionsSet
+
+	for _, log := range result.Receipt.Logs {
+		if log.Address != c.SacdAddress {
+			continue
+		}
+
+		event, err = c.SacdRegistry.UnpackPermissionsSetEvent(&log)
+		if err != nil {
+			continue
+		}
+		break
+	}
+
+	if event != nil {
+		return &SetPermissionsResult{
+			SacdPermissionsSet: *event,
+		}, nil
+	}
+
+	return nil, errors.New("no result found")
+}
 
 // GetSafeTransferFromUserOperationAndHash gets the data to be signed by the owner (from address) to transfer a vehicle tokenId to another address (to address)
 func (c *Client) GetSafeTransferFromUserOperationAndHash(from common.Address, to common.Address, tokenId *big.Int) (op *zerodev.UserOperation, hash *common.Hash, err error) {
