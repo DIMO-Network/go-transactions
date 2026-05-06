@@ -89,7 +89,7 @@ type MintSyntheticDeviceBatchInput struct {
 
 // MintSyntheticDeviceInput is an auto generated low-level Go binding around an user-defined struct.
 type MintSyntheticDeviceInput struct {
-	IntegrationNode     *big.Int
+	ConnectionId        *big.Int
 	VehicleNode         *big.Int
 	SyntheticDeviceSig  []byte
 	VehicleOwnerSig     []byte
@@ -102,33 +102,46 @@ type MintVehicleAndSdInput struct {
 	ManufacturerNode     *big.Int
 	Owner                common.Address
 	AttrInfoPairsVehicle []AttributeInfoPair
-	IntegrationNode      *big.Int
+	ConnectionId         *big.Int
 	VehicleOwnerSig      []byte
 	SyntheticDeviceSig   []byte
 	SyntheticDeviceAddr  common.Address
 	AttrInfoPairsDevice  []AttributeInfoPair
 }
 
-// MintVehicleAndSdWithDdInput is an auto generated low-level Go binding around an user-defined struct.
-type MintVehicleAndSdWithDdInput struct {
+// MintVehicleAndSdInputBatch is an auto generated low-level Go binding around an user-defined struct.
+type MintVehicleAndSdInputBatch struct {
 	ManufacturerNode     *big.Int
 	Owner                common.Address
-	DeviceDefinitionId   string
 	AttrInfoPairsVehicle []AttributeInfoPair
-	IntegrationNode      *big.Int
+	ConnectionId         *big.Int
+	VehicleOwnerSig      []byte
+	SyntheticDeviceSig   []byte
+	SyntheticDeviceAddr  common.Address
+	AttrInfoPairsDevice  []AttributeInfoPair
+	SacdInput            SacdInput
+}
+
+// MintVehicleAndSdInputWithSnId is an auto generated low-level Go binding around an user-defined struct.
+type MintVehicleAndSdInputWithSnId struct {
+	ManufacturerNode     *big.Int
+	Owner                common.Address
+	StorageNodeId        *big.Int
+	AttrInfoPairsVehicle []AttributeInfoPair
+	ConnectionId         *big.Int
 	VehicleOwnerSig      []byte
 	SyntheticDeviceSig   []byte
 	SyntheticDeviceAddr  common.Address
 	AttrInfoPairsDevice  []AttributeInfoPair
 }
 
-// MintVehicleAndSdWithDdInputBatch is an auto generated low-level Go binding around an user-defined struct.
-type MintVehicleAndSdWithDdInputBatch struct {
+// MintVehicleAndSdInputWithSnIdBatch is an auto generated low-level Go binding around an user-defined struct.
+type MintVehicleAndSdInputWithSnIdBatch struct {
 	ManufacturerNode     *big.Int
 	Owner                common.Address
-	DeviceDefinitionId   string
+	StorageNodeId        *big.Int
 	AttrInfoPairsVehicle []AttributeInfoPair
-	IntegrationNode      *big.Int
+	ConnectionId         *big.Int
 	VehicleOwnerSig      []byte
 	SyntheticDeviceSig   []byte
 	SyntheticDeviceAddr  common.Address
@@ -156,7 +169,7 @@ type TablelandPolicy struct {
 
 // RegistryMetaData contains all meta data concerning the Registry contract.
 var RegistryMetaData = bind.MetaData{
-	ABI: "[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"UintUtils__InsufficientHexLength\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"moduleAddr\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bytes4[]\",\"name\":\"selectors\",\"type\":\"bytes4[]\"}],\"name\":\"ModuleAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"moduleAddr\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bytes4[]\",\"name\":\"selectors\",\"type\":\"bytes4[]\"}],\"name\":\"ModuleRemoved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"oldImplementation\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newImplementation\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bytes4[]\",\"name\":\"oldSelectors\",\"type\":\"bytes4[]\"},{\"indexed\":false,\"internalType\":\"bytes4[]\",\"name\":\"newSelectors\",\"type\":\"bytes4[]\"}],\"name\":\"ModuleUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"previousAdminRole\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"newAdminRole\",\"type\":\"bytes32\"}],\"name\":\"RoleAdminChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"RoleGranted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"RoleRevoked\",\"type\":\"event\"},{\"stateMutability\":\"nonpayable\",\"type\":\"fallback\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"implementation\",\"type\":\"address\"},{\"internalType\":\"bytes4[]\",\"name\":\"selectors\",\"type\":\"bytes4[]\"}],\"name\":\"addModule\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"implementation\",\"type\":\"address\"},{\"internalType\":\"bytes4[]\",\"name\":\"selectors\",\"type\":\"bytes4[]\"}],\"name\":\"removeModule\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"oldImplementation\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"newImplementation\",\"type\":\"address\"},{\"internalType\":\"bytes4[]\",\"name\":\"oldSelectors\",\"type\":\"bytes4[]\"},{\"internalType\":\"bytes4[]\",\"name\":\"newSelectors\",\"type\":\"bytes4[]\"}],\"name\":\"updateModule\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"AdNotClaimed\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"AdPaired\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"proxy\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"InvalidNode\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"VehiclePaired\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"name\":\"AftermarketDeviceAttributeSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"adNode\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"AftermarketDeviceNodeBurned\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"AftermarketDevicePaired\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"oldOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"AftermarketDeviceTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"}],\"name\":\"AftermarketDeviceUnclaimed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"AftermarketDeviceUnpaired\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"ddId\",\"type\":\"string\"}],\"name\":\"DeviceDefinitionIdSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"name\":\"SyntheticDeviceAttributeSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"syntheticDeviceNode\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"SyntheticDeviceNodeBurned\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"}],\"name\":\"VehicleAttributeRemoved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"name\":\"VehicleAttributeSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"VehicleNodeBurned\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"tokenIds\",\"type\":\"uint256[]\"}],\"name\":\"adminBurnAftermarketDevices\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"tokenIds\",\"type\":\"uint256[]\"}],\"name\":\"adminBurnAftermarketDevicesAndDeletePairings\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"tokenIds\",\"type\":\"uint256[]\"}],\"name\":\"adminBurnSyntheticDevicesAndDeletePairings\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"tokenIds\",\"type\":\"uint256[]\"}],\"name\":\"adminBurnVehicles\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"tokenIds\",\"type\":\"uint256[]\"}],\"name\":\"adminBurnVehiclesAndDeletePairings\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"adminCacheDimoStreamrEns\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"newParentNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"idProxyAddress\",\"type\":\"address\"},{\"internalType\":\"uint256[]\",\"name\":\"nodeIdList\",\"type\":\"uint256[]\"}],\"name\":\"adminChangeParentNode\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"}],\"name\":\"adminPairAftermarketDevice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"}],\"name\":\"adminRemoveVehicleAttribute\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"deviceDefinitionId\",\"type\":\"string\"}],\"internalType\":\"structDevAdmin.VehicleIdDeviceDefinitionId[]\",\"name\":\"vehicleIdDdId\",\"type\":\"tuple[]\"}],\"name\":\"adminSetVehicleDDs\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"internalType\":\"structDevAdmin.IdManufacturerName[]\",\"name\":\"idManufacturerNames\",\"type\":\"tuple[]\"}],\"name\":\"renameManufacturers\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferAftermarketDeviceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"aftermarketDeviceNodes\",\"type\":\"uint256[]\"}],\"name\":\"unclaimAftermarketDeviceNode\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"aftermarketDeviceNodes\",\"type\":\"uint256[]\"}],\"name\":\"unpairAftermarketDeviceByDeviceNode\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"vehicleNodes\",\"type\":\"uint256[]\"}],\"name\":\"unpairAftermarketDeviceByVehicleNode\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"}],\"name\":\"getRoleAdmin\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"grantRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"hasRole\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"}],\"name\":\"renounceRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"revokeRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"version\",\"type\":\"string\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes[]\",\"name\":\"data\",\"type\":\"bytes[]\"}],\"name\":\"multiDelegateCall\",\"outputs\":[{\"internalType\":\"bytes[]\",\"name\":\"results\",\"type\":\"bytes[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes[]\",\"name\":\"data\",\"type\":\"bytes[]\"}],\"name\":\"multiStaticCall\",\"outputs\":[{\"internalType\":\"bytes[]\",\"name\":\"results\",\"type\":\"bytes[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onERC721Received\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"AdNotPaired\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"attr\",\"type\":\"string\"}],\"name\":\"AttributeExists\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"attr\",\"type\":\"string\"}],\"name\":\"AttributeNotWhitelisted\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"DeviceAlreadyClaimed\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"DeviceAlreadyRegistered\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidAdSignature\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidLicense\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidOwnerSignature\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"InvalidParentNode\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidSigner\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"OwnersDoNotMatch\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"Unauthorized\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"VehicleNotPaired\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ZeroAddress\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"aftermarketDeviceAddress\",\"type\":\"address\"}],\"name\":\"AftermarketDeviceAddressReset\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"}],\"name\":\"AftermarketDeviceAttributeAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"name\":\"AftermarketDeviceAttributeSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"AftermarketDeviceClaimed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"proxy\",\"type\":\"address\"}],\"name\":\"AftermarketDeviceIdProxySet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"AftermarketDeviceNodeBurned\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"aftermarketDeviceAddress\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"AftermarketDeviceNodeMinted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"AftermarketDeviceUnpaired\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"}],\"name\":\"addAftermarketDeviceAttribute\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"aftermarketDeviceSig\",\"type\":\"bytes\"}],\"name\":\"claimAftermarketDevice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNodeId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"internalType\":\"structAftermarketDeviceOwnerPair[]\",\"name\":\"adOwnerPair\",\"type\":\"tuple[]\"}],\"name\":\"claimAftermarketDeviceBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"ownerSig\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"aftermarketDeviceSig\",\"type\":\"bytes\"}],\"name\":\"claimAftermarketDeviceSign\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"nodeId\",\"type\":\"uint256\"}],\"name\":\"getAftermarketDeviceAddressById\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"getAftermarketDeviceIdByAddress\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"nodeId\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"nodeId\",\"type\":\"uint256\"}],\"name\":\"isAftermarketDeviceClaimed\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"isClaimed\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerNode\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairs\",\"type\":\"tuple[]\"}],\"internalType\":\"structAftermarketDeviceInfos[]\",\"name\":\"adInfos\",\"type\":\"tuple[]\"}],\"name\":\"mintAftermarketDeviceByManufacturerBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"}],\"name\":\"pairAftermarketDevice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"aftermarketDeviceSig\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"vehicleOwnerSig\",\"type\":\"bytes\"}],\"name\":\"pairAftermarketDeviceSign\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"signature\",\"type\":\"bytes\"}],\"name\":\"pairAftermarketDeviceSign\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"aftermarketDeviceNodeList\",\"type\":\"uint256[]\"}],\"name\":\"reprovisionAftermarketDeviceByManufacturerBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNodeId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"deviceAddress\",\"type\":\"address\"}],\"internalType\":\"structAftermarketDeviceIdAddressPair[]\",\"name\":\"adIdAddrs\",\"type\":\"tuple[]\"}],\"name\":\"resetAftermarketDeviceAddressByManufacturerBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"setAftermarketDeviceIdProxyAddress\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfo\",\"type\":\"tuple[]\"}],\"name\":\"setAftermarketDeviceInfo\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"}],\"name\":\"unpairAftermarketDevice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"signature\",\"type\":\"bytes\"}],\"name\":\"unpairAftermarketDeviceSign\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"controller\",\"type\":\"address\"}],\"name\":\"ControllerSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"}],\"name\":\"ManufacturerAttributeAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"name\":\"ManufacturerAttributeSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"proxy\",\"type\":\"address\"}],\"name\":\"ManufacturerIdProxySet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"ManufacturerNodeMinted\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"}],\"name\":\"addManufacturerAttribute\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"name\":\"getManufacturerIdByName\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"nodeId\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"getManufacturerNameById\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"isAllowedToOwnManufacturerNode\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"_isAllowed\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"isController\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"_isController\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"isManufacturerMinted\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"_isManufacturerMinted\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairList\",\"type\":\"tuple[]\"}],\"name\":\"mintManufacturer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string[]\",\"name\":\"names\",\"type\":\"string[]\"}],\"name\":\"mintManufacturerBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_controller\",\"type\":\"address\"}],\"name\":\"setController\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"setManufacturerIdProxyAddress\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoList\",\"type\":\"tuple[]\"}],\"name\":\"setManufacturerInfo\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"updateManufacturerMinted\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"AlreadyController\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"name\":\"IntegrationNameRegisterd\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"MustBeAdmin\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"NotAllowed\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"OnlyNftProxy\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"}],\"name\":\"IntegrationAttributeAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"name\":\"IntegrationAttributeSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"proxy\",\"type\":\"address\"}],\"name\":\"IntegrationIdProxySet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"IntegrationNodeMinted\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"}],\"name\":\"addIntegrationAttribute\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"name\":\"getIntegrationIdByName\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"nodeId\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"getIntegrationNameById\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"isAllowedToOwnIntegrationNode\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"_isAllowed\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"isIntegrationController\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"_isController\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"isIntegrationMinted\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"_isIntegrationMinted\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairList\",\"type\":\"tuple[]\"}],\"name\":\"mintIntegration\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string[]\",\"name\":\"names\",\"type\":\"string[]\"}],\"name\":\"mintIntegrationBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_controller\",\"type\":\"address\"}],\"name\":\"setIntegrationController\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"setIntegrationIdProxyAddress\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoList\",\"type\":\"tuple[]\"}],\"name\":\"setIntegrationInfo\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"updateIntegrationMinted\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"InvalidSdSignature\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"}],\"name\":\"SyntheticDeviceAttributeAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"proxy\",\"type\":\"address\"}],\"name\":\"SyntheticDeviceIdProxySet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"integrationNode\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"syntheticDeviceNode\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"syntheticDeviceAddress\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"SyntheticDeviceNodeMinted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"name\":\"VehicleAttributeSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"manufacturerNode\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"VehicleNodeMinted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"deviceDefinitionId\",\"type\":\"string\"}],\"name\":\"VehicleNodeMintedWithDeviceDefinition\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"}],\"name\":\"addSyntheticDeviceAttribute\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"syntheticDeviceNode\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"ownerSig\",\"type\":\"bytes\"}],\"name\":\"burnSyntheticDeviceSign\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"nodeId\",\"type\":\"uint256\"}],\"name\":\"getSyntheticDeviceAddressById\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"getSyntheticDeviceIdByAddress\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"nodeId\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"integrationNode\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"syntheticDeviceAddr\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairs\",\"type\":\"tuple[]\"}],\"internalType\":\"structMintSyntheticDeviceBatchInput[]\",\"name\":\"data\",\"type\":\"tuple[]\"}],\"name\":\"mintSyntheticDeviceBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"integrationNode\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"syntheticDeviceSig\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"vehicleOwnerSig\",\"type\":\"bytes\"},{\"internalType\":\"address\",\"name\":\"syntheticDeviceAddr\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairs\",\"type\":\"tuple[]\"}],\"internalType\":\"structMintSyntheticDeviceInput\",\"name\":\"data\",\"type\":\"tuple\"}],\"name\":\"mintSyntheticDeviceSign\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"setSyntheticDeviceIdProxyAddress\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfo\",\"type\":\"tuple[]\"}],\"name\":\"setSyntheticDeviceInfo\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"validateSdBurnAndResetNode\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"}],\"name\":\"VehicleAttributeAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"proxy\",\"type\":\"address\"}],\"name\":\"VehicleIdProxySet\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"}],\"name\":\"addVehicleAttribute\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"ownerSig\",\"type\":\"bytes\"}],\"name\":\"burnVehicleSign\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"}],\"name\":\"getDeviceDefinitionIdByVehicleId\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"ddId\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"deviceDefinitionId\",\"type\":\"string\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfo\",\"type\":\"tuple[]\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"grantee\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"permissions\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"expiration\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"source\",\"type\":\"string\"}],\"internalType\":\"structSacdInput\",\"name\":\"sacdInput\",\"type\":\"tuple\"}],\"name\":\"mintVehicleWithDeviceDefinition\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"deviceDefinitionId\",\"type\":\"string\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfo\",\"type\":\"tuple[]\"}],\"name\":\"mintVehicleWithDeviceDefinition\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"deviceDefinitionId\",\"type\":\"string\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfo\",\"type\":\"tuple[]\"},{\"internalType\":\"bytes\",\"name\":\"signature\",\"type\":\"bytes\"}],\"name\":\"mintVehicleWithDeviceDefinitionSign\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"setVehicleIdProxyAddress\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfo\",\"type\":\"tuple[]\"}],\"name\":\"setVehicleInfo\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"validateBurnAndResetNode\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"idProxyAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"getDataURI\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"data\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"idProxyAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"}],\"name\":\"getInfo\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"idProxyAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"getParentNode\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"parentNode\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"idProxyAddress\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"nodeId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"beneficiary\",\"type\":\"address\"}],\"name\":\"BeneficiarySet\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"idProxyAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"nodeId\",\"type\":\"uint256\"}],\"name\":\"getBeneficiary\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"beneficiary\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"idProxyAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"sourceNode\",\"type\":\"uint256\"}],\"name\":\"getLink\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"targetNode\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"idProxyAddressSource\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"idProxyAddressTarget\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"sourceNode\",\"type\":\"uint256\"}],\"name\":\"getNodeLink\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"targetNode\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"nodeId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"beneficiary\",\"type\":\"address\"}],\"name\":\"setAftermarketDeviceBeneficiary\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairsVehicle\",\"type\":\"tuple[]\"},{\"internalType\":\"uint256\",\"name\":\"integrationNode\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"vehicleOwnerSig\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"syntheticDeviceSig\",\"type\":\"bytes\"},{\"internalType\":\"address\",\"name\":\"syntheticDeviceAddr\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairsDevice\",\"type\":\"tuple[]\"}],\"internalType\":\"structMintVehicleAndSdInput\",\"name\":\"data\",\"type\":\"tuple\"}],\"name\":\"mintVehicleAndSdSign\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"deviceDefinitionId\",\"type\":\"string\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairsVehicle\",\"type\":\"tuple[]\"},{\"internalType\":\"uint256\",\"name\":\"integrationNode\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"vehicleOwnerSig\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"syntheticDeviceSig\",\"type\":\"bytes\"},{\"internalType\":\"address\",\"name\":\"syntheticDeviceAddr\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairsDevice\",\"type\":\"tuple[]\"}],\"internalType\":\"structMintVehicleAndSdWithDdInput\",\"name\":\"data\",\"type\":\"tuple\"}],\"name\":\"mintVehicleAndSdWithDeviceDefinitionSign\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"deviceDefinitionId\",\"type\":\"string\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairsVehicle\",\"type\":\"tuple[]\"},{\"internalType\":\"uint256\",\"name\":\"integrationNode\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"vehicleOwnerSig\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"syntheticDeviceSig\",\"type\":\"bytes\"},{\"internalType\":\"address\",\"name\":\"syntheticDeviceAddr\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairsDevice\",\"type\":\"tuple[]\"}],\"internalType\":\"structMintVehicleAndSdWithDdInput\",\"name\":\"data\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"grantee\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"permissions\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"expiration\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"source\",\"type\":\"string\"}],\"internalType\":\"structSacdInput\",\"name\":\"sacdInput\",\"type\":\"tuple\"}],\"name\":\"mintVehicleAndSdWithDeviceDefinitionSignAndSacd\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"deviceDefinitionId\",\"type\":\"string\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairsVehicle\",\"type\":\"tuple[]\"},{\"internalType\":\"uint256\",\"name\":\"integrationNode\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"vehicleOwnerSig\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"syntheticDeviceSig\",\"type\":\"bytes\"},{\"internalType\":\"address\",\"name\":\"syntheticDeviceAddr\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairsDevice\",\"type\":\"tuple[]\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"grantee\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"permissions\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"expiration\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"source\",\"type\":\"string\"}],\"internalType\":\"structSacdInput\",\"name\":\"sacdInput\",\"type\":\"tuple\"}],\"internalType\":\"structMintVehicleAndSdWithDdInputBatch[]\",\"name\":\"data\",\"type\":\"tuple[]\"}],\"name\":\"mintVehicleAndSdWithDeviceDefinitionSignBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"idProxyAddress\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"dataUri\",\"type\":\"string\"}],\"name\":\"BaseDataURISet\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"idProxyAddress\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_baseDataURI\",\"type\":\"string\"}],\"name\":\"setBaseDataURI\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"dimoCredit\",\"type\":\"address\"}],\"name\":\"DimoCreditSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"dimoToken\",\"type\":\"address\"}],\"name\":\"DimoTokenSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"foundation\",\"type\":\"address\"}],\"name\":\"FoundationSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"manufacturerLicense\",\"type\":\"address\"}],\"name\":\"ManufacturerLicenseSet\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"getDimoCredit\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"dimoCredit\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getDimoToken\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"dimoToken\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getFoundation\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"foundation\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getManufacturerLicense\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"manufacturerLicense\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"dimoCredit\",\"type\":\"address\"}],\"name\":\"setDimoCredit\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"dimoToken\",\"type\":\"address\"}],\"name\":\"setDimoToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"foundation\",\"type\":\"address\"}],\"name\":\"setFoundation\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"manufacturerLicense\",\"type\":\"address\"}],\"name\":\"setManufacturerLicense\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"dimoStreamrEns\",\"type\":\"string\"}],\"name\":\"DimoStreamrEnsSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"dimoStreamrNode\",\"type\":\"address\"}],\"name\":\"DimoStreamrNodeSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"streamRegistry\",\"type\":\"address\"}],\"name\":\"StreamRegistrySet\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"dimoStreamrEns\",\"type\":\"string\"}],\"name\":\"setDimoBaseStreamId\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"dimoStreamrNode\",\"type\":\"address\"}],\"name\":\"setDimoStreamrNode\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"streamRegistry\",\"type\":\"address\"}],\"name\":\"setStreamRegistry\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"enumIStreamRegistry.PermissionType\",\"name\":\"permissionType\",\"type\":\"uint8\"}],\"name\":\"NoStreamrPermission\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"streamId\",\"type\":\"string\"}],\"name\":\"StreamDoesNotExist\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"streamId\",\"type\":\"string\"}],\"name\":\"VehicleStreamAlreadySet\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"}],\"name\":\"VehicleStreamNotSet\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"streamId\",\"type\":\"string\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"subscriber\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"expirationTime\",\"type\":\"uint256\"}],\"name\":\"SubscribedToVehicleStream\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"streamId\",\"type\":\"string\"}],\"name\":\"VehicleStreamSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"streamId\",\"type\":\"string\"}],\"name\":\"VehicleStreamUnset\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"}],\"name\":\"createVehicleStream\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"}],\"name\":\"getVehicleStream\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"streamId\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"}],\"name\":\"onBurnVehicleStream\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"subscriber\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"expirationTime\",\"type\":\"uint256\"}],\"name\":\"onSetSubscribePrivilege\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"}],\"name\":\"onTransferVehicleStream\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"subscriber\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"expirationTime\",\"type\":\"uint256\"}],\"name\":\"setSubscriptionToVehicleStream\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"streamId\",\"type\":\"string\"}],\"name\":\"setVehicleStream\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"expirationTime\",\"type\":\"uint256\"}],\"name\":\"subscribeToVehicleStream\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"}],\"name\":\"unsetVehicleStream\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"chainid\",\"type\":\"uint256\"}],\"name\":\"ChainNotSupported\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"InvalidManufacturerId\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"}],\"name\":\"TableAlreadyExists\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tableId\",\"type\":\"uint256\"}],\"name\":\"TableDoesNotExist\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"}],\"name\":\"Unauthorized\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tableId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"}],\"name\":\"DeviceDefinitionDeleted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tableId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"model\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"year\",\"type\":\"uint256\"}],\"name\":\"DeviceDefinitionInserted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"tableOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tableId\",\"type\":\"uint256\"}],\"name\":\"DeviceDefinitionTableCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tableId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"}],\"name\":\"DeviceDefinitionUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tableId\",\"type\":\"uint256\"}],\"name\":\"ManufacturerTableSet\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tableOwner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"}],\"name\":\"createDeviceDefinitionTable\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tableOwner\",\"type\":\"address\"},{\"internalType\":\"uint256[]\",\"name\":\"manufacturerIds\",\"type\":\"uint256[]\"}],\"name\":\"createDeviceDefinitionTableBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"}],\"name\":\"deleteDeviceDefinition\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"}],\"name\":\"getDeviceDefinitionTableId\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"tableId\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"}],\"name\":\"getDeviceDefinitionTableName\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"tableName\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"model\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"year\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"metadata\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"ksuid\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"deviceType\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"imageURI\",\"type\":\"string\"}],\"internalType\":\"structDeviceDefinitionInput\",\"name\":\"data\",\"type\":\"tuple\"}],\"name\":\"insertDeviceDefinition\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"model\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"year\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"metadata\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"ksuid\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"deviceType\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"imageURI\",\"type\":\"string\"}],\"internalType\":\"structDeviceDefinitionInput[]\",\"name\":\"data\",\"type\":\"tuple[]\"}],\"name\":\"insertDeviceDefinitionBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"tableId\",\"type\":\"uint256\"}],\"name\":\"setDeviceDefinitionTable\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"metadata\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"ksuid\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"deviceType\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"imageURI\",\"type\":\"string\"}],\"internalType\":\"structDeviceDefinitionUpdateInput\",\"name\":\"data\",\"type\":\"tuple\"}],\"name\":\"updateDeviceDefinition\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"getPolicy\",\"outputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"allowInsert\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"allowUpdate\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"allowDelete\",\"type\":\"bool\"},{\"internalType\":\"string\",\"name\":\"whereClause\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"withCheck\",\"type\":\"string\"},{\"internalType\":\"string[]\",\"name\":\"updatableColumns\",\"type\":\"string[]\"}],\"internalType\":\"structTablelandPolicy\",\"name\":\"policy\",\"type\":\"tuple\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"operation\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"cost\",\"type\":\"uint256\"}],\"name\":\"OperationCostSet\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"operation\",\"type\":\"bytes32\"}],\"name\":\"getDcxOperationCost\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"cost\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"operation\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"cost\",\"type\":\"uint256\"}],\"name\":\"setDcxOperationCost\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	ABI: "[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"UintUtils__InsufficientHexLength\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"moduleAddr\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bytes4[]\",\"name\":\"selectors\",\"type\":\"bytes4[]\"}],\"name\":\"ModuleAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"moduleAddr\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bytes4[]\",\"name\":\"selectors\",\"type\":\"bytes4[]\"}],\"name\":\"ModuleRemoved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"oldImplementation\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newImplementation\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"bytes4[]\",\"name\":\"oldSelectors\",\"type\":\"bytes4[]\"},{\"indexed\":false,\"internalType\":\"bytes4[]\",\"name\":\"newSelectors\",\"type\":\"bytes4[]\"}],\"name\":\"ModuleUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"previousAdminRole\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"newAdminRole\",\"type\":\"bytes32\"}],\"name\":\"RoleAdminChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"RoleGranted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"RoleRevoked\",\"type\":\"event\"},{\"stateMutability\":\"nonpayable\",\"type\":\"fallback\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"implementation\",\"type\":\"address\"},{\"internalType\":\"bytes4[]\",\"name\":\"selectors\",\"type\":\"bytes4[]\"}],\"name\":\"addModule\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"implementation\",\"type\":\"address\"},{\"internalType\":\"bytes4[]\",\"name\":\"selectors\",\"type\":\"bytes4[]\"}],\"name\":\"removeModule\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"oldImplementation\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"newImplementation\",\"type\":\"address\"},{\"internalType\":\"bytes4[]\",\"name\":\"oldSelectors\",\"type\":\"bytes4[]\"},{\"internalType\":\"bytes4[]\",\"name\":\"newSelectors\",\"type\":\"bytes4[]\"}],\"name\":\"updateModule\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"AdNotClaimed\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"AdPaired\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"proxy\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"InvalidNode\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"storageNodeId\",\"type\":\"uint256\"}],\"name\":\"InvalidStorageNode\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"VehiclePaired\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"name\":\"AftermarketDeviceAttributeSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"AftermarketDeviceNodeBurned\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"AftermarketDevicePaired\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"oldOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"AftermarketDeviceTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"}],\"name\":\"AftermarketDeviceUnclaimed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"AftermarketDeviceUnpaired\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"ddId\",\"type\":\"string\"}],\"name\":\"DeviceDefinitionIdSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"name\":\"SyntheticDeviceAttributeSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"syntheticDeviceNode\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"SyntheticDeviceNodeBurned\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"}],\"name\":\"VehicleAttributeRemoved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"name\":\"VehicleAttributeSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"VehicleNodeBurned\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"storageNodeId\",\"type\":\"uint256\"}],\"name\":\"VehicleStorageNodeIdSet\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"tokenIds\",\"type\":\"uint256[]\"}],\"name\":\"adminBurnAftermarketDevices\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"tokenIds\",\"type\":\"uint256[]\"}],\"name\":\"adminBurnAftermarketDevicesAndDeletePairings\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"tokenIds\",\"type\":\"uint256[]\"}],\"name\":\"adminBurnSyntheticDevicesAndDeletePairings\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"tokenIds\",\"type\":\"uint256[]\"}],\"name\":\"adminBurnVehicles\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"tokenIds\",\"type\":\"uint256[]\"}],\"name\":\"adminBurnVehiclesAndDeletePairings\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"adminCacheDimoStreamrEns\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"newParentNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"idProxyAddress\",\"type\":\"address\"},{\"internalType\":\"uint256[]\",\"name\":\"nodeIdList\",\"type\":\"uint256[]\"}],\"name\":\"adminChangeParentNode\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"}],\"name\":\"adminPairAftermarketDevice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"}],\"name\":\"adminRemoveVehicleAttribute\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"vehicleIds\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256\",\"name\":\"storageNodeId\",\"type\":\"uint256\"}],\"name\":\"adminSetStorageNodeIdForVehicleIds\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"deviceDefinitionId\",\"type\":\"string\"}],\"internalType\":\"structDevAdmin.VehicleIdDeviceDefinitionId[]\",\"name\":\"vehicleIdDdId\",\"type\":\"tuple[]\"}],\"name\":\"adminSetVehicleDDs\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"internalType\":\"structDevAdmin.IdManufacturerName[]\",\"name\":\"idManufacturerNames\",\"type\":\"tuple[]\"}],\"name\":\"renameManufacturers\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferAftermarketDeviceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"aftermarketDeviceNodes\",\"type\":\"uint256[]\"}],\"name\":\"unclaimAftermarketDeviceNode\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"aftermarketDeviceNodes\",\"type\":\"uint256[]\"}],\"name\":\"unpairAftermarketDeviceByDeviceNode\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"vehicleNodes\",\"type\":\"uint256[]\"}],\"name\":\"unpairAftermarketDeviceByVehicleNode\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"}],\"name\":\"getRoleAdmin\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"grantRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"hasRole\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"}],\"name\":\"renounceRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"revokeRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"version\",\"type\":\"string\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes[]\",\"name\":\"data\",\"type\":\"bytes[]\"}],\"name\":\"multiDelegateCall\",\"outputs\":[{\"internalType\":\"bytes[]\",\"name\":\"results\",\"type\":\"bytes[]\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes[]\",\"name\":\"data\",\"type\":\"bytes[]\"}],\"name\":\"multiStaticCall\",\"outputs\":[{\"internalType\":\"bytes[]\",\"name\":\"results\",\"type\":\"bytes[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"onERC721Received\",\"outputs\":[{\"internalType\":\"bytes4\",\"name\":\"\",\"type\":\"bytes4\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"AdNotPaired\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"attr\",\"type\":\"string\"}],\"name\":\"AttributeExists\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"attr\",\"type\":\"string\"}],\"name\":\"AttributeNotWhitelisted\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"DeviceAlreadyClaimed\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"DeviceAlreadyRegistered\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidAdSignature\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidLicense\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidOwnerSignature\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"InvalidParentNode\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"InvalidSigner\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"OwnersDoNotMatch\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"Unauthorized\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"VehicleNotPaired\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"ZeroAddress\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"aftermarketDeviceAddress\",\"type\":\"address\"}],\"name\":\"AftermarketDeviceAddressReset\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"}],\"name\":\"AftermarketDeviceAttributeAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"AftermarketDeviceClaimed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"proxy\",\"type\":\"address\"}],\"name\":\"AftermarketDeviceIdProxySet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"aftermarketDeviceAddress\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"AftermarketDeviceNodeMinted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"AftermarketDeviceUnclaimed\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"}],\"name\":\"addAftermarketDeviceAttribute\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"aftermarketDeviceSig\",\"type\":\"bytes\"}],\"name\":\"claimAftermarketDevice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNodeId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"internalType\":\"structAftermarketDeviceOwnerPair[]\",\"name\":\"adOwnerPair\",\"type\":\"tuple[]\"}],\"name\":\"claimAftermarketDeviceBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"ownerSig\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"aftermarketDeviceSig\",\"type\":\"bytes\"}],\"name\":\"claimAftermarketDeviceSign\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"nodeId\",\"type\":\"uint256\"}],\"name\":\"getAftermarketDeviceAddressById\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"getAftermarketDeviceIdByAddress\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"nodeId\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"nodeId\",\"type\":\"uint256\"}],\"name\":\"isAftermarketDeviceClaimed\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"isClaimed\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerNode\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairs\",\"type\":\"tuple[]\"}],\"internalType\":\"structAftermarketDeviceInfos[]\",\"name\":\"adInfos\",\"type\":\"tuple[]\"}],\"name\":\"mintAftermarketDeviceByManufacturerBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"}],\"name\":\"pairAftermarketDevice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"aftermarketDeviceSig\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"vehicleOwnerSig\",\"type\":\"bytes\"}],\"name\":\"pairAftermarketDeviceSign\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"signature\",\"type\":\"bytes\"}],\"name\":\"pairAftermarketDeviceSign\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"aftermarketDeviceSig\",\"type\":\"bytes\"}],\"name\":\"pairAftermarketDeviceWithAdSig\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"aftermarketDeviceNodeList\",\"type\":\"uint256[]\"}],\"name\":\"reprovisionAftermarketDeviceByManufacturerBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNodeId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"deviceAddress\",\"type\":\"address\"}],\"internalType\":\"structAftermarketDeviceIdAddressPair[]\",\"name\":\"adIdAddrs\",\"type\":\"tuple[]\"}],\"name\":\"resetAftermarketDeviceAddressByManufacturerBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"}],\"name\":\"resetAftermarketDeviceForClaiming\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"setAftermarketDeviceIdProxyAddress\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfo\",\"type\":\"tuple[]\"}],\"name\":\"setAftermarketDeviceInfo\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"}],\"name\":\"unpairAftermarketDevice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"aftermarketDeviceNode\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"signature\",\"type\":\"bytes\"}],\"name\":\"unpairAftermarketDeviceSign\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"controller\",\"type\":\"address\"}],\"name\":\"ControllerSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"}],\"name\":\"ManufacturerAttributeAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"name\":\"ManufacturerAttributeSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"proxy\",\"type\":\"address\"}],\"name\":\"ManufacturerIdProxySet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"ManufacturerNodeMinted\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"}],\"name\":\"addManufacturerAttribute\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"name\":\"getManufacturerIdByName\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"nodeId\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"getManufacturerNameById\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"isAllowedToOwnManufacturerNode\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"_isAllowed\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"isController\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"_isController\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"isManufacturerMinted\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"_isManufacturerMinted\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairList\",\"type\":\"tuple[]\"}],\"name\":\"mintManufacturer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string[]\",\"name\":\"names\",\"type\":\"string[]\"}],\"name\":\"mintManufacturerBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_controller\",\"type\":\"address\"}],\"name\":\"setController\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"setManufacturerIdProxyAddress\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoList\",\"type\":\"tuple[]\"}],\"name\":\"setManufacturerInfo\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"}],\"name\":\"updateManufacturerMinted\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"InvalidSdSignature\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"OnlyNftProxy\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"}],\"name\":\"SyntheticDeviceAttributeAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"proxy\",\"type\":\"address\"}],\"name\":\"SyntheticDeviceIdProxySet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"connectionId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"syntheticDeviceNode\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"syntheticDeviceAddress\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"SyntheticDeviceNodeMinted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"manufacturerNode\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"VehicleNodeMinted\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"}],\"name\":\"addSyntheticDeviceAttribute\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"syntheticDeviceNode\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"ownerSig\",\"type\":\"bytes\"}],\"name\":\"burnSyntheticDeviceSign\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"nodeId\",\"type\":\"uint256\"}],\"name\":\"getSyntheticDeviceAddressById\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"getSyntheticDeviceIdByAddress\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"nodeId\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"connectionId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"syntheticDeviceAddr\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairs\",\"type\":\"tuple[]\"}],\"internalType\":\"structMintSyntheticDeviceBatchInput[]\",\"name\":\"data\",\"type\":\"tuple[]\"}],\"name\":\"mintSyntheticDeviceBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"connectionId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"vehicleNode\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"syntheticDeviceSig\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"vehicleOwnerSig\",\"type\":\"bytes\"},{\"internalType\":\"address\",\"name\":\"syntheticDeviceAddr\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairs\",\"type\":\"tuple[]\"}],\"internalType\":\"structMintSyntheticDeviceInput\",\"name\":\"data\",\"type\":\"tuple\"}],\"name\":\"mintSyntheticDeviceSign\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"setSyntheticDeviceIdProxyAddress\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfo\",\"type\":\"tuple[]\"}],\"name\":\"setSyntheticDeviceInfo\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"validateSdBurnAndResetNode\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"}],\"name\":\"VehicleAttributeAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"proxy\",\"type\":\"address\"}],\"name\":\"VehicleIdProxySet\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"}],\"name\":\"addVehicleAttribute\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"ownerSig\",\"type\":\"bytes\"}],\"name\":\"burnVehicleSign\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"}],\"name\":\"getDeviceDefinitionIdByVehicleId\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"ddId\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfo\",\"type\":\"tuple[]\"}],\"name\":\"mintVehicle\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfo\",\"type\":\"tuple[]\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"grantee\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"permissions\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"expiration\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"source\",\"type\":\"string\"}],\"internalType\":\"structSacdInput\",\"name\":\"sacdInput\",\"type\":\"tuple\"}],\"name\":\"mintVehicle\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"storageNodeId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfo\",\"type\":\"tuple[]\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"grantee\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"permissions\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"expiration\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"source\",\"type\":\"string\"}],\"internalType\":\"structSacdInput\",\"name\":\"sacdInput\",\"type\":\"tuple\"}],\"name\":\"mintVehicle\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"storageNodeId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfo\",\"type\":\"tuple[]\"}],\"name\":\"mintVehicle\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfo\",\"type\":\"tuple[]\"},{\"internalType\":\"bytes\",\"name\":\"signature\",\"type\":\"bytes\"}],\"name\":\"mintVehicleSign\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"storageNodeId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfo\",\"type\":\"tuple[]\"},{\"internalType\":\"bytes\",\"name\":\"signature\",\"type\":\"bytes\"}],\"name\":\"mintVehicleSign\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"setVehicleIdProxyAddress\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfo\",\"type\":\"tuple[]\"}],\"name\":\"setVehicleInfo\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"validateBurnAndResetNode\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"idProxyAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"}],\"name\":\"getInfo\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"idProxyAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"}],\"name\":\"getParentNode\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"parentNode\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"idProxyAddress\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"nodeId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"beneficiary\",\"type\":\"address\"}],\"name\":\"BeneficiarySet\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"idProxyAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"nodeId\",\"type\":\"uint256\"}],\"name\":\"getBeneficiary\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"beneficiary\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"idProxyAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"sourceNode\",\"type\":\"uint256\"}],\"name\":\"getLink\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"targetNode\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"idProxyAddressSource\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"idProxyAddressTarget\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"sourceNode\",\"type\":\"uint256\"}],\"name\":\"getNodeLink\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"targetNode\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"nodeId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"beneficiary\",\"type\":\"address\"}],\"name\":\"setAftermarketDeviceBeneficiary\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"storageNodeId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairsVehicle\",\"type\":\"tuple[]\"},{\"internalType\":\"uint256\",\"name\":\"connectionId\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"vehicleOwnerSig\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"syntheticDeviceSig\",\"type\":\"bytes\"},{\"internalType\":\"address\",\"name\":\"syntheticDeviceAddr\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairsDevice\",\"type\":\"tuple[]\"}],\"internalType\":\"structMintVehicleAndSdInputWithSnId\",\"name\":\"data\",\"type\":\"tuple\"}],\"name\":\"mintVehicleAndSdSign\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairsVehicle\",\"type\":\"tuple[]\"},{\"internalType\":\"uint256\",\"name\":\"connectionId\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"vehicleOwnerSig\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"syntheticDeviceSig\",\"type\":\"bytes\"},{\"internalType\":\"address\",\"name\":\"syntheticDeviceAddr\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairsDevice\",\"type\":\"tuple[]\"}],\"internalType\":\"structMintVehicleAndSdInput\",\"name\":\"data\",\"type\":\"tuple\"}],\"name\":\"mintVehicleAndSdSign\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"storageNodeId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairsVehicle\",\"type\":\"tuple[]\"},{\"internalType\":\"uint256\",\"name\":\"connectionId\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"vehicleOwnerSig\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"syntheticDeviceSig\",\"type\":\"bytes\"},{\"internalType\":\"address\",\"name\":\"syntheticDeviceAddr\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairsDevice\",\"type\":\"tuple[]\"}],\"internalType\":\"structMintVehicleAndSdInputWithSnId\",\"name\":\"data\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"grantee\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"permissions\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"expiration\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"source\",\"type\":\"string\"}],\"internalType\":\"structSacdInput\",\"name\":\"sacdInput\",\"type\":\"tuple\"}],\"name\":\"mintVehicleAndSdSignAndSacd\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairsVehicle\",\"type\":\"tuple[]\"},{\"internalType\":\"uint256\",\"name\":\"connectionId\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"vehicleOwnerSig\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"syntheticDeviceSig\",\"type\":\"bytes\"},{\"internalType\":\"address\",\"name\":\"syntheticDeviceAddr\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairsDevice\",\"type\":\"tuple[]\"}],\"internalType\":\"structMintVehicleAndSdInput\",\"name\":\"data\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"grantee\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"permissions\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"expiration\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"source\",\"type\":\"string\"}],\"internalType\":\"structSacdInput\",\"name\":\"sacdInput\",\"type\":\"tuple\"}],\"name\":\"mintVehicleAndSdSignAndSacd\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"storageNodeId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairsVehicle\",\"type\":\"tuple[]\"},{\"internalType\":\"uint256\",\"name\":\"connectionId\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"vehicleOwnerSig\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"syntheticDeviceSig\",\"type\":\"bytes\"},{\"internalType\":\"address\",\"name\":\"syntheticDeviceAddr\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairsDevice\",\"type\":\"tuple[]\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"grantee\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"permissions\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"expiration\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"source\",\"type\":\"string\"}],\"internalType\":\"structSacdInput\",\"name\":\"sacdInput\",\"type\":\"tuple\"}],\"internalType\":\"structMintVehicleAndSdInputWithSnIdBatch[]\",\"name\":\"data\",\"type\":\"tuple[]\"}],\"name\":\"mintVehicleAndSdSignBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerNode\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairsVehicle\",\"type\":\"tuple[]\"},{\"internalType\":\"uint256\",\"name\":\"connectionId\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"vehicleOwnerSig\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"syntheticDeviceSig\",\"type\":\"bytes\"},{\"internalType\":\"address\",\"name\":\"syntheticDeviceAddr\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"attribute\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"info\",\"type\":\"string\"}],\"internalType\":\"structAttributeInfoPair[]\",\"name\":\"attrInfoPairsDevice\",\"type\":\"tuple[]\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"grantee\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"permissions\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"expiration\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"source\",\"type\":\"string\"}],\"internalType\":\"structSacdInput\",\"name\":\"sacdInput\",\"type\":\"tuple\"}],\"internalType\":\"structMintVehicleAndSdInputBatch[]\",\"name\":\"data\",\"type\":\"tuple[]\"}],\"name\":\"mintVehicleAndSdSignBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"connectionsManager\",\"type\":\"address\"}],\"name\":\"ConnectionsManagerSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"dimoCredit\",\"type\":\"address\"}],\"name\":\"DimoCreditSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"dimoToken\",\"type\":\"address\"}],\"name\":\"DimoTokenSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"foundation\",\"type\":\"address\"}],\"name\":\"FoundationSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"manufacturerLicense\",\"type\":\"address\"}],\"name\":\"ManufacturerLicenseSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sacd\",\"type\":\"address\"}],\"name\":\"SacdSet\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"getConnectionsManager\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"connectionsManager\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getDimoCredit\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"dimoCredit\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getDimoToken\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"dimoToken\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getFoundation\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"foundation\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getManufacturerLicense\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"manufacturerLicense\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getSacd\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"sacd\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"connectionsManager\",\"type\":\"address\"}],\"name\":\"setConnectionsManager\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"dimoCredit\",\"type\":\"address\"}],\"name\":\"setDimoCredit\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"dimoToken\",\"type\":\"address\"}],\"name\":\"setDimoToken\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"foundation\",\"type\":\"address\"}],\"name\":\"setFoundation\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"manufacturerLicense\",\"type\":\"address\"}],\"name\":\"setManufacturerLicense\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sacd\",\"type\":\"address\"}],\"name\":\"setSacd\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"dimoStreamrEns\",\"type\":\"string\"}],\"name\":\"DimoStreamrEnsSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"dimoStreamrNode\",\"type\":\"address\"}],\"name\":\"DimoStreamrNodeSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"streamRegistry\",\"type\":\"address\"}],\"name\":\"StreamRegistrySet\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"dimoStreamrEns\",\"type\":\"string\"}],\"name\":\"setDimoBaseStreamId\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"dimoStreamrNode\",\"type\":\"address\"}],\"name\":\"setDimoStreamrNode\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"streamRegistry\",\"type\":\"address\"}],\"name\":\"setStreamRegistry\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"enumIStreamRegistry.PermissionType\",\"name\":\"permissionType\",\"type\":\"uint8\"}],\"name\":\"NoStreamrPermission\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"streamId\",\"type\":\"string\"}],\"name\":\"StreamDoesNotExist\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"streamId\",\"type\":\"string\"}],\"name\":\"VehicleStreamAlreadySet\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"}],\"name\":\"VehicleStreamNotSet\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"streamId\",\"type\":\"string\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"subscriber\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"expirationTime\",\"type\":\"uint256\"}],\"name\":\"SubscribedToVehicleStream\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"streamId\",\"type\":\"string\"}],\"name\":\"VehicleStreamSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"streamId\",\"type\":\"string\"}],\"name\":\"VehicleStreamUnset\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"}],\"name\":\"createVehicleStream\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"}],\"name\":\"getVehicleStream\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"streamId\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"}],\"name\":\"onBurnVehicleStream\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"subscriber\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"expirationTime\",\"type\":\"uint256\"}],\"name\":\"onSetSubscribePrivilege\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"}],\"name\":\"onTransferVehicleStream\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"subscriber\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"expirationTime\",\"type\":\"uint256\"}],\"name\":\"setSubscriptionToVehicleStream\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"streamId\",\"type\":\"string\"}],\"name\":\"setVehicleStream\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"expirationTime\",\"type\":\"uint256\"}],\"name\":\"subscribeToVehicleStream\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"}],\"name\":\"unsetVehicleStream\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"chainid\",\"type\":\"uint256\"}],\"name\":\"ChainNotSupported\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"InvalidManufacturerId\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"}],\"name\":\"TableAlreadyExists\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tableId\",\"type\":\"uint256\"}],\"name\":\"TableDoesNotExist\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"}],\"name\":\"Unauthorized\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tableId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"}],\"name\":\"DeviceDefinitionDeleted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tableId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"model\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"year\",\"type\":\"uint256\"}],\"name\":\"DeviceDefinitionInserted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"tableOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tableId\",\"type\":\"uint256\"}],\"name\":\"DeviceDefinitionTableCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tableId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"}],\"name\":\"DeviceDefinitionUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"tableId\",\"type\":\"uint256\"}],\"name\":\"ManufacturerTableSet\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tableOwner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"}],\"name\":\"createDeviceDefinitionTable\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"tableOwner\",\"type\":\"address\"},{\"internalType\":\"uint256[]\",\"name\":\"manufacturerIds\",\"type\":\"uint256[]\"}],\"name\":\"createDeviceDefinitionTableBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"}],\"name\":\"deleteDeviceDefinition\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"}],\"name\":\"getDeviceDefinitionTableId\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"tableId\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"}],\"name\":\"getDeviceDefinitionTableName\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"tableName\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"model\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"year\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"metadata\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"ksuid\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"deviceType\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"imageURI\",\"type\":\"string\"}],\"internalType\":\"structDeviceDefinitionInput\",\"name\":\"data\",\"type\":\"tuple\"}],\"name\":\"insertDeviceDefinition\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"model\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"year\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"metadata\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"ksuid\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"deviceType\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"imageURI\",\"type\":\"string\"}],\"internalType\":\"structDeviceDefinitionInput[]\",\"name\":\"data\",\"type\":\"tuple[]\"}],\"name\":\"insertDeviceDefinitionBatch\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"tableId\",\"type\":\"uint256\"}],\"name\":\"setDeviceDefinitionTable\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"manufacturerId\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"string\",\"name\":\"id\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"metadata\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"ksuid\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"deviceType\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"imageURI\",\"type\":\"string\"}],\"internalType\":\"structDeviceDefinitionUpdateInput\",\"name\":\"data\",\"type\":\"tuple\"}],\"name\":\"updateDeviceDefinition\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"getPolicy\",\"outputs\":[{\"components\":[{\"internalType\":\"bool\",\"name\":\"allowInsert\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"allowUpdate\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"allowDelete\",\"type\":\"bool\"},{\"internalType\":\"string\",\"name\":\"whereClause\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"withCheck\",\"type\":\"string\"},{\"internalType\":\"string[]\",\"name\":\"updatableColumns\",\"type\":\"string[]\"}],\"internalType\":\"structTablelandPolicy\",\"name\":\"policy\",\"type\":\"tuple\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"operation\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"cost\",\"type\":\"uint256\"}],\"name\":\"OperationCostSet\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"operation\",\"type\":\"bytes32\"}],\"name\":\"getDcxOperationCost\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"cost\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"operation\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"cost\",\"type\":\"uint256\"}],\"name\":\"setDcxOperationCost\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"storageNode\",\"type\":\"address\"}],\"name\":\"StorageNodeSet\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"getDefaultStorageNodeId\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"defaultStorageNodeId\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getStorageNode\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"storageNode\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"storageNodeId\",\"type\":\"uint256\"}],\"name\":\"setDefaultStorageNodeId\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"storageNode\",\"type\":\"address\"}],\"name\":\"setStorageNode\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"storageNodeId\",\"type\":\"uint256\"}],\"name\":\"setStorageNodeIdForVehicle\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"vehicleId\",\"type\":\"uint256\"}],\"name\":\"vehicleIdToStorageNodeId\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
 	ID:  "Registry",
 }
 
@@ -181,7 +194,8 @@ func (c *Registry) Instance(backend bind.ContractBackend, addr common.Address) *
 }
 
 // PackAddAftermarketDeviceAttribute is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x6111afa3.
+// the contract method with ID 0x6111afa3.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function addAftermarketDeviceAttribute(string attribute) returns()
 func (registry *Registry) PackAddAftermarketDeviceAttribute(attribute string) []byte {
@@ -192,20 +206,18 @@ func (registry *Registry) PackAddAftermarketDeviceAttribute(attribute string) []
 	return enc
 }
 
-// PackAddIntegrationAttribute is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x044d2498.
+// TryPackAddAftermarketDeviceAttribute is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x6111afa3.  This method will return an error
+// if any inputs are invalid/nil.
 //
-// Solidity: function addIntegrationAttribute(string attribute) returns()
-func (registry *Registry) PackAddIntegrationAttribute(attribute string) []byte {
-	enc, err := registry.abi.Pack("addIntegrationAttribute", attribute)
-	if err != nil {
-		panic(err)
-	}
-	return enc
+// Solidity: function addAftermarketDeviceAttribute(string attribute) returns()
+func (registry *Registry) TryPackAddAftermarketDeviceAttribute(attribute string) ([]byte, error) {
+	return registry.abi.Pack("addAftermarketDeviceAttribute", attribute)
 }
 
 // PackAddManufacturerAttribute is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x50300a3f.
+// the contract method with ID 0x50300a3f.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function addManufacturerAttribute(string attribute) returns()
 func (registry *Registry) PackAddManufacturerAttribute(attribute string) []byte {
@@ -216,8 +228,18 @@ func (registry *Registry) PackAddManufacturerAttribute(attribute string) []byte 
 	return enc
 }
 
+// TryPackAddManufacturerAttribute is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x50300a3f.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function addManufacturerAttribute(string attribute) returns()
+func (registry *Registry) TryPackAddManufacturerAttribute(attribute string) ([]byte, error) {
+	return registry.abi.Pack("addManufacturerAttribute", attribute)
+}
+
 // PackAddModule is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x0df5b997.
+// the contract method with ID 0x0df5b997.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function addModule(address implementation, bytes4[] selectors) returns()
 func (registry *Registry) PackAddModule(implementation common.Address, selectors [][4]byte) []byte {
@@ -228,8 +250,18 @@ func (registry *Registry) PackAddModule(implementation common.Address, selectors
 	return enc
 }
 
+// TryPackAddModule is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x0df5b997.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function addModule(address implementation, bytes4[] selectors) returns()
+func (registry *Registry) TryPackAddModule(implementation common.Address, selectors [][4]byte) ([]byte, error) {
+	return registry.abi.Pack("addModule", implementation, selectors)
+}
+
 // PackAddSyntheticDeviceAttribute is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xe1f371df.
+// the contract method with ID 0xe1f371df.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function addSyntheticDeviceAttribute(string attribute) returns()
 func (registry *Registry) PackAddSyntheticDeviceAttribute(attribute string) []byte {
@@ -240,8 +272,18 @@ func (registry *Registry) PackAddSyntheticDeviceAttribute(attribute string) []by
 	return enc
 }
 
+// TryPackAddSyntheticDeviceAttribute is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xe1f371df.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function addSyntheticDeviceAttribute(string attribute) returns()
+func (registry *Registry) TryPackAddSyntheticDeviceAttribute(attribute string) ([]byte, error) {
+	return registry.abi.Pack("addSyntheticDeviceAttribute", attribute)
+}
+
 // PackAddVehicleAttribute is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xf0d1a557.
+// the contract method with ID 0xf0d1a557.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function addVehicleAttribute(string attribute) returns()
 func (registry *Registry) PackAddVehicleAttribute(attribute string) []byte {
@@ -252,8 +294,18 @@ func (registry *Registry) PackAddVehicleAttribute(attribute string) []byte {
 	return enc
 }
 
+// TryPackAddVehicleAttribute is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xf0d1a557.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function addVehicleAttribute(string attribute) returns()
+func (registry *Registry) TryPackAddVehicleAttribute(attribute string) ([]byte, error) {
+	return registry.abi.Pack("addVehicleAttribute", attribute)
+}
+
 // PackAdminBurnAftermarketDevices is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xd7376bae.
+// the contract method with ID 0xd7376bae.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function adminBurnAftermarketDevices(uint256[] tokenIds) returns()
 func (registry *Registry) PackAdminBurnAftermarketDevices(tokenIds []*big.Int) []byte {
@@ -264,8 +316,18 @@ func (registry *Registry) PackAdminBurnAftermarketDevices(tokenIds []*big.Int) [
 	return enc
 }
 
+// TryPackAdminBurnAftermarketDevices is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xd7376bae.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function adminBurnAftermarketDevices(uint256[] tokenIds) returns()
+func (registry *Registry) TryPackAdminBurnAftermarketDevices(tokenIds []*big.Int) ([]byte, error) {
+	return registry.abi.Pack("adminBurnAftermarketDevices", tokenIds)
+}
+
 // PackAdminBurnAftermarketDevicesAndDeletePairings is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x63dec203.
+// the contract method with ID 0x63dec203.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function adminBurnAftermarketDevicesAndDeletePairings(uint256[] tokenIds) returns()
 func (registry *Registry) PackAdminBurnAftermarketDevicesAndDeletePairings(tokenIds []*big.Int) []byte {
@@ -276,8 +338,18 @@ func (registry *Registry) PackAdminBurnAftermarketDevicesAndDeletePairings(token
 	return enc
 }
 
+// TryPackAdminBurnAftermarketDevicesAndDeletePairings is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x63dec203.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function adminBurnAftermarketDevicesAndDeletePairings(uint256[] tokenIds) returns()
+func (registry *Registry) TryPackAdminBurnAftermarketDevicesAndDeletePairings(tokenIds []*big.Int) ([]byte, error) {
+	return registry.abi.Pack("adminBurnAftermarketDevicesAndDeletePairings", tokenIds)
+}
+
 // PackAdminBurnSyntheticDevicesAndDeletePairings is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x52878b61.
+// the contract method with ID 0x52878b61.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function adminBurnSyntheticDevicesAndDeletePairings(uint256[] tokenIds) returns()
 func (registry *Registry) PackAdminBurnSyntheticDevicesAndDeletePairings(tokenIds []*big.Int) []byte {
@@ -288,8 +360,18 @@ func (registry *Registry) PackAdminBurnSyntheticDevicesAndDeletePairings(tokenId
 	return enc
 }
 
+// TryPackAdminBurnSyntheticDevicesAndDeletePairings is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x52878b61.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function adminBurnSyntheticDevicesAndDeletePairings(uint256[] tokenIds) returns()
+func (registry *Registry) TryPackAdminBurnSyntheticDevicesAndDeletePairings(tokenIds []*big.Int) ([]byte, error) {
+	return registry.abi.Pack("adminBurnSyntheticDevicesAndDeletePairings", tokenIds)
+}
+
 // PackAdminBurnVehicles is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x282eb387.
+// the contract method with ID 0x282eb387.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function adminBurnVehicles(uint256[] tokenIds) returns()
 func (registry *Registry) PackAdminBurnVehicles(tokenIds []*big.Int) []byte {
@@ -300,8 +382,18 @@ func (registry *Registry) PackAdminBurnVehicles(tokenIds []*big.Int) []byte {
 	return enc
 }
 
+// TryPackAdminBurnVehicles is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x282eb387.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function adminBurnVehicles(uint256[] tokenIds) returns()
+func (registry *Registry) TryPackAdminBurnVehicles(tokenIds []*big.Int) ([]byte, error) {
+	return registry.abi.Pack("adminBurnVehicles", tokenIds)
+}
+
 // PackAdminBurnVehiclesAndDeletePairings is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x11d679c9.
+// the contract method with ID 0x11d679c9.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function adminBurnVehiclesAndDeletePairings(uint256[] tokenIds) returns()
 func (registry *Registry) PackAdminBurnVehiclesAndDeletePairings(tokenIds []*big.Int) []byte {
@@ -312,8 +404,18 @@ func (registry *Registry) PackAdminBurnVehiclesAndDeletePairings(tokenIds []*big
 	return enc
 }
 
+// TryPackAdminBurnVehiclesAndDeletePairings is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x11d679c9.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function adminBurnVehiclesAndDeletePairings(uint256[] tokenIds) returns()
+func (registry *Registry) TryPackAdminBurnVehiclesAndDeletePairings(tokenIds []*big.Int) ([]byte, error) {
+	return registry.abi.Pack("adminBurnVehiclesAndDeletePairings", tokenIds)
+}
+
 // PackAdminCacheDimoStreamrEns is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xb17b974b.
+// the contract method with ID 0xb17b974b.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function adminCacheDimoStreamrEns() returns()
 func (registry *Registry) PackAdminCacheDimoStreamrEns() []byte {
@@ -324,8 +426,18 @@ func (registry *Registry) PackAdminCacheDimoStreamrEns() []byte {
 	return enc
 }
 
+// TryPackAdminCacheDimoStreamrEns is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xb17b974b.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function adminCacheDimoStreamrEns() returns()
+func (registry *Registry) TryPackAdminCacheDimoStreamrEns() ([]byte, error) {
+	return registry.abi.Pack("adminCacheDimoStreamrEns")
+}
+
 // PackAdminChangeParentNode is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x56936962.
+// the contract method with ID 0x56936962.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function adminChangeParentNode(uint256 newParentNode, address idProxyAddress, uint256[] nodeIdList) returns()
 func (registry *Registry) PackAdminChangeParentNode(newParentNode *big.Int, idProxyAddress common.Address, nodeIdList []*big.Int) []byte {
@@ -336,8 +448,18 @@ func (registry *Registry) PackAdminChangeParentNode(newParentNode *big.Int, idPr
 	return enc
 }
 
+// TryPackAdminChangeParentNode is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x56936962.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function adminChangeParentNode(uint256 newParentNode, address idProxyAddress, uint256[] nodeIdList) returns()
+func (registry *Registry) TryPackAdminChangeParentNode(newParentNode *big.Int, idProxyAddress common.Address, nodeIdList []*big.Int) ([]byte, error) {
+	return registry.abi.Pack("adminChangeParentNode", newParentNode, idProxyAddress, nodeIdList)
+}
+
 // PackAdminPairAftermarketDevice is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x3febacab.
+// the contract method with ID 0x3febacab.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function adminPairAftermarketDevice(uint256 aftermarketDeviceNode, uint256 vehicleNode) returns()
 func (registry *Registry) PackAdminPairAftermarketDevice(aftermarketDeviceNode *big.Int, vehicleNode *big.Int) []byte {
@@ -348,8 +470,18 @@ func (registry *Registry) PackAdminPairAftermarketDevice(aftermarketDeviceNode *
 	return enc
 }
 
+// TryPackAdminPairAftermarketDevice is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x3febacab.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function adminPairAftermarketDevice(uint256 aftermarketDeviceNode, uint256 vehicleNode) returns()
+func (registry *Registry) TryPackAdminPairAftermarketDevice(aftermarketDeviceNode *big.Int, vehicleNode *big.Int) ([]byte, error) {
+	return registry.abi.Pack("adminPairAftermarketDevice", aftermarketDeviceNode, vehicleNode)
+}
+
 // PackAdminRemoveVehicleAttribute is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x5f741f4d.
+// the contract method with ID 0x5f741f4d.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function adminRemoveVehicleAttribute(string attribute) returns()
 func (registry *Registry) PackAdminRemoveVehicleAttribute(attribute string) []byte {
@@ -360,8 +492,40 @@ func (registry *Registry) PackAdminRemoveVehicleAttribute(attribute string) []by
 	return enc
 }
 
+// TryPackAdminRemoveVehicleAttribute is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x5f741f4d.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function adminRemoveVehicleAttribute(string attribute) returns()
+func (registry *Registry) TryPackAdminRemoveVehicleAttribute(attribute string) ([]byte, error) {
+	return registry.abi.Pack("adminRemoveVehicleAttribute", attribute)
+}
+
+// PackAdminSetStorageNodeIdForVehicleIds is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x3d9cf004.  This method will panic if any
+// invalid/nil inputs are passed.
+//
+// Solidity: function adminSetStorageNodeIdForVehicleIds(uint256[] vehicleIds, uint256 storageNodeId) returns()
+func (registry *Registry) PackAdminSetStorageNodeIdForVehicleIds(vehicleIds []*big.Int, storageNodeId *big.Int) []byte {
+	enc, err := registry.abi.Pack("adminSetStorageNodeIdForVehicleIds", vehicleIds, storageNodeId)
+	if err != nil {
+		panic(err)
+	}
+	return enc
+}
+
+// TryPackAdminSetStorageNodeIdForVehicleIds is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x3d9cf004.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function adminSetStorageNodeIdForVehicleIds(uint256[] vehicleIds, uint256 storageNodeId) returns()
+func (registry *Registry) TryPackAdminSetStorageNodeIdForVehicleIds(vehicleIds []*big.Int, storageNodeId *big.Int) ([]byte, error) {
+	return registry.abi.Pack("adminSetStorageNodeIdForVehicleIds", vehicleIds, storageNodeId)
+}
+
 // PackAdminSetVehicleDDs is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xdd60fd1a.
+// the contract method with ID 0xdd60fd1a.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function adminSetVehicleDDs((uint256,string)[] vehicleIdDdId) returns()
 func (registry *Registry) PackAdminSetVehicleDDs(vehicleIdDdId []DevAdminVehicleIdDeviceDefinitionId) []byte {
@@ -372,8 +536,18 @@ func (registry *Registry) PackAdminSetVehicleDDs(vehicleIdDdId []DevAdminVehicle
 	return enc
 }
 
+// TryPackAdminSetVehicleDDs is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xdd60fd1a.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function adminSetVehicleDDs((uint256,string)[] vehicleIdDdId) returns()
+func (registry *Registry) TryPackAdminSetVehicleDDs(vehicleIdDdId []DevAdminVehicleIdDeviceDefinitionId) ([]byte, error) {
+	return registry.abi.Pack("adminSetVehicleDDs", vehicleIdDdId)
+}
+
 // PackBurnSyntheticDeviceSign is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x7c7c9978.
+// the contract method with ID 0x7c7c9978.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function burnSyntheticDeviceSign(uint256 vehicleNode, uint256 syntheticDeviceNode, bytes ownerSig) returns()
 func (registry *Registry) PackBurnSyntheticDeviceSign(vehicleNode *big.Int, syntheticDeviceNode *big.Int, ownerSig []byte) []byte {
@@ -384,8 +558,18 @@ func (registry *Registry) PackBurnSyntheticDeviceSign(vehicleNode *big.Int, synt
 	return enc
 }
 
+// TryPackBurnSyntheticDeviceSign is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x7c7c9978.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function burnSyntheticDeviceSign(uint256 vehicleNode, uint256 syntheticDeviceNode, bytes ownerSig) returns()
+func (registry *Registry) TryPackBurnSyntheticDeviceSign(vehicleNode *big.Int, syntheticDeviceNode *big.Int, ownerSig []byte) ([]byte, error) {
+	return registry.abi.Pack("burnSyntheticDeviceSign", vehicleNode, syntheticDeviceNode, ownerSig)
+}
+
 // PackBurnVehicleSign is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xd0b61156.
+// the contract method with ID 0xd0b61156.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function burnVehicleSign(uint256 tokenId, bytes ownerSig) returns()
 func (registry *Registry) PackBurnVehicleSign(tokenId *big.Int, ownerSig []byte) []byte {
@@ -396,8 +580,18 @@ func (registry *Registry) PackBurnVehicleSign(tokenId *big.Int, ownerSig []byte)
 	return enc
 }
 
+// TryPackBurnVehicleSign is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xd0b61156.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function burnVehicleSign(uint256 tokenId, bytes ownerSig) returns()
+func (registry *Registry) TryPackBurnVehicleSign(tokenId *big.Int, ownerSig []byte) ([]byte, error) {
+	return registry.abi.Pack("burnVehicleSign", tokenId, ownerSig)
+}
+
 // PackClaimAftermarketDevice is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x08d2c2f5.
+// the contract method with ID 0x08d2c2f5.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function claimAftermarketDevice(uint256 aftermarketDeviceNode, bytes aftermarketDeviceSig) returns()
 func (registry *Registry) PackClaimAftermarketDevice(aftermarketDeviceNode *big.Int, aftermarketDeviceSig []byte) []byte {
@@ -408,8 +602,18 @@ func (registry *Registry) PackClaimAftermarketDevice(aftermarketDeviceNode *big.
 	return enc
 }
 
+// TryPackClaimAftermarketDevice is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x08d2c2f5.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function claimAftermarketDevice(uint256 aftermarketDeviceNode, bytes aftermarketDeviceSig) returns()
+func (registry *Registry) TryPackClaimAftermarketDevice(aftermarketDeviceNode *big.Int, aftermarketDeviceSig []byte) ([]byte, error) {
+	return registry.abi.Pack("claimAftermarketDevice", aftermarketDeviceNode, aftermarketDeviceSig)
+}
+
 // PackClaimAftermarketDeviceBatch is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xab2ae229.
+// the contract method with ID 0xab2ae229.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function claimAftermarketDeviceBatch((uint256,address)[] adOwnerPair) returns()
 func (registry *Registry) PackClaimAftermarketDeviceBatch(adOwnerPair []AftermarketDeviceOwnerPair) []byte {
@@ -420,8 +624,18 @@ func (registry *Registry) PackClaimAftermarketDeviceBatch(adOwnerPair []Aftermar
 	return enc
 }
 
+// TryPackClaimAftermarketDeviceBatch is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xab2ae229.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function claimAftermarketDeviceBatch((uint256,address)[] adOwnerPair) returns()
+func (registry *Registry) TryPackClaimAftermarketDeviceBatch(adOwnerPair []AftermarketDeviceOwnerPair) ([]byte, error) {
+	return registry.abi.Pack("claimAftermarketDeviceBatch", adOwnerPair)
+}
+
 // PackClaimAftermarketDeviceSign is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x89a841bb.
+// the contract method with ID 0x89a841bb.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function claimAftermarketDeviceSign(uint256 aftermarketDeviceNode, address owner, bytes ownerSig, bytes aftermarketDeviceSig) returns()
 func (registry *Registry) PackClaimAftermarketDeviceSign(aftermarketDeviceNode *big.Int, owner common.Address, ownerSig []byte, aftermarketDeviceSig []byte) []byte {
@@ -432,8 +646,18 @@ func (registry *Registry) PackClaimAftermarketDeviceSign(aftermarketDeviceNode *
 	return enc
 }
 
+// TryPackClaimAftermarketDeviceSign is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x89a841bb.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function claimAftermarketDeviceSign(uint256 aftermarketDeviceNode, address owner, bytes ownerSig, bytes aftermarketDeviceSig) returns()
+func (registry *Registry) TryPackClaimAftermarketDeviceSign(aftermarketDeviceNode *big.Int, owner common.Address, ownerSig []byte, aftermarketDeviceSig []byte) ([]byte, error) {
+	return registry.abi.Pack("claimAftermarketDeviceSign", aftermarketDeviceNode, owner, ownerSig, aftermarketDeviceSig)
+}
+
 // PackCreateDeviceDefinitionTable is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x20954d21.
+// the contract method with ID 0x20954d21.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function createDeviceDefinitionTable(address tableOwner, uint256 manufacturerId) returns()
 func (registry *Registry) PackCreateDeviceDefinitionTable(tableOwner common.Address, manufacturerId *big.Int) []byte {
@@ -444,8 +668,18 @@ func (registry *Registry) PackCreateDeviceDefinitionTable(tableOwner common.Addr
 	return enc
 }
 
+// TryPackCreateDeviceDefinitionTable is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x20954d21.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function createDeviceDefinitionTable(address tableOwner, uint256 manufacturerId) returns()
+func (registry *Registry) TryPackCreateDeviceDefinitionTable(tableOwner common.Address, manufacturerId *big.Int) ([]byte, error) {
+	return registry.abi.Pack("createDeviceDefinitionTable", tableOwner, manufacturerId)
+}
+
 // PackCreateDeviceDefinitionTableBatch is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x794c6790.
+// the contract method with ID 0x794c6790.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function createDeviceDefinitionTableBatch(address tableOwner, uint256[] manufacturerIds) returns()
 func (registry *Registry) PackCreateDeviceDefinitionTableBatch(tableOwner common.Address, manufacturerIds []*big.Int) []byte {
@@ -456,8 +690,18 @@ func (registry *Registry) PackCreateDeviceDefinitionTableBatch(tableOwner common
 	return enc
 }
 
+// TryPackCreateDeviceDefinitionTableBatch is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x794c6790.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function createDeviceDefinitionTableBatch(address tableOwner, uint256[] manufacturerIds) returns()
+func (registry *Registry) TryPackCreateDeviceDefinitionTableBatch(tableOwner common.Address, manufacturerIds []*big.Int) ([]byte, error) {
+	return registry.abi.Pack("createDeviceDefinitionTableBatch", tableOwner, manufacturerIds)
+}
+
 // PackCreateVehicleStream is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x497323c8.
+// the contract method with ID 0x497323c8.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function createVehicleStream(uint256 vehicleId) returns()
 func (registry *Registry) PackCreateVehicleStream(vehicleId *big.Int) []byte {
@@ -468,8 +712,18 @@ func (registry *Registry) PackCreateVehicleStream(vehicleId *big.Int) []byte {
 	return enc
 }
 
+// TryPackCreateVehicleStream is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x497323c8.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function createVehicleStream(uint256 vehicleId) returns()
+func (registry *Registry) TryPackCreateVehicleStream(vehicleId *big.Int) ([]byte, error) {
+	return registry.abi.Pack("createVehicleStream", vehicleId)
+}
+
 // PackDeleteDeviceDefinition is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x32b3f2d5.
+// the contract method with ID 0x32b3f2d5.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function deleteDeviceDefinition(uint256 manufacturerId, string id) returns()
 func (registry *Registry) PackDeleteDeviceDefinition(manufacturerId *big.Int, id string) []byte {
@@ -480,8 +734,18 @@ func (registry *Registry) PackDeleteDeviceDefinition(manufacturerId *big.Int, id
 	return enc
 }
 
+// TryPackDeleteDeviceDefinition is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x32b3f2d5.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function deleteDeviceDefinition(uint256 manufacturerId, string id) returns()
+func (registry *Registry) TryPackDeleteDeviceDefinition(manufacturerId *big.Int, id string) ([]byte, error) {
+	return registry.abi.Pack("deleteDeviceDefinition", manufacturerId, id)
+}
+
 // PackGetAftermarketDeviceAddressById is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x682a25e3.
+// the contract method with ID 0x682a25e3.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function getAftermarketDeviceAddressById(uint256 nodeId) view returns(address addr)
 func (registry *Registry) PackGetAftermarketDeviceAddressById(nodeId *big.Int) []byte {
@@ -490,6 +754,15 @@ func (registry *Registry) PackGetAftermarketDeviceAddressById(nodeId *big.Int) [
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackGetAftermarketDeviceAddressById is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x682a25e3.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getAftermarketDeviceAddressById(uint256 nodeId) view returns(address addr)
+func (registry *Registry) TryPackGetAftermarketDeviceAddressById(nodeId *big.Int) ([]byte, error) {
+	return registry.abi.Pack("getAftermarketDeviceAddressById", nodeId)
 }
 
 // UnpackGetAftermarketDeviceAddressById is the Go binding that unpacks the parameters returned
@@ -502,11 +775,12 @@ func (registry *Registry) UnpackGetAftermarketDeviceAddressById(data []byte) (co
 		return *new(common.Address), err
 	}
 	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-	return out0, err
+	return out0, nil
 }
 
 // PackGetAftermarketDeviceIdByAddress is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x9796cf22.
+// the contract method with ID 0x9796cf22.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function getAftermarketDeviceIdByAddress(address addr) view returns(uint256 nodeId)
 func (registry *Registry) PackGetAftermarketDeviceIdByAddress(addr common.Address) []byte {
@@ -515,6 +789,15 @@ func (registry *Registry) PackGetAftermarketDeviceIdByAddress(addr common.Addres
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackGetAftermarketDeviceIdByAddress is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x9796cf22.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getAftermarketDeviceIdByAddress(address addr) view returns(uint256 nodeId)
+func (registry *Registry) TryPackGetAftermarketDeviceIdByAddress(addr common.Address) ([]byte, error) {
+	return registry.abi.Pack("getAftermarketDeviceIdByAddress", addr)
 }
 
 // UnpackGetAftermarketDeviceIdByAddress is the Go binding that unpacks the parameters returned
@@ -527,11 +810,12 @@ func (registry *Registry) UnpackGetAftermarketDeviceIdByAddress(data []byte) (*b
 		return new(big.Int), err
 	}
 	out0 := abi.ConvertType(out[0], new(big.Int)).(*big.Int)
-	return out0, err
+	return out0, nil
 }
 
 // PackGetBeneficiary is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x0a6cef46.
+// the contract method with ID 0x0a6cef46.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function getBeneficiary(address idProxyAddress, uint256 nodeId) view returns(address beneficiary)
 func (registry *Registry) PackGetBeneficiary(idProxyAddress common.Address, nodeId *big.Int) []byte {
@@ -540,6 +824,15 @@ func (registry *Registry) PackGetBeneficiary(idProxyAddress common.Address, node
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackGetBeneficiary is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x0a6cef46.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getBeneficiary(address idProxyAddress, uint256 nodeId) view returns(address beneficiary)
+func (registry *Registry) TryPackGetBeneficiary(idProxyAddress common.Address, nodeId *big.Int) ([]byte, error) {
+	return registry.abi.Pack("getBeneficiary", idProxyAddress, nodeId)
 }
 
 // UnpackGetBeneficiary is the Go binding that unpacks the parameters returned
@@ -552,36 +845,47 @@ func (registry *Registry) UnpackGetBeneficiary(data []byte) (common.Address, err
 		return *new(common.Address), err
 	}
 	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-	return out0, err
+	return out0, nil
 }
 
-// PackGetDataURI is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xbc60a6ba.
+// PackGetConnectionsManager is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xb0c1d1df.  This method will panic if any
+// invalid/nil inputs are passed.
 //
-// Solidity: function getDataURI(address idProxyAddress, uint256 tokenId) view returns(string data)
-func (registry *Registry) PackGetDataURI(idProxyAddress common.Address, tokenId *big.Int) []byte {
-	enc, err := registry.abi.Pack("getDataURI", idProxyAddress, tokenId)
+// Solidity: function getConnectionsManager() view returns(address connectionsManager)
+func (registry *Registry) PackGetConnectionsManager() []byte {
+	enc, err := registry.abi.Pack("getConnectionsManager")
 	if err != nil {
 		panic(err)
 	}
 	return enc
 }
 
-// UnpackGetDataURI is the Go binding that unpacks the parameters returned
-// from invoking the contract method with ID 0xbc60a6ba.
+// TryPackGetConnectionsManager is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xb0c1d1df.  This method will return an error
+// if any inputs are invalid/nil.
 //
-// Solidity: function getDataURI(address idProxyAddress, uint256 tokenId) view returns(string data)
-func (registry *Registry) UnpackGetDataURI(data []byte) (string, error) {
-	out, err := registry.abi.Unpack("getDataURI", data)
+// Solidity: function getConnectionsManager() view returns(address connectionsManager)
+func (registry *Registry) TryPackGetConnectionsManager() ([]byte, error) {
+	return registry.abi.Pack("getConnectionsManager")
+}
+
+// UnpackGetConnectionsManager is the Go binding that unpacks the parameters returned
+// from invoking the contract method with ID 0xb0c1d1df.
+//
+// Solidity: function getConnectionsManager() view returns(address connectionsManager)
+func (registry *Registry) UnpackGetConnectionsManager(data []byte) (common.Address, error) {
+	out, err := registry.abi.Unpack("getConnectionsManager", data)
 	if err != nil {
-		return *new(string), err
+		return *new(common.Address), err
 	}
-	out0 := *abi.ConvertType(out[0], new(string)).(*string)
-	return out0, err
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+	return out0, nil
 }
 
 // PackGetDcxOperationCost is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xd25f5787.
+// the contract method with ID 0xd25f5787.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function getDcxOperationCost(bytes32 operation) view returns(uint256 cost)
 func (registry *Registry) PackGetDcxOperationCost(operation [32]byte) []byte {
@@ -590,6 +894,15 @@ func (registry *Registry) PackGetDcxOperationCost(operation [32]byte) []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackGetDcxOperationCost is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xd25f5787.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getDcxOperationCost(bytes32 operation) view returns(uint256 cost)
+func (registry *Registry) TryPackGetDcxOperationCost(operation [32]byte) ([]byte, error) {
+	return registry.abi.Pack("getDcxOperationCost", operation)
 }
 
 // UnpackGetDcxOperationCost is the Go binding that unpacks the parameters returned
@@ -602,11 +915,47 @@ func (registry *Registry) UnpackGetDcxOperationCost(data []byte) (*big.Int, erro
 		return new(big.Int), err
 	}
 	out0 := abi.ConvertType(out[0], new(big.Int)).(*big.Int)
-	return out0, err
+	return out0, nil
+}
+
+// PackGetDefaultStorageNodeId is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xe75745e9.  This method will panic if any
+// invalid/nil inputs are passed.
+//
+// Solidity: function getDefaultStorageNodeId() view returns(uint256 defaultStorageNodeId)
+func (registry *Registry) PackGetDefaultStorageNodeId() []byte {
+	enc, err := registry.abi.Pack("getDefaultStorageNodeId")
+	if err != nil {
+		panic(err)
+	}
+	return enc
+}
+
+// TryPackGetDefaultStorageNodeId is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xe75745e9.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getDefaultStorageNodeId() view returns(uint256 defaultStorageNodeId)
+func (registry *Registry) TryPackGetDefaultStorageNodeId() ([]byte, error) {
+	return registry.abi.Pack("getDefaultStorageNodeId")
+}
+
+// UnpackGetDefaultStorageNodeId is the Go binding that unpacks the parameters returned
+// from invoking the contract method with ID 0xe75745e9.
+//
+// Solidity: function getDefaultStorageNodeId() view returns(uint256 defaultStorageNodeId)
+func (registry *Registry) UnpackGetDefaultStorageNodeId(data []byte) (*big.Int, error) {
+	out, err := registry.abi.Unpack("getDefaultStorageNodeId", data)
+	if err != nil {
+		return new(big.Int), err
+	}
+	out0 := abi.ConvertType(out[0], new(big.Int)).(*big.Int)
+	return out0, nil
 }
 
 // PackGetDeviceDefinitionIdByVehicleId is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xb7bded95.
+// the contract method with ID 0xb7bded95.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function getDeviceDefinitionIdByVehicleId(uint256 vehicleId) view returns(string ddId)
 func (registry *Registry) PackGetDeviceDefinitionIdByVehicleId(vehicleId *big.Int) []byte {
@@ -615,6 +964,15 @@ func (registry *Registry) PackGetDeviceDefinitionIdByVehicleId(vehicleId *big.In
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackGetDeviceDefinitionIdByVehicleId is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xb7bded95.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getDeviceDefinitionIdByVehicleId(uint256 vehicleId) view returns(string ddId)
+func (registry *Registry) TryPackGetDeviceDefinitionIdByVehicleId(vehicleId *big.Int) ([]byte, error) {
+	return registry.abi.Pack("getDeviceDefinitionIdByVehicleId", vehicleId)
 }
 
 // UnpackGetDeviceDefinitionIdByVehicleId is the Go binding that unpacks the parameters returned
@@ -627,11 +985,12 @@ func (registry *Registry) UnpackGetDeviceDefinitionIdByVehicleId(data []byte) (s
 		return *new(string), err
 	}
 	out0 := *abi.ConvertType(out[0], new(string)).(*string)
-	return out0, err
+	return out0, nil
 }
 
 // PackGetDeviceDefinitionTableId is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x396e5987.
+// the contract method with ID 0x396e5987.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function getDeviceDefinitionTableId(uint256 manufacturerId) view returns(uint256 tableId)
 func (registry *Registry) PackGetDeviceDefinitionTableId(manufacturerId *big.Int) []byte {
@@ -640,6 +999,15 @@ func (registry *Registry) PackGetDeviceDefinitionTableId(manufacturerId *big.Int
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackGetDeviceDefinitionTableId is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x396e5987.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getDeviceDefinitionTableId(uint256 manufacturerId) view returns(uint256 tableId)
+func (registry *Registry) TryPackGetDeviceDefinitionTableId(manufacturerId *big.Int) ([]byte, error) {
+	return registry.abi.Pack("getDeviceDefinitionTableId", manufacturerId)
 }
 
 // UnpackGetDeviceDefinitionTableId is the Go binding that unpacks the parameters returned
@@ -652,11 +1020,12 @@ func (registry *Registry) UnpackGetDeviceDefinitionTableId(data []byte) (*big.In
 		return new(big.Int), err
 	}
 	out0 := abi.ConvertType(out[0], new(big.Int)).(*big.Int)
-	return out0, err
+	return out0, nil
 }
 
 // PackGetDeviceDefinitionTableName is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xa1d17941.
+// the contract method with ID 0xa1d17941.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function getDeviceDefinitionTableName(uint256 manufacturerId) view returns(string tableName)
 func (registry *Registry) PackGetDeviceDefinitionTableName(manufacturerId *big.Int) []byte {
@@ -665,6 +1034,15 @@ func (registry *Registry) PackGetDeviceDefinitionTableName(manufacturerId *big.I
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackGetDeviceDefinitionTableName is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xa1d17941.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getDeviceDefinitionTableName(uint256 manufacturerId) view returns(string tableName)
+func (registry *Registry) TryPackGetDeviceDefinitionTableName(manufacturerId *big.Int) ([]byte, error) {
+	return registry.abi.Pack("getDeviceDefinitionTableName", manufacturerId)
 }
 
 // UnpackGetDeviceDefinitionTableName is the Go binding that unpacks the parameters returned
@@ -677,11 +1055,12 @@ func (registry *Registry) UnpackGetDeviceDefinitionTableName(data []byte) (strin
 		return *new(string), err
 	}
 	out0 := *abi.ConvertType(out[0], new(string)).(*string)
-	return out0, err
+	return out0, nil
 }
 
 // PackGetDimoCredit is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xcfe55b7d.
+// the contract method with ID 0xcfe55b7d.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function getDimoCredit() view returns(address dimoCredit)
 func (registry *Registry) PackGetDimoCredit() []byte {
@@ -690,6 +1069,15 @@ func (registry *Registry) PackGetDimoCredit() []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackGetDimoCredit is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xcfe55b7d.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getDimoCredit() view returns(address dimoCredit)
+func (registry *Registry) TryPackGetDimoCredit() ([]byte, error) {
+	return registry.abi.Pack("getDimoCredit")
 }
 
 // UnpackGetDimoCredit is the Go binding that unpacks the parameters returned
@@ -702,11 +1090,12 @@ func (registry *Registry) UnpackGetDimoCredit(data []byte) (common.Address, erro
 		return *new(common.Address), err
 	}
 	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-	return out0, err
+	return out0, nil
 }
 
 // PackGetDimoToken is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x77898251.
+// the contract method with ID 0x77898251.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function getDimoToken() view returns(address dimoToken)
 func (registry *Registry) PackGetDimoToken() []byte {
@@ -715,6 +1104,15 @@ func (registry *Registry) PackGetDimoToken() []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackGetDimoToken is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x77898251.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getDimoToken() view returns(address dimoToken)
+func (registry *Registry) TryPackGetDimoToken() ([]byte, error) {
+	return registry.abi.Pack("getDimoToken")
 }
 
 // UnpackGetDimoToken is the Go binding that unpacks the parameters returned
@@ -727,11 +1125,12 @@ func (registry *Registry) UnpackGetDimoToken(data []byte) (common.Address, error
 		return *new(common.Address), err
 	}
 	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-	return out0, err
+	return out0, nil
 }
 
 // PackGetFoundation is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xa2bc6cdf.
+// the contract method with ID 0xa2bc6cdf.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function getFoundation() view returns(address foundation)
 func (registry *Registry) PackGetFoundation() []byte {
@@ -740,6 +1139,15 @@ func (registry *Registry) PackGetFoundation() []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackGetFoundation is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xa2bc6cdf.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getFoundation() view returns(address foundation)
+func (registry *Registry) TryPackGetFoundation() ([]byte, error) {
+	return registry.abi.Pack("getFoundation")
 }
 
 // UnpackGetFoundation is the Go binding that unpacks the parameters returned
@@ -752,11 +1160,12 @@ func (registry *Registry) UnpackGetFoundation(data []byte) (common.Address, erro
 		return *new(common.Address), err
 	}
 	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-	return out0, err
+	return out0, nil
 }
 
 // PackGetInfo is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xdce2f860.
+// the contract method with ID 0xdce2f860.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function getInfo(address idProxyAddress, uint256 tokenId, string attribute) view returns(string info)
 func (registry *Registry) PackGetInfo(idProxyAddress common.Address, tokenId *big.Int, attribute string) []byte {
@@ -765,6 +1174,15 @@ func (registry *Registry) PackGetInfo(idProxyAddress common.Address, tokenId *bi
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackGetInfo is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xdce2f860.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getInfo(address idProxyAddress, uint256 tokenId, string attribute) view returns(string info)
+func (registry *Registry) TryPackGetInfo(idProxyAddress common.Address, tokenId *big.Int, attribute string) ([]byte, error) {
+	return registry.abi.Pack("getInfo", idProxyAddress, tokenId, attribute)
 }
 
 // UnpackGetInfo is the Go binding that unpacks the parameters returned
@@ -777,61 +1195,12 @@ func (registry *Registry) UnpackGetInfo(data []byte) (string, error) {
 		return *new(string), err
 	}
 	out0 := *abi.ConvertType(out[0], new(string)).(*string)
-	return out0, err
-}
-
-// PackGetIntegrationIdByName is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x714b7cfb.
-//
-// Solidity: function getIntegrationIdByName(string name) view returns(uint256 nodeId)
-func (registry *Registry) PackGetIntegrationIdByName(name string) []byte {
-	enc, err := registry.abi.Pack("getIntegrationIdByName", name)
-	if err != nil {
-		panic(err)
-	}
-	return enc
-}
-
-// UnpackGetIntegrationIdByName is the Go binding that unpacks the parameters returned
-// from invoking the contract method with ID 0x714b7cfb.
-//
-// Solidity: function getIntegrationIdByName(string name) view returns(uint256 nodeId)
-func (registry *Registry) UnpackGetIntegrationIdByName(data []byte) (*big.Int, error) {
-	out, err := registry.abi.Unpack("getIntegrationIdByName", data)
-	if err != nil {
-		return new(big.Int), err
-	}
-	out0 := abi.ConvertType(out[0], new(big.Int)).(*big.Int)
-	return out0, err
-}
-
-// PackGetIntegrationNameById is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x123141bd.
-//
-// Solidity: function getIntegrationNameById(uint256 tokenId) view returns(string name)
-func (registry *Registry) PackGetIntegrationNameById(tokenId *big.Int) []byte {
-	enc, err := registry.abi.Pack("getIntegrationNameById", tokenId)
-	if err != nil {
-		panic(err)
-	}
-	return enc
-}
-
-// UnpackGetIntegrationNameById is the Go binding that unpacks the parameters returned
-// from invoking the contract method with ID 0x123141bd.
-//
-// Solidity: function getIntegrationNameById(uint256 tokenId) view returns(string name)
-func (registry *Registry) UnpackGetIntegrationNameById(data []byte) (string, error) {
-	out, err := registry.abi.Unpack("getIntegrationNameById", data)
-	if err != nil {
-		return *new(string), err
-	}
-	out0 := *abi.ConvertType(out[0], new(string)).(*string)
-	return out0, err
+	return out0, nil
 }
 
 // PackGetLink is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x112e62a2.
+// the contract method with ID 0x112e62a2.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function getLink(address idProxyAddress, uint256 sourceNode) view returns(uint256 targetNode)
 func (registry *Registry) PackGetLink(idProxyAddress common.Address, sourceNode *big.Int) []byte {
@@ -840,6 +1209,15 @@ func (registry *Registry) PackGetLink(idProxyAddress common.Address, sourceNode 
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackGetLink is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x112e62a2.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getLink(address idProxyAddress, uint256 sourceNode) view returns(uint256 targetNode)
+func (registry *Registry) TryPackGetLink(idProxyAddress common.Address, sourceNode *big.Int) ([]byte, error) {
+	return registry.abi.Pack("getLink", idProxyAddress, sourceNode)
 }
 
 // UnpackGetLink is the Go binding that unpacks the parameters returned
@@ -852,11 +1230,12 @@ func (registry *Registry) UnpackGetLink(data []byte) (*big.Int, error) {
 		return new(big.Int), err
 	}
 	out0 := abi.ConvertType(out[0], new(big.Int)).(*big.Int)
-	return out0, err
+	return out0, nil
 }
 
 // PackGetManufacturerIdByName is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xce55aab0.
+// the contract method with ID 0xce55aab0.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function getManufacturerIdByName(string name) view returns(uint256 nodeId)
 func (registry *Registry) PackGetManufacturerIdByName(name string) []byte {
@@ -865,6 +1244,15 @@ func (registry *Registry) PackGetManufacturerIdByName(name string) []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackGetManufacturerIdByName is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xce55aab0.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getManufacturerIdByName(string name) view returns(uint256 nodeId)
+func (registry *Registry) TryPackGetManufacturerIdByName(name string) ([]byte, error) {
+	return registry.abi.Pack("getManufacturerIdByName", name)
 }
 
 // UnpackGetManufacturerIdByName is the Go binding that unpacks the parameters returned
@@ -877,11 +1265,12 @@ func (registry *Registry) UnpackGetManufacturerIdByName(data []byte) (*big.Int, 
 		return new(big.Int), err
 	}
 	out0 := abi.ConvertType(out[0], new(big.Int)).(*big.Int)
-	return out0, err
+	return out0, nil
 }
 
 // PackGetManufacturerLicense is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x170e4293.
+// the contract method with ID 0x170e4293.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function getManufacturerLicense() view returns(address manufacturerLicense)
 func (registry *Registry) PackGetManufacturerLicense() []byte {
@@ -890,6 +1279,15 @@ func (registry *Registry) PackGetManufacturerLicense() []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackGetManufacturerLicense is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x170e4293.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getManufacturerLicense() view returns(address manufacturerLicense)
+func (registry *Registry) TryPackGetManufacturerLicense() ([]byte, error) {
+	return registry.abi.Pack("getManufacturerLicense")
 }
 
 // UnpackGetManufacturerLicense is the Go binding that unpacks the parameters returned
@@ -902,11 +1300,12 @@ func (registry *Registry) UnpackGetManufacturerLicense(data []byte) (common.Addr
 		return *new(common.Address), err
 	}
 	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-	return out0, err
+	return out0, nil
 }
 
 // PackGetManufacturerNameById is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x9109b30b.
+// the contract method with ID 0x9109b30b.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function getManufacturerNameById(uint256 tokenId) view returns(string name)
 func (registry *Registry) PackGetManufacturerNameById(tokenId *big.Int) []byte {
@@ -915,6 +1314,15 @@ func (registry *Registry) PackGetManufacturerNameById(tokenId *big.Int) []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackGetManufacturerNameById is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x9109b30b.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getManufacturerNameById(uint256 tokenId) view returns(string name)
+func (registry *Registry) TryPackGetManufacturerNameById(tokenId *big.Int) ([]byte, error) {
+	return registry.abi.Pack("getManufacturerNameById", tokenId)
 }
 
 // UnpackGetManufacturerNameById is the Go binding that unpacks the parameters returned
@@ -927,11 +1335,12 @@ func (registry *Registry) UnpackGetManufacturerNameById(data []byte) (string, er
 		return *new(string), err
 	}
 	out0 := *abi.ConvertType(out[0], new(string)).(*string)
-	return out0, err
+	return out0, nil
 }
 
 // PackGetNodeLink is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xbd2b5568.
+// the contract method with ID 0xbd2b5568.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function getNodeLink(address idProxyAddressSource, address idProxyAddressTarget, uint256 sourceNode) view returns(uint256 targetNode)
 func (registry *Registry) PackGetNodeLink(idProxyAddressSource common.Address, idProxyAddressTarget common.Address, sourceNode *big.Int) []byte {
@@ -940,6 +1349,15 @@ func (registry *Registry) PackGetNodeLink(idProxyAddressSource common.Address, i
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackGetNodeLink is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xbd2b5568.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getNodeLink(address idProxyAddressSource, address idProxyAddressTarget, uint256 sourceNode) view returns(uint256 targetNode)
+func (registry *Registry) TryPackGetNodeLink(idProxyAddressSource common.Address, idProxyAddressTarget common.Address, sourceNode *big.Int) ([]byte, error) {
+	return registry.abi.Pack("getNodeLink", idProxyAddressSource, idProxyAddressTarget, sourceNode)
 }
 
 // UnpackGetNodeLink is the Go binding that unpacks the parameters returned
@@ -952,11 +1370,12 @@ func (registry *Registry) UnpackGetNodeLink(data []byte) (*big.Int, error) {
 		return new(big.Int), err
 	}
 	out0 := abi.ConvertType(out[0], new(big.Int)).(*big.Int)
-	return out0, err
+	return out0, nil
 }
 
 // PackGetParentNode is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x82087d24.
+// the contract method with ID 0x82087d24.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function getParentNode(address idProxyAddress, uint256 tokenId) view returns(uint256 parentNode)
 func (registry *Registry) PackGetParentNode(idProxyAddress common.Address, tokenId *big.Int) []byte {
@@ -965,6 +1384,15 @@ func (registry *Registry) PackGetParentNode(idProxyAddress common.Address, token
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackGetParentNode is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x82087d24.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getParentNode(address idProxyAddress, uint256 tokenId) view returns(uint256 parentNode)
+func (registry *Registry) TryPackGetParentNode(idProxyAddress common.Address, tokenId *big.Int) ([]byte, error) {
+	return registry.abi.Pack("getParentNode", idProxyAddress, tokenId)
 }
 
 // UnpackGetParentNode is the Go binding that unpacks the parameters returned
@@ -977,11 +1405,12 @@ func (registry *Registry) UnpackGetParentNode(data []byte) (*big.Int, error) {
 		return new(big.Int), err
 	}
 	out0 := abi.ConvertType(out[0], new(big.Int)).(*big.Int)
-	return out0, err
+	return out0, nil
 }
 
 // PackGetPolicy is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x66df322e.
+// the contract method with ID 0x66df322e.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function getPolicy(address caller, uint256 ) payable returns((bool,bool,bool,string,string,string[]) policy)
 func (registry *Registry) PackGetPolicy(caller common.Address, arg1 *big.Int) []byte {
@@ -990,6 +1419,15 @@ func (registry *Registry) PackGetPolicy(caller common.Address, arg1 *big.Int) []
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackGetPolicy is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x66df322e.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getPolicy(address caller, uint256 ) payable returns((bool,bool,bool,string,string,string[]) policy)
+func (registry *Registry) TryPackGetPolicy(caller common.Address, arg1 *big.Int) ([]byte, error) {
+	return registry.abi.Pack("getPolicy", caller, arg1)
 }
 
 // UnpackGetPolicy is the Go binding that unpacks the parameters returned
@@ -1002,11 +1440,12 @@ func (registry *Registry) UnpackGetPolicy(data []byte) (TablelandPolicy, error) 
 		return *new(TablelandPolicy), err
 	}
 	out0 := *abi.ConvertType(out[0], new(TablelandPolicy)).(*TablelandPolicy)
-	return out0, err
+	return out0, nil
 }
 
 // PackGetRoleAdmin is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x248a9ca3.
+// the contract method with ID 0x248a9ca3.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function getRoleAdmin(bytes32 role) view returns(bytes32)
 func (registry *Registry) PackGetRoleAdmin(role [32]byte) []byte {
@@ -1015,6 +1454,15 @@ func (registry *Registry) PackGetRoleAdmin(role [32]byte) []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackGetRoleAdmin is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x248a9ca3.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getRoleAdmin(bytes32 role) view returns(bytes32)
+func (registry *Registry) TryPackGetRoleAdmin(role [32]byte) ([]byte, error) {
+	return registry.abi.Pack("getRoleAdmin", role)
 }
 
 // UnpackGetRoleAdmin is the Go binding that unpacks the parameters returned
@@ -1027,11 +1475,82 @@ func (registry *Registry) UnpackGetRoleAdmin(data []byte) ([32]byte, error) {
 		return *new([32]byte), err
 	}
 	out0 := *abi.ConvertType(out[0], new([32]byte)).(*[32]byte)
-	return out0, err
+	return out0, nil
+}
+
+// PackGetSacd is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xc3d8478c.  This method will panic if any
+// invalid/nil inputs are passed.
+//
+// Solidity: function getSacd() view returns(address sacd)
+func (registry *Registry) PackGetSacd() []byte {
+	enc, err := registry.abi.Pack("getSacd")
+	if err != nil {
+		panic(err)
+	}
+	return enc
+}
+
+// TryPackGetSacd is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xc3d8478c.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getSacd() view returns(address sacd)
+func (registry *Registry) TryPackGetSacd() ([]byte, error) {
+	return registry.abi.Pack("getSacd")
+}
+
+// UnpackGetSacd is the Go binding that unpacks the parameters returned
+// from invoking the contract method with ID 0xc3d8478c.
+//
+// Solidity: function getSacd() view returns(address sacd)
+func (registry *Registry) UnpackGetSacd(data []byte) (common.Address, error) {
+	out, err := registry.abi.Unpack("getSacd", data)
+	if err != nil {
+		return *new(common.Address), err
+	}
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+	return out0, nil
+}
+
+// PackGetStorageNode is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x5cc867dc.  This method will panic if any
+// invalid/nil inputs are passed.
+//
+// Solidity: function getStorageNode() view returns(address storageNode)
+func (registry *Registry) PackGetStorageNode() []byte {
+	enc, err := registry.abi.Pack("getStorageNode")
+	if err != nil {
+		panic(err)
+	}
+	return enc
+}
+
+// TryPackGetStorageNode is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x5cc867dc.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getStorageNode() view returns(address storageNode)
+func (registry *Registry) TryPackGetStorageNode() ([]byte, error) {
+	return registry.abi.Pack("getStorageNode")
+}
+
+// UnpackGetStorageNode is the Go binding that unpacks the parameters returned
+// from invoking the contract method with ID 0x5cc867dc.
+//
+// Solidity: function getStorageNode() view returns(address storageNode)
+func (registry *Registry) UnpackGetStorageNode(data []byte) (common.Address, error) {
+	out, err := registry.abi.Unpack("getStorageNode", data)
+	if err != nil {
+		return *new(common.Address), err
+	}
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+	return out0, nil
 }
 
 // PackGetSyntheticDeviceAddressById is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x493b27e1.
+// the contract method with ID 0x493b27e1.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function getSyntheticDeviceAddressById(uint256 nodeId) view returns(address addr)
 func (registry *Registry) PackGetSyntheticDeviceAddressById(nodeId *big.Int) []byte {
@@ -1040,6 +1559,15 @@ func (registry *Registry) PackGetSyntheticDeviceAddressById(nodeId *big.Int) []b
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackGetSyntheticDeviceAddressById is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x493b27e1.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getSyntheticDeviceAddressById(uint256 nodeId) view returns(address addr)
+func (registry *Registry) TryPackGetSyntheticDeviceAddressById(nodeId *big.Int) ([]byte, error) {
+	return registry.abi.Pack("getSyntheticDeviceAddressById", nodeId)
 }
 
 // UnpackGetSyntheticDeviceAddressById is the Go binding that unpacks the parameters returned
@@ -1052,11 +1580,12 @@ func (registry *Registry) UnpackGetSyntheticDeviceAddressById(data []byte) (comm
 		return *new(common.Address), err
 	}
 	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
-	return out0, err
+	return out0, nil
 }
 
 // PackGetSyntheticDeviceIdByAddress is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x795b910a.
+// the contract method with ID 0x795b910a.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function getSyntheticDeviceIdByAddress(address addr) view returns(uint256 nodeId)
 func (registry *Registry) PackGetSyntheticDeviceIdByAddress(addr common.Address) []byte {
@@ -1065,6 +1594,15 @@ func (registry *Registry) PackGetSyntheticDeviceIdByAddress(addr common.Address)
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackGetSyntheticDeviceIdByAddress is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x795b910a.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getSyntheticDeviceIdByAddress(address addr) view returns(uint256 nodeId)
+func (registry *Registry) TryPackGetSyntheticDeviceIdByAddress(addr common.Address) ([]byte, error) {
+	return registry.abi.Pack("getSyntheticDeviceIdByAddress", addr)
 }
 
 // UnpackGetSyntheticDeviceIdByAddress is the Go binding that unpacks the parameters returned
@@ -1077,11 +1615,12 @@ func (registry *Registry) UnpackGetSyntheticDeviceIdByAddress(data []byte) (*big
 		return new(big.Int), err
 	}
 	out0 := abi.ConvertType(out[0], new(big.Int)).(*big.Int)
-	return out0, err
+	return out0, nil
 }
 
 // PackGetVehicleStream is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x180e469a.
+// the contract method with ID 0x180e469a.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function getVehicleStream(uint256 vehicleId) view returns(string streamId)
 func (registry *Registry) PackGetVehicleStream(vehicleId *big.Int) []byte {
@@ -1090,6 +1629,15 @@ func (registry *Registry) PackGetVehicleStream(vehicleId *big.Int) []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackGetVehicleStream is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x180e469a.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function getVehicleStream(uint256 vehicleId) view returns(string streamId)
+func (registry *Registry) TryPackGetVehicleStream(vehicleId *big.Int) ([]byte, error) {
+	return registry.abi.Pack("getVehicleStream", vehicleId)
 }
 
 // UnpackGetVehicleStream is the Go binding that unpacks the parameters returned
@@ -1102,11 +1650,12 @@ func (registry *Registry) UnpackGetVehicleStream(data []byte) (string, error) {
 		return *new(string), err
 	}
 	out0 := *abi.ConvertType(out[0], new(string)).(*string)
-	return out0, err
+	return out0, nil
 }
 
 // PackGrantRole is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x2f2ff15d.
+// the contract method with ID 0x2f2ff15d.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function grantRole(bytes32 role, address account) returns()
 func (registry *Registry) PackGrantRole(role [32]byte, account common.Address) []byte {
@@ -1117,8 +1666,18 @@ func (registry *Registry) PackGrantRole(role [32]byte, account common.Address) [
 	return enc
 }
 
+// TryPackGrantRole is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x2f2ff15d.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function grantRole(bytes32 role, address account) returns()
+func (registry *Registry) TryPackGrantRole(role [32]byte, account common.Address) ([]byte, error) {
+	return registry.abi.Pack("grantRole", role, account)
+}
+
 // PackHasRole is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x91d14854.
+// the contract method with ID 0x91d14854.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function hasRole(bytes32 role, address account) view returns(bool)
 func (registry *Registry) PackHasRole(role [32]byte, account common.Address) []byte {
@@ -1127,6 +1686,15 @@ func (registry *Registry) PackHasRole(role [32]byte, account common.Address) []b
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackHasRole is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x91d14854.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function hasRole(bytes32 role, address account) view returns(bool)
+func (registry *Registry) TryPackHasRole(role [32]byte, account common.Address) ([]byte, error) {
+	return registry.abi.Pack("hasRole", role, account)
 }
 
 // UnpackHasRole is the Go binding that unpacks the parameters returned
@@ -1139,11 +1707,12 @@ func (registry *Registry) UnpackHasRole(data []byte) (bool, error) {
 		return *new(bool), err
 	}
 	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
-	return out0, err
+	return out0, nil
 }
 
 // PackInitialize is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x4cd88b76.
+// the contract method with ID 0x4cd88b76.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function initialize(string name, string version) returns()
 func (registry *Registry) PackInitialize(name string, version string) []byte {
@@ -1154,8 +1723,18 @@ func (registry *Registry) PackInitialize(name string, version string) []byte {
 	return enc
 }
 
+// TryPackInitialize is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x4cd88b76.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function initialize(string name, string version) returns()
+func (registry *Registry) TryPackInitialize(name string, version string) ([]byte, error) {
+	return registry.abi.Pack("initialize", name, version)
+}
+
 // PackInsertDeviceDefinition is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x23536c5f.
+// the contract method with ID 0x23536c5f.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function insertDeviceDefinition(uint256 manufacturerId, (string,string,uint256,string,string,string,string) data) returns()
 func (registry *Registry) PackInsertDeviceDefinition(manufacturerId *big.Int, data DeviceDefinitionInput) []byte {
@@ -1166,8 +1745,18 @@ func (registry *Registry) PackInsertDeviceDefinition(manufacturerId *big.Int, da
 	return enc
 }
 
+// TryPackInsertDeviceDefinition is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x23536c5f.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function insertDeviceDefinition(uint256 manufacturerId, (string,string,uint256,string,string,string,string) data) returns()
+func (registry *Registry) TryPackInsertDeviceDefinition(manufacturerId *big.Int, data DeviceDefinitionInput) ([]byte, error) {
+	return registry.abi.Pack("insertDeviceDefinition", manufacturerId, data)
+}
+
 // PackInsertDeviceDefinitionBatch is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x80d50451.
+// the contract method with ID 0x80d50451.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function insertDeviceDefinitionBatch(uint256 manufacturerId, (string,string,uint256,string,string,string,string)[] data) returns()
 func (registry *Registry) PackInsertDeviceDefinitionBatch(manufacturerId *big.Int, data []DeviceDefinitionInput) []byte {
@@ -1178,8 +1767,18 @@ func (registry *Registry) PackInsertDeviceDefinitionBatch(manufacturerId *big.In
 	return enc
 }
 
+// TryPackInsertDeviceDefinitionBatch is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x80d50451.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function insertDeviceDefinitionBatch(uint256 manufacturerId, (string,string,uint256,string,string,string,string)[] data) returns()
+func (registry *Registry) TryPackInsertDeviceDefinitionBatch(manufacturerId *big.Int, data []DeviceDefinitionInput) ([]byte, error) {
+	return registry.abi.Pack("insertDeviceDefinitionBatch", manufacturerId, data)
+}
+
 // PackIsAftermarketDeviceClaimed is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xc6b36f2a.
+// the contract method with ID 0xc6b36f2a.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function isAftermarketDeviceClaimed(uint256 nodeId) view returns(bool isClaimed)
 func (registry *Registry) PackIsAftermarketDeviceClaimed(nodeId *big.Int) []byte {
@@ -1188,6 +1787,15 @@ func (registry *Registry) PackIsAftermarketDeviceClaimed(nodeId *big.Int) []byte
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackIsAftermarketDeviceClaimed is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xc6b36f2a.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function isAftermarketDeviceClaimed(uint256 nodeId) view returns(bool isClaimed)
+func (registry *Registry) TryPackIsAftermarketDeviceClaimed(nodeId *big.Int) ([]byte, error) {
+	return registry.abi.Pack("isAftermarketDeviceClaimed", nodeId)
 }
 
 // UnpackIsAftermarketDeviceClaimed is the Go binding that unpacks the parameters returned
@@ -1200,36 +1808,12 @@ func (registry *Registry) UnpackIsAftermarketDeviceClaimed(data []byte) (bool, e
 		return *new(bool), err
 	}
 	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
-	return out0, err
-}
-
-// PackIsAllowedToOwnIntegrationNode is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xbc8002f0.
-//
-// Solidity: function isAllowedToOwnIntegrationNode(address addr) view returns(bool _isAllowed)
-func (registry *Registry) PackIsAllowedToOwnIntegrationNode(addr common.Address) []byte {
-	enc, err := registry.abi.Pack("isAllowedToOwnIntegrationNode", addr)
-	if err != nil {
-		panic(err)
-	}
-	return enc
-}
-
-// UnpackIsAllowedToOwnIntegrationNode is the Go binding that unpacks the parameters returned
-// from invoking the contract method with ID 0xbc8002f0.
-//
-// Solidity: function isAllowedToOwnIntegrationNode(address addr) view returns(bool _isAllowed)
-func (registry *Registry) UnpackIsAllowedToOwnIntegrationNode(data []byte) (bool, error) {
-	out, err := registry.abi.Unpack("isAllowedToOwnIntegrationNode", data)
-	if err != nil {
-		return *new(bool), err
-	}
-	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
-	return out0, err
+	return out0, nil
 }
 
 // PackIsAllowedToOwnManufacturerNode is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xd9c27c40.
+// the contract method with ID 0xd9c27c40.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function isAllowedToOwnManufacturerNode(address addr) view returns(bool _isAllowed)
 func (registry *Registry) PackIsAllowedToOwnManufacturerNode(addr common.Address) []byte {
@@ -1238,6 +1822,15 @@ func (registry *Registry) PackIsAllowedToOwnManufacturerNode(addr common.Address
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackIsAllowedToOwnManufacturerNode is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xd9c27c40.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function isAllowedToOwnManufacturerNode(address addr) view returns(bool _isAllowed)
+func (registry *Registry) TryPackIsAllowedToOwnManufacturerNode(addr common.Address) ([]byte, error) {
+	return registry.abi.Pack("isAllowedToOwnManufacturerNode", addr)
 }
 
 // UnpackIsAllowedToOwnManufacturerNode is the Go binding that unpacks the parameters returned
@@ -1250,11 +1843,12 @@ func (registry *Registry) UnpackIsAllowedToOwnManufacturerNode(data []byte) (boo
 		return *new(bool), err
 	}
 	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
-	return out0, err
+	return out0, nil
 }
 
 // PackIsController is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xb429afeb.
+// the contract method with ID 0xb429afeb.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function isController(address addr) view returns(bool _isController)
 func (registry *Registry) PackIsController(addr common.Address) []byte {
@@ -1263,6 +1857,15 @@ func (registry *Registry) PackIsController(addr common.Address) []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackIsController is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xb429afeb.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function isController(address addr) view returns(bool _isController)
+func (registry *Registry) TryPackIsController(addr common.Address) ([]byte, error) {
+	return registry.abi.Pack("isController", addr)
 }
 
 // UnpackIsController is the Go binding that unpacks the parameters returned
@@ -1275,61 +1878,12 @@ func (registry *Registry) UnpackIsController(data []byte) (bool, error) {
 		return *new(bool), err
 	}
 	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
-	return out0, err
-}
-
-// PackIsIntegrationController is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xe21f68b7.
-//
-// Solidity: function isIntegrationController(address addr) view returns(bool _isController)
-func (registry *Registry) PackIsIntegrationController(addr common.Address) []byte {
-	enc, err := registry.abi.Pack("isIntegrationController", addr)
-	if err != nil {
-		panic(err)
-	}
-	return enc
-}
-
-// UnpackIsIntegrationController is the Go binding that unpacks the parameters returned
-// from invoking the contract method with ID 0xe21f68b7.
-//
-// Solidity: function isIntegrationController(address addr) view returns(bool _isController)
-func (registry *Registry) UnpackIsIntegrationController(data []byte) (bool, error) {
-	out, err := registry.abi.Unpack("isIntegrationController", data)
-	if err != nil {
-		return *new(bool), err
-	}
-	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
-	return out0, err
-}
-
-// PackIsIntegrationMinted is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x603dd1db.
-//
-// Solidity: function isIntegrationMinted(address addr) view returns(bool _isIntegrationMinted)
-func (registry *Registry) PackIsIntegrationMinted(addr common.Address) []byte {
-	enc, err := registry.abi.Pack("isIntegrationMinted", addr)
-	if err != nil {
-		panic(err)
-	}
-	return enc
-}
-
-// UnpackIsIntegrationMinted is the Go binding that unpacks the parameters returned
-// from invoking the contract method with ID 0x603dd1db.
-//
-// Solidity: function isIntegrationMinted(address addr) view returns(bool _isIntegrationMinted)
-func (registry *Registry) UnpackIsIntegrationMinted(data []byte) (bool, error) {
-	out, err := registry.abi.Unpack("isIntegrationMinted", data)
-	if err != nil {
-		return *new(bool), err
-	}
-	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
-	return out0, err
+	return out0, nil
 }
 
 // PackIsManufacturerMinted is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x456bf169.
+// the contract method with ID 0x456bf169.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function isManufacturerMinted(address addr) view returns(bool _isManufacturerMinted)
 func (registry *Registry) PackIsManufacturerMinted(addr common.Address) []byte {
@@ -1338,6 +1892,15 @@ func (registry *Registry) PackIsManufacturerMinted(addr common.Address) []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackIsManufacturerMinted is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x456bf169.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function isManufacturerMinted(address addr) view returns(bool _isManufacturerMinted)
+func (registry *Registry) TryPackIsManufacturerMinted(addr common.Address) ([]byte, error) {
+	return registry.abi.Pack("isManufacturerMinted", addr)
 }
 
 // UnpackIsManufacturerMinted is the Go binding that unpacks the parameters returned
@@ -1350,11 +1913,12 @@ func (registry *Registry) UnpackIsManufacturerMinted(data []byte) (bool, error) 
 		return *new(bool), err
 	}
 	out0 := *abi.ConvertType(out[0], new(bool)).(*bool)
-	return out0, err
+	return out0, nil
 }
 
 // PackMintAftermarketDeviceByManufacturerBatch is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x7ba79a39.
+// the contract method with ID 0x7ba79a39.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function mintAftermarketDeviceByManufacturerBatch(uint256 manufacturerNode, (address,(string,string)[])[] adInfos) returns()
 func (registry *Registry) PackMintAftermarketDeviceByManufacturerBatch(manufacturerNode *big.Int, adInfos []AftermarketDeviceInfos) []byte {
@@ -1365,32 +1929,18 @@ func (registry *Registry) PackMintAftermarketDeviceByManufacturerBatch(manufactu
 	return enc
 }
 
-// PackMintIntegration is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xd6739004.
+// TryPackMintAftermarketDeviceByManufacturerBatch is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x7ba79a39.  This method will return an error
+// if any inputs are invalid/nil.
 //
-// Solidity: function mintIntegration(address owner, string name, (string,string)[] attrInfoPairList) returns()
-func (registry *Registry) PackMintIntegration(owner common.Address, name string, attrInfoPairList []AttributeInfoPair) []byte {
-	enc, err := registry.abi.Pack("mintIntegration", owner, name, attrInfoPairList)
-	if err != nil {
-		panic(err)
-	}
-	return enc
-}
-
-// PackMintIntegrationBatch is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x653af271.
-//
-// Solidity: function mintIntegrationBatch(address owner, string[] names) returns()
-func (registry *Registry) PackMintIntegrationBatch(owner common.Address, names []string) []byte {
-	enc, err := registry.abi.Pack("mintIntegrationBatch", owner, names)
-	if err != nil {
-		panic(err)
-	}
-	return enc
+// Solidity: function mintAftermarketDeviceByManufacturerBatch(uint256 manufacturerNode, (address,(string,string)[])[] adInfos) returns()
+func (registry *Registry) TryPackMintAftermarketDeviceByManufacturerBatch(manufacturerNode *big.Int, adInfos []AftermarketDeviceInfos) ([]byte, error) {
+	return registry.abi.Pack("mintAftermarketDeviceByManufacturerBatch", manufacturerNode, adInfos)
 }
 
 // PackMintManufacturer is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x5f36da6b.
+// the contract method with ID 0x5f36da6b.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function mintManufacturer(address owner, string name, (string,string)[] attrInfoPairList) returns()
 func (registry *Registry) PackMintManufacturer(owner common.Address, name string, attrInfoPairList []AttributeInfoPair) []byte {
@@ -1401,8 +1951,18 @@ func (registry *Registry) PackMintManufacturer(owner common.Address, name string
 	return enc
 }
 
+// TryPackMintManufacturer is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x5f36da6b.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function mintManufacturer(address owner, string name, (string,string)[] attrInfoPairList) returns()
+func (registry *Registry) TryPackMintManufacturer(owner common.Address, name string, attrInfoPairList []AttributeInfoPair) ([]byte, error) {
+	return registry.abi.Pack("mintManufacturer", owner, name, attrInfoPairList)
+}
+
 // PackMintManufacturerBatch is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x9abb3000.
+// the contract method with ID 0x9abb3000.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function mintManufacturerBatch(address owner, string[] names) returns()
 func (registry *Registry) PackMintManufacturerBatch(owner common.Address, names []string) []byte {
@@ -1413,20 +1973,40 @@ func (registry *Registry) PackMintManufacturerBatch(owner common.Address, names 
 	return enc
 }
 
-// PackMintSyntheticDeviceBatch is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x261d982a.
+// TryPackMintManufacturerBatch is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x9abb3000.  This method will return an error
+// if any inputs are invalid/nil.
 //
-// Solidity: function mintSyntheticDeviceBatch(uint256 integrationNode, (uint256,address,(string,string)[])[] data) returns()
-func (registry *Registry) PackMintSyntheticDeviceBatch(integrationNode *big.Int, data []MintSyntheticDeviceBatchInput) []byte {
-	enc, err := registry.abi.Pack("mintSyntheticDeviceBatch", integrationNode, data)
+// Solidity: function mintManufacturerBatch(address owner, string[] names) returns()
+func (registry *Registry) TryPackMintManufacturerBatch(owner common.Address, names []string) ([]byte, error) {
+	return registry.abi.Pack("mintManufacturerBatch", owner, names)
+}
+
+// PackMintSyntheticDeviceBatch is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x261d982a.  This method will panic if any
+// invalid/nil inputs are passed.
+//
+// Solidity: function mintSyntheticDeviceBatch(uint256 connectionId, (uint256,address,(string,string)[])[] data) returns()
+func (registry *Registry) PackMintSyntheticDeviceBatch(connectionId *big.Int, data []MintSyntheticDeviceBatchInput) []byte {
+	enc, err := registry.abi.Pack("mintSyntheticDeviceBatch", connectionId, data)
 	if err != nil {
 		panic(err)
 	}
 	return enc
 }
 
+// TryPackMintSyntheticDeviceBatch is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x261d982a.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function mintSyntheticDeviceBatch(uint256 connectionId, (uint256,address,(string,string)[])[] data) returns()
+func (registry *Registry) TryPackMintSyntheticDeviceBatch(connectionId *big.Int, data []MintSyntheticDeviceBatchInput) ([]byte, error) {
+	return registry.abi.Pack("mintSyntheticDeviceBatch", connectionId, data)
+}
+
 // PackMintSyntheticDeviceSign is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xc624e8a1.
+// the contract method with ID 0xc624e8a1.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function mintSyntheticDeviceSign((uint256,uint256,bytes,bytes,address,(string,string)[]) data) returns()
 func (registry *Registry) PackMintSyntheticDeviceSign(data MintSyntheticDeviceInput) []byte {
@@ -1437,11 +2017,109 @@ func (registry *Registry) PackMintSyntheticDeviceSign(data MintSyntheticDeviceIn
 	return enc
 }
 
-// PackMintVehicleAndSdSign is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xfb1a28e8.
+// TryPackMintSyntheticDeviceSign is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xc624e8a1.  This method will return an error
+// if any inputs are invalid/nil.
 //
-// Solidity: function mintVehicleAndSdSign((uint256,address,(string,string)[],uint256,bytes,bytes,address,(string,string)[]) data) returns()
-func (registry *Registry) PackMintVehicleAndSdSign(data MintVehicleAndSdInput) []byte {
+// Solidity: function mintSyntheticDeviceSign((uint256,uint256,bytes,bytes,address,(string,string)[]) data) returns()
+func (registry *Registry) TryPackMintSyntheticDeviceSign(data MintSyntheticDeviceInput) ([]byte, error) {
+	return registry.abi.Pack("mintSyntheticDeviceSign", data)
+}
+
+// PackMintVehicle is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x3da44e56.  This method will panic if any
+// invalid/nil inputs are passed.
+//
+// Solidity: function mintVehicle(uint256 manufacturerNode, address owner, (string,string)[] attrInfo) returns()
+func (registry *Registry) PackMintVehicle(manufacturerNode *big.Int, owner common.Address, attrInfo []AttributeInfoPair) []byte {
+	enc, err := registry.abi.Pack("mintVehicle", manufacturerNode, owner, attrInfo)
+	if err != nil {
+		panic(err)
+	}
+	return enc
+}
+
+// TryPackMintVehicle is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x3da44e56.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function mintVehicle(uint256 manufacturerNode, address owner, (string,string)[] attrInfo) returns()
+func (registry *Registry) TryPackMintVehicle(manufacturerNode *big.Int, owner common.Address, attrInfo []AttributeInfoPair) ([]byte, error) {
+	return registry.abi.Pack("mintVehicle", manufacturerNode, owner, attrInfo)
+}
+
+// PackMintVehicle0 is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x5d9bc6a4.  This method will panic if any
+// invalid/nil inputs are passed.
+//
+// Solidity: function mintVehicle(uint256 manufacturerNode, address owner, (string,string)[] attrInfo, (address,uint256,uint256,string) sacdInput) returns()
+func (registry *Registry) PackMintVehicle0(manufacturerNode *big.Int, owner common.Address, attrInfo []AttributeInfoPair, sacdInput SacdInput) []byte {
+	enc, err := registry.abi.Pack("mintVehicle0", manufacturerNode, owner, attrInfo, sacdInput)
+	if err != nil {
+		panic(err)
+	}
+	return enc
+}
+
+// TryPackMintVehicle0 is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x5d9bc6a4.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function mintVehicle(uint256 manufacturerNode, address owner, (string,string)[] attrInfo, (address,uint256,uint256,string) sacdInput) returns()
+func (registry *Registry) TryPackMintVehicle0(manufacturerNode *big.Int, owner common.Address, attrInfo []AttributeInfoPair, sacdInput SacdInput) ([]byte, error) {
+	return registry.abi.Pack("mintVehicle0", manufacturerNode, owner, attrInfo, sacdInput)
+}
+
+// PackMintVehicle1 is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xab36bfb2.  This method will panic if any
+// invalid/nil inputs are passed.
+//
+// Solidity: function mintVehicle(uint256 manufacturerNode, address owner, uint256 storageNodeId, (string,string)[] attrInfo, (address,uint256,uint256,string) sacdInput) returns()
+func (registry *Registry) PackMintVehicle1(manufacturerNode *big.Int, owner common.Address, storageNodeId *big.Int, attrInfo []AttributeInfoPair, sacdInput SacdInput) []byte {
+	enc, err := registry.abi.Pack("mintVehicle1", manufacturerNode, owner, storageNodeId, attrInfo, sacdInput)
+	if err != nil {
+		panic(err)
+	}
+	return enc
+}
+
+// TryPackMintVehicle1 is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xab36bfb2.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function mintVehicle(uint256 manufacturerNode, address owner, uint256 storageNodeId, (string,string)[] attrInfo, (address,uint256,uint256,string) sacdInput) returns()
+func (registry *Registry) TryPackMintVehicle1(manufacturerNode *big.Int, owner common.Address, storageNodeId *big.Int, attrInfo []AttributeInfoPair, sacdInput SacdInput) ([]byte, error) {
+	return registry.abi.Pack("mintVehicle1", manufacturerNode, owner, storageNodeId, attrInfo, sacdInput)
+}
+
+// PackMintVehicle2 is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xf50373f8.  This method will panic if any
+// invalid/nil inputs are passed.
+//
+// Solidity: function mintVehicle(uint256 manufacturerNode, address owner, uint256 storageNodeId, (string,string)[] attrInfo) returns()
+func (registry *Registry) PackMintVehicle2(manufacturerNode *big.Int, owner common.Address, storageNodeId *big.Int, attrInfo []AttributeInfoPair) []byte {
+	enc, err := registry.abi.Pack("mintVehicle2", manufacturerNode, owner, storageNodeId, attrInfo)
+	if err != nil {
+		panic(err)
+	}
+	return enc
+}
+
+// TryPackMintVehicle2 is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xf50373f8.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function mintVehicle(uint256 manufacturerNode, address owner, uint256 storageNodeId, (string,string)[] attrInfo) returns()
+func (registry *Registry) TryPackMintVehicle2(manufacturerNode *big.Int, owner common.Address, storageNodeId *big.Int, attrInfo []AttributeInfoPair) ([]byte, error) {
+	return registry.abi.Pack("mintVehicle2", manufacturerNode, owner, storageNodeId, attrInfo)
+}
+
+// PackMintVehicleAndSdSign is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x688ecea4.  This method will panic if any
+// invalid/nil inputs are passed.
+//
+// Solidity: function mintVehicleAndSdSign((uint256,address,uint256,(string,string)[],uint256,bytes,bytes,address,(string,string)[]) data) returns()
+func (registry *Registry) PackMintVehicleAndSdSign(data MintVehicleAndSdInputWithSnId) []byte {
 	enc, err := registry.abi.Pack("mintVehicleAndSdSign", data)
 	if err != nil {
 		panic(err)
@@ -1449,90 +2127,172 @@ func (registry *Registry) PackMintVehicleAndSdSign(data MintVehicleAndSdInput) [
 	return enc
 }
 
-// PackMintVehicleAndSdWithDeviceDefinitionSign is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xd23965e3.
+// TryPackMintVehicleAndSdSign is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x688ecea4.  This method will return an error
+// if any inputs are invalid/nil.
 //
-// Solidity: function mintVehicleAndSdWithDeviceDefinitionSign((uint256,address,string,(string,string)[],uint256,bytes,bytes,address,(string,string)[]) data) returns()
-func (registry *Registry) PackMintVehicleAndSdWithDeviceDefinitionSign(data MintVehicleAndSdWithDdInput) []byte {
-	enc, err := registry.abi.Pack("mintVehicleAndSdWithDeviceDefinitionSign", data)
+// Solidity: function mintVehicleAndSdSign((uint256,address,uint256,(string,string)[],uint256,bytes,bytes,address,(string,string)[]) data) returns()
+func (registry *Registry) TryPackMintVehicleAndSdSign(data MintVehicleAndSdInputWithSnId) ([]byte, error) {
+	return registry.abi.Pack("mintVehicleAndSdSign", data)
+}
+
+// PackMintVehicleAndSdSign0 is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xfb1a28e8.  This method will panic if any
+// invalid/nil inputs are passed.
+//
+// Solidity: function mintVehicleAndSdSign((uint256,address,(string,string)[],uint256,bytes,bytes,address,(string,string)[]) data) returns()
+func (registry *Registry) PackMintVehicleAndSdSign0(data MintVehicleAndSdInput) []byte {
+	enc, err := registry.abi.Pack("mintVehicleAndSdSign0", data)
 	if err != nil {
 		panic(err)
 	}
 	return enc
 }
 
-func (registry *Registry) PackSetPermissions(data SacdInput) ([]byte, error) {
-	enc, err := registry.abi.Pack("setPermissions", data)
-	// but would pack find this? Methods won't be populated for this registry
-	// since it is a different registry for sacd
-	if err != nil {
-		return nil, err
-	}
-	return enc, nil
+// TryPackMintVehicleAndSdSign0 is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xfb1a28e8.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function mintVehicleAndSdSign((uint256,address,(string,string)[],uint256,bytes,bytes,address,(string,string)[]) data) returns()
+func (registry *Registry) TryPackMintVehicleAndSdSign0(data MintVehicleAndSdInput) ([]byte, error) {
+	return registry.abi.Pack("mintVehicleAndSdSign0", data)
 }
 
-// PackMintVehicleAndSdWithDeviceDefinitionSignAndSacd is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x58657dcc.
+// PackMintVehicleAndSdSignAndSacd is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x2caa687e.  This method will panic if any
+// invalid/nil inputs are passed.
 //
-// Solidity: function mintVehicleAndSdWithDeviceDefinitionSignAndSacd((uint256,address,string,(string,string)[],uint256,bytes,bytes,address,(string,string)[]) data, (address,uint256,uint256,string) sacdInput) returns()
-func (registry *Registry) PackMintVehicleAndSdWithDeviceDefinitionSignAndSacd(data MintVehicleAndSdWithDdInput, sacdInput SacdInput) []byte {
-	enc, err := registry.abi.Pack("mintVehicleAndSdWithDeviceDefinitionSignAndSacd", data, sacdInput)
+// Solidity: function mintVehicleAndSdSignAndSacd((uint256,address,uint256,(string,string)[],uint256,bytes,bytes,address,(string,string)[]) data, (address,uint256,uint256,string) sacdInput) returns()
+func (registry *Registry) PackMintVehicleAndSdSignAndSacd(data MintVehicleAndSdInputWithSnId, sacdInput SacdInput) []byte {
+	enc, err := registry.abi.Pack("mintVehicleAndSdSignAndSacd", data, sacdInput)
 	if err != nil {
 		panic(err)
 	}
 	return enc
 }
 
-// PackMintVehicleAndSdWithDeviceDefinitionSignBatch is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x7ae7fe4e.
+// TryPackMintVehicleAndSdSignAndSacd is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x2caa687e.  This method will return an error
+// if any inputs are invalid/nil.
 //
-// Solidity: function mintVehicleAndSdWithDeviceDefinitionSignBatch((uint256,address,string,(string,string)[],uint256,bytes,bytes,address,(string,string)[],(address,uint256,uint256,string))[] data) returns()
-func (registry *Registry) PackMintVehicleAndSdWithDeviceDefinitionSignBatch(data []MintVehicleAndSdWithDdInputBatch) []byte {
-	enc, err := registry.abi.Pack("mintVehicleAndSdWithDeviceDefinitionSignBatch", data)
+// Solidity: function mintVehicleAndSdSignAndSacd((uint256,address,uint256,(string,string)[],uint256,bytes,bytes,address,(string,string)[]) data, (address,uint256,uint256,string) sacdInput) returns()
+func (registry *Registry) TryPackMintVehicleAndSdSignAndSacd(data MintVehicleAndSdInputWithSnId, sacdInput SacdInput) ([]byte, error) {
+	return registry.abi.Pack("mintVehicleAndSdSignAndSacd", data, sacdInput)
+}
+
+// PackMintVehicleAndSdSignAndSacd0 is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x8a55bfbe.  This method will panic if any
+// invalid/nil inputs are passed.
+//
+// Solidity: function mintVehicleAndSdSignAndSacd((uint256,address,(string,string)[],uint256,bytes,bytes,address,(string,string)[]) data, (address,uint256,uint256,string) sacdInput) returns()
+func (registry *Registry) PackMintVehicleAndSdSignAndSacd0(data MintVehicleAndSdInput, sacdInput SacdInput) []byte {
+	enc, err := registry.abi.Pack("mintVehicleAndSdSignAndSacd0", data, sacdInput)
 	if err != nil {
 		panic(err)
 	}
 	return enc
 }
 
-// PackMintVehicleWithDeviceDefinition is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x97c95b2a.
+// TryPackMintVehicleAndSdSignAndSacd0 is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x8a55bfbe.  This method will return an error
+// if any inputs are invalid/nil.
 //
-// Solidity: function mintVehicleWithDeviceDefinition(uint256 manufacturerNode, address owner, string deviceDefinitionId, (string,string)[] attrInfo, (address,uint256,uint256,string) sacdInput) returns()
-func (registry *Registry) PackMintVehicleWithDeviceDefinition(manufacturerNode *big.Int, owner common.Address, deviceDefinitionId string, attrInfo []AttributeInfoPair, sacdInput SacdInput) []byte {
-	enc, err := registry.abi.Pack("mintVehicleWithDeviceDefinition", manufacturerNode, owner, deviceDefinitionId, attrInfo, sacdInput)
+// Solidity: function mintVehicleAndSdSignAndSacd((uint256,address,(string,string)[],uint256,bytes,bytes,address,(string,string)[]) data, (address,uint256,uint256,string) sacdInput) returns()
+func (registry *Registry) TryPackMintVehicleAndSdSignAndSacd0(data MintVehicleAndSdInput, sacdInput SacdInput) ([]byte, error) {
+	return registry.abi.Pack("mintVehicleAndSdSignAndSacd0", data, sacdInput)
+}
+
+// PackMintVehicleAndSdSignBatch is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x7b36d2d3.  This method will panic if any
+// invalid/nil inputs are passed.
+//
+// Solidity: function mintVehicleAndSdSignBatch((uint256,address,uint256,(string,string)[],uint256,bytes,bytes,address,(string,string)[],(address,uint256,uint256,string))[] data) returns()
+func (registry *Registry) PackMintVehicleAndSdSignBatch(data []MintVehicleAndSdInputWithSnIdBatch) []byte {
+	enc, err := registry.abi.Pack("mintVehicleAndSdSignBatch", data)
 	if err != nil {
 		panic(err)
 	}
 	return enc
 }
 
-// PackMintVehicleWithDeviceDefinition0 is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xd84baff1.
+// TryPackMintVehicleAndSdSignBatch is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x7b36d2d3.  This method will return an error
+// if any inputs are invalid/nil.
 //
-// Solidity: function mintVehicleWithDeviceDefinition(uint256 manufacturerNode, address owner, string deviceDefinitionId, (string,string)[] attrInfo) returns()
-func (registry *Registry) PackMintVehicleWithDeviceDefinition0(manufacturerNode *big.Int, owner common.Address, deviceDefinitionId string, attrInfo []AttributeInfoPair) []byte {
-	enc, err := registry.abi.Pack("mintVehicleWithDeviceDefinition0", manufacturerNode, owner, deviceDefinitionId, attrInfo)
+// Solidity: function mintVehicleAndSdSignBatch((uint256,address,uint256,(string,string)[],uint256,bytes,bytes,address,(string,string)[],(address,uint256,uint256,string))[] data) returns()
+func (registry *Registry) TryPackMintVehicleAndSdSignBatch(data []MintVehicleAndSdInputWithSnIdBatch) ([]byte, error) {
+	return registry.abi.Pack("mintVehicleAndSdSignBatch", data)
+}
+
+// PackMintVehicleAndSdSignBatch0 is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xd44a15ee.  This method will panic if any
+// invalid/nil inputs are passed.
+//
+// Solidity: function mintVehicleAndSdSignBatch((uint256,address,(string,string)[],uint256,bytes,bytes,address,(string,string)[],(address,uint256,uint256,string))[] data) returns()
+func (registry *Registry) PackMintVehicleAndSdSignBatch0(data []MintVehicleAndSdInputBatch) []byte {
+	enc, err := registry.abi.Pack("mintVehicleAndSdSignBatch0", data)
 	if err != nil {
 		panic(err)
 	}
 	return enc
 }
 
-// PackMintVehicleWithDeviceDefinitionSign is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x8dca2b8e.
+// TryPackMintVehicleAndSdSignBatch0 is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xd44a15ee.  This method will return an error
+// if any inputs are invalid/nil.
 //
-// Solidity: function mintVehicleWithDeviceDefinitionSign(uint256 manufacturerNode, address owner, string deviceDefinitionId, (string,string)[] attrInfo, bytes signature) returns()
-func (registry *Registry) PackMintVehicleWithDeviceDefinitionSign(manufacturerNode *big.Int, owner common.Address, deviceDefinitionId string, attrInfo []AttributeInfoPair, signature []byte) []byte {
-	enc, err := registry.abi.Pack("mintVehicleWithDeviceDefinitionSign", manufacturerNode, owner, deviceDefinitionId, attrInfo, signature)
+// Solidity: function mintVehicleAndSdSignBatch((uint256,address,(string,string)[],uint256,bytes,bytes,address,(string,string)[],(address,uint256,uint256,string))[] data) returns()
+func (registry *Registry) TryPackMintVehicleAndSdSignBatch0(data []MintVehicleAndSdInputBatch) ([]byte, error) {
+	return registry.abi.Pack("mintVehicleAndSdSignBatch0", data)
+}
+
+// PackMintVehicleSign is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x1b1a82c8.  This method will panic if any
+// invalid/nil inputs are passed.
+//
+// Solidity: function mintVehicleSign(uint256 manufacturerNode, address owner, (string,string)[] attrInfo, bytes signature) returns()
+func (registry *Registry) PackMintVehicleSign(manufacturerNode *big.Int, owner common.Address, attrInfo []AttributeInfoPair, signature []byte) []byte {
+	enc, err := registry.abi.Pack("mintVehicleSign", manufacturerNode, owner, attrInfo, signature)
 	if err != nil {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackMintVehicleSign is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x1b1a82c8.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function mintVehicleSign(uint256 manufacturerNode, address owner, (string,string)[] attrInfo, bytes signature) returns()
+func (registry *Registry) TryPackMintVehicleSign(manufacturerNode *big.Int, owner common.Address, attrInfo []AttributeInfoPair, signature []byte) ([]byte, error) {
+	return registry.abi.Pack("mintVehicleSign", manufacturerNode, owner, attrInfo, signature)
+}
+
+// PackMintVehicleSign0 is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x561fa048.  This method will panic if any
+// invalid/nil inputs are passed.
+//
+// Solidity: function mintVehicleSign(uint256 manufacturerNode, address owner, uint256 storageNodeId, (string,string)[] attrInfo, bytes signature) returns()
+func (registry *Registry) PackMintVehicleSign0(manufacturerNode *big.Int, owner common.Address, storageNodeId *big.Int, attrInfo []AttributeInfoPair, signature []byte) []byte {
+	enc, err := registry.abi.Pack("mintVehicleSign0", manufacturerNode, owner, storageNodeId, attrInfo, signature)
+	if err != nil {
+		panic(err)
+	}
+	return enc
+}
+
+// TryPackMintVehicleSign0 is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x561fa048.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function mintVehicleSign(uint256 manufacturerNode, address owner, uint256 storageNodeId, (string,string)[] attrInfo, bytes signature) returns()
+func (registry *Registry) TryPackMintVehicleSign0(manufacturerNode *big.Int, owner common.Address, storageNodeId *big.Int, attrInfo []AttributeInfoPair, signature []byte) ([]byte, error) {
+	return registry.abi.Pack("mintVehicleSign0", manufacturerNode, owner, storageNodeId, attrInfo, signature)
 }
 
 // PackMultiDelegateCall is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x415c2d96.
+// the contract method with ID 0x415c2d96.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function multiDelegateCall(bytes[] data) returns(bytes[] results)
 func (registry *Registry) PackMultiDelegateCall(data [][]byte) []byte {
@@ -1541,6 +2301,15 @@ func (registry *Registry) PackMultiDelegateCall(data [][]byte) []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackMultiDelegateCall is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x415c2d96.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function multiDelegateCall(bytes[] data) returns(bytes[] results)
+func (registry *Registry) TryPackMultiDelegateCall(data [][]byte) ([]byte, error) {
+	return registry.abi.Pack("multiDelegateCall", data)
 }
 
 // UnpackMultiDelegateCall is the Go binding that unpacks the parameters returned
@@ -1553,11 +2322,12 @@ func (registry *Registry) UnpackMultiDelegateCall(data []byte) ([][]byte, error)
 		return *new([][]byte), err
 	}
 	out0 := *abi.ConvertType(out[0], new([][]byte)).(*[][]byte)
-	return out0, err
+	return out0, nil
 }
 
 // PackMultiStaticCall is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x1c0c6e51.
+// the contract method with ID 0x1c0c6e51.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function multiStaticCall(bytes[] data) view returns(bytes[] results)
 func (registry *Registry) PackMultiStaticCall(data [][]byte) []byte {
@@ -1566,6 +2336,15 @@ func (registry *Registry) PackMultiStaticCall(data [][]byte) []byte {
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackMultiStaticCall is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x1c0c6e51.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function multiStaticCall(bytes[] data) view returns(bytes[] results)
+func (registry *Registry) TryPackMultiStaticCall(data [][]byte) ([]byte, error) {
+	return registry.abi.Pack("multiStaticCall", data)
 }
 
 // UnpackMultiStaticCall is the Go binding that unpacks the parameters returned
@@ -1578,11 +2357,12 @@ func (registry *Registry) UnpackMultiStaticCall(data []byte) ([][]byte, error) {
 		return *new([][]byte), err
 	}
 	out0 := *abi.ConvertType(out[0], new([][]byte)).(*[][]byte)
-	return out0, err
+	return out0, nil
 }
 
 // PackOnBurnVehicleStream is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xa91ec798.
+// the contract method with ID 0xa91ec798.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function onBurnVehicleStream(uint256 vehicleId) returns()
 func (registry *Registry) PackOnBurnVehicleStream(vehicleId *big.Int) []byte {
@@ -1593,8 +2373,18 @@ func (registry *Registry) PackOnBurnVehicleStream(vehicleId *big.Int) []byte {
 	return enc
 }
 
+// TryPackOnBurnVehicleStream is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xa91ec798.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function onBurnVehicleStream(uint256 vehicleId) returns()
+func (registry *Registry) TryPackOnBurnVehicleStream(vehicleId *big.Int) ([]byte, error) {
+	return registry.abi.Pack("onBurnVehicleStream", vehicleId)
+}
+
 // PackOnERC721Received is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x150b7a02.
+// the contract method with ID 0x150b7a02.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function onERC721Received(address , address , uint256 , bytes ) pure returns(bytes4)
 func (registry *Registry) PackOnERC721Received(arg0 common.Address, arg1 common.Address, arg2 *big.Int, arg3 []byte) []byte {
@@ -1603,6 +2393,15 @@ func (registry *Registry) PackOnERC721Received(arg0 common.Address, arg1 common.
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackOnERC721Received is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x150b7a02.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function onERC721Received(address , address , uint256 , bytes ) pure returns(bytes4)
+func (registry *Registry) TryPackOnERC721Received(arg0 common.Address, arg1 common.Address, arg2 *big.Int, arg3 []byte) ([]byte, error) {
+	return registry.abi.Pack("onERC721Received", arg0, arg1, arg2, arg3)
 }
 
 // UnpackOnERC721Received is the Go binding that unpacks the parameters returned
@@ -1615,11 +2414,12 @@ func (registry *Registry) UnpackOnERC721Received(data []byte) ([4]byte, error) {
 		return *new([4]byte), err
 	}
 	out0 := *abi.ConvertType(out[0], new([4]byte)).(*[4]byte)
-	return out0, err
+	return out0, nil
 }
 
 // PackOnSetSubscribePrivilege is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xc8f11a06.
+// the contract method with ID 0xc8f11a06.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function onSetSubscribePrivilege(uint256 vehicleId, address subscriber, uint256 expirationTime) returns()
 func (registry *Registry) PackOnSetSubscribePrivilege(vehicleId *big.Int, subscriber common.Address, expirationTime *big.Int) []byte {
@@ -1630,8 +2430,18 @@ func (registry *Registry) PackOnSetSubscribePrivilege(vehicleId *big.Int, subscr
 	return enc
 }
 
+// TryPackOnSetSubscribePrivilege is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xc8f11a06.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function onSetSubscribePrivilege(uint256 vehicleId, address subscriber, uint256 expirationTime) returns()
+func (registry *Registry) TryPackOnSetSubscribePrivilege(vehicleId *big.Int, subscriber common.Address, expirationTime *big.Int) ([]byte, error) {
+	return registry.abi.Pack("onSetSubscribePrivilege", vehicleId, subscriber, expirationTime)
+}
+
 // PackOnTransferVehicleStream is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x1882b263.
+// the contract method with ID 0x1882b263.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function onTransferVehicleStream(address to, uint256 vehicleId) returns()
 func (registry *Registry) PackOnTransferVehicleStream(to common.Address, vehicleId *big.Int) []byte {
@@ -1642,8 +2452,18 @@ func (registry *Registry) PackOnTransferVehicleStream(to common.Address, vehicle
 	return enc
 }
 
+// TryPackOnTransferVehicleStream is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x1882b263.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function onTransferVehicleStream(address to, uint256 vehicleId) returns()
+func (registry *Registry) TryPackOnTransferVehicleStream(to common.Address, vehicleId *big.Int) ([]byte, error) {
+	return registry.abi.Pack("onTransferVehicleStream", to, vehicleId)
+}
+
 // PackPairAftermarketDevice is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x492ab283.
+// the contract method with ID 0x492ab283.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function pairAftermarketDevice(uint256 aftermarketDeviceNode, uint256 vehicleNode) returns()
 func (registry *Registry) PackPairAftermarketDevice(aftermarketDeviceNode *big.Int, vehicleNode *big.Int) []byte {
@@ -1654,8 +2474,18 @@ func (registry *Registry) PackPairAftermarketDevice(aftermarketDeviceNode *big.I
 	return enc
 }
 
+// TryPackPairAftermarketDevice is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x492ab283.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function pairAftermarketDevice(uint256 aftermarketDeviceNode, uint256 vehicleNode) returns()
+func (registry *Registry) TryPackPairAftermarketDevice(aftermarketDeviceNode *big.Int, vehicleNode *big.Int) ([]byte, error) {
+	return registry.abi.Pack("pairAftermarketDevice", aftermarketDeviceNode, vehicleNode)
+}
+
 // PackPairAftermarketDeviceSign is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xb50df2f7.
+// the contract method with ID 0xb50df2f7.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function pairAftermarketDeviceSign(uint256 aftermarketDeviceNode, uint256 vehicleNode, bytes aftermarketDeviceSig, bytes vehicleOwnerSig) returns()
 func (registry *Registry) PackPairAftermarketDeviceSign(aftermarketDeviceNode *big.Int, vehicleNode *big.Int, aftermarketDeviceSig []byte, vehicleOwnerSig []byte) []byte {
@@ -1666,8 +2496,18 @@ func (registry *Registry) PackPairAftermarketDeviceSign(aftermarketDeviceNode *b
 	return enc
 }
 
+// TryPackPairAftermarketDeviceSign is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xb50df2f7.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function pairAftermarketDeviceSign(uint256 aftermarketDeviceNode, uint256 vehicleNode, bytes aftermarketDeviceSig, bytes vehicleOwnerSig) returns()
+func (registry *Registry) TryPackPairAftermarketDeviceSign(aftermarketDeviceNode *big.Int, vehicleNode *big.Int, aftermarketDeviceSig []byte, vehicleOwnerSig []byte) ([]byte, error) {
+	return registry.abi.Pack("pairAftermarketDeviceSign", aftermarketDeviceNode, vehicleNode, aftermarketDeviceSig, vehicleOwnerSig)
+}
+
 // PackPairAftermarketDeviceSign0 is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xcfe642dd.
+// the contract method with ID 0xcfe642dd.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function pairAftermarketDeviceSign(uint256 aftermarketDeviceNode, uint256 vehicleNode, bytes signature) returns()
 func (registry *Registry) PackPairAftermarketDeviceSign0(aftermarketDeviceNode *big.Int, vehicleNode *big.Int, signature []byte) []byte {
@@ -1678,8 +2518,40 @@ func (registry *Registry) PackPairAftermarketDeviceSign0(aftermarketDeviceNode *
 	return enc
 }
 
+// TryPackPairAftermarketDeviceSign0 is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xcfe642dd.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function pairAftermarketDeviceSign(uint256 aftermarketDeviceNode, uint256 vehicleNode, bytes signature) returns()
+func (registry *Registry) TryPackPairAftermarketDeviceSign0(aftermarketDeviceNode *big.Int, vehicleNode *big.Int, signature []byte) ([]byte, error) {
+	return registry.abi.Pack("pairAftermarketDeviceSign0", aftermarketDeviceNode, vehicleNode, signature)
+}
+
+// PackPairAftermarketDeviceWithAdSig is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x7ca22c7b.  This method will panic if any
+// invalid/nil inputs are passed.
+//
+// Solidity: function pairAftermarketDeviceWithAdSig(uint256 aftermarketDeviceNode, uint256 vehicleNode, bytes aftermarketDeviceSig) returns()
+func (registry *Registry) PackPairAftermarketDeviceWithAdSig(aftermarketDeviceNode *big.Int, vehicleNode *big.Int, aftermarketDeviceSig []byte) []byte {
+	enc, err := registry.abi.Pack("pairAftermarketDeviceWithAdSig", aftermarketDeviceNode, vehicleNode, aftermarketDeviceSig)
+	if err != nil {
+		panic(err)
+	}
+	return enc
+}
+
+// TryPackPairAftermarketDeviceWithAdSig is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x7ca22c7b.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function pairAftermarketDeviceWithAdSig(uint256 aftermarketDeviceNode, uint256 vehicleNode, bytes aftermarketDeviceSig) returns()
+func (registry *Registry) TryPackPairAftermarketDeviceWithAdSig(aftermarketDeviceNode *big.Int, vehicleNode *big.Int, aftermarketDeviceSig []byte) ([]byte, error) {
+	return registry.abi.Pack("pairAftermarketDeviceWithAdSig", aftermarketDeviceNode, vehicleNode, aftermarketDeviceSig)
+}
+
 // PackRemoveModule is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x9748a762.
+// the contract method with ID 0x9748a762.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function removeModule(address implementation, bytes4[] selectors) returns()
 func (registry *Registry) PackRemoveModule(implementation common.Address, selectors [][4]byte) []byte {
@@ -1690,8 +2562,18 @@ func (registry *Registry) PackRemoveModule(implementation common.Address, select
 	return enc
 }
 
+// TryPackRemoveModule is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x9748a762.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function removeModule(address implementation, bytes4[] selectors) returns()
+func (registry *Registry) TryPackRemoveModule(implementation common.Address, selectors [][4]byte) ([]byte, error) {
+	return registry.abi.Pack("removeModule", implementation, selectors)
+}
+
 // PackRenameManufacturers is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xf73a8f04.
+// the contract method with ID 0xf73a8f04.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function renameManufacturers((uint256,string)[] idManufacturerNames) returns()
 func (registry *Registry) PackRenameManufacturers(idManufacturerNames []DevAdminIdManufacturerName) []byte {
@@ -1702,8 +2584,18 @@ func (registry *Registry) PackRenameManufacturers(idManufacturerNames []DevAdmin
 	return enc
 }
 
+// TryPackRenameManufacturers is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xf73a8f04.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function renameManufacturers((uint256,string)[] idManufacturerNames) returns()
+func (registry *Registry) TryPackRenameManufacturers(idManufacturerNames []DevAdminIdManufacturerName) ([]byte, error) {
+	return registry.abi.Pack("renameManufacturers", idManufacturerNames)
+}
+
 // PackRenounceRole is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x8bb9c5bf.
+// the contract method with ID 0x8bb9c5bf.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function renounceRole(bytes32 role) returns()
 func (registry *Registry) PackRenounceRole(role [32]byte) []byte {
@@ -1714,8 +2606,18 @@ func (registry *Registry) PackRenounceRole(role [32]byte) []byte {
 	return enc
 }
 
+// TryPackRenounceRole is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x8bb9c5bf.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function renounceRole(bytes32 role) returns()
+func (registry *Registry) TryPackRenounceRole(role [32]byte) ([]byte, error) {
+	return registry.abi.Pack("renounceRole", role)
+}
+
 // PackReprovisionAftermarketDeviceByManufacturerBatch is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x9b3abd48.
+// the contract method with ID 0x9b3abd48.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function reprovisionAftermarketDeviceByManufacturerBatch(uint256[] aftermarketDeviceNodeList) returns()
 func (registry *Registry) PackReprovisionAftermarketDeviceByManufacturerBatch(aftermarketDeviceNodeList []*big.Int) []byte {
@@ -1726,8 +2628,18 @@ func (registry *Registry) PackReprovisionAftermarketDeviceByManufacturerBatch(af
 	return enc
 }
 
+// TryPackReprovisionAftermarketDeviceByManufacturerBatch is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x9b3abd48.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function reprovisionAftermarketDeviceByManufacturerBatch(uint256[] aftermarketDeviceNodeList) returns()
+func (registry *Registry) TryPackReprovisionAftermarketDeviceByManufacturerBatch(aftermarketDeviceNodeList []*big.Int) ([]byte, error) {
+	return registry.abi.Pack("reprovisionAftermarketDeviceByManufacturerBatch", aftermarketDeviceNodeList)
+}
+
 // PackResetAftermarketDeviceAddressByManufacturerBatch is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x9d0b139b.
+// the contract method with ID 0x9d0b139b.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function resetAftermarketDeviceAddressByManufacturerBatch((uint256,address)[] adIdAddrs) returns()
 func (registry *Registry) PackResetAftermarketDeviceAddressByManufacturerBatch(adIdAddrs []AftermarketDeviceIdAddressPair) []byte {
@@ -1738,8 +2650,53 @@ func (registry *Registry) PackResetAftermarketDeviceAddressByManufacturerBatch(a
 	return enc
 }
 
+// TryPackResetAftermarketDeviceAddressByManufacturerBatch is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x9d0b139b.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function resetAftermarketDeviceAddressByManufacturerBatch((uint256,address)[] adIdAddrs) returns()
+func (registry *Registry) TryPackResetAftermarketDeviceAddressByManufacturerBatch(adIdAddrs []AftermarketDeviceIdAddressPair) ([]byte, error) {
+	return registry.abi.Pack("resetAftermarketDeviceAddressByManufacturerBatch", adIdAddrs)
+}
+
+// PackResetAftermarketDeviceForClaiming is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x4c92773c.  This method will panic if any
+// invalid/nil inputs are passed.
+//
+// Solidity: function resetAftermarketDeviceForClaiming(address from, uint256 aftermarketDeviceNode) returns(address)
+func (registry *Registry) PackResetAftermarketDeviceForClaiming(from common.Address, aftermarketDeviceNode *big.Int) []byte {
+	enc, err := registry.abi.Pack("resetAftermarketDeviceForClaiming", from, aftermarketDeviceNode)
+	if err != nil {
+		panic(err)
+	}
+	return enc
+}
+
+// TryPackResetAftermarketDeviceForClaiming is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x4c92773c.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function resetAftermarketDeviceForClaiming(address from, uint256 aftermarketDeviceNode) returns(address)
+func (registry *Registry) TryPackResetAftermarketDeviceForClaiming(from common.Address, aftermarketDeviceNode *big.Int) ([]byte, error) {
+	return registry.abi.Pack("resetAftermarketDeviceForClaiming", from, aftermarketDeviceNode)
+}
+
+// UnpackResetAftermarketDeviceForClaiming is the Go binding that unpacks the parameters returned
+// from invoking the contract method with ID 0x4c92773c.
+//
+// Solidity: function resetAftermarketDeviceForClaiming(address from, uint256 aftermarketDeviceNode) returns(address)
+func (registry *Registry) UnpackResetAftermarketDeviceForClaiming(data []byte) (common.Address, error) {
+	out, err := registry.abi.Unpack("resetAftermarketDeviceForClaiming", data)
+	if err != nil {
+		return *new(common.Address), err
+	}
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+	return out0, nil
+}
+
 // PackRevokeRole is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xd547741f.
+// the contract method with ID 0xd547741f.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function revokeRole(bytes32 role, address account) returns()
 func (registry *Registry) PackRevokeRole(role [32]byte, account common.Address) []byte {
@@ -1750,8 +2707,18 @@ func (registry *Registry) PackRevokeRole(role [32]byte, account common.Address) 
 	return enc
 }
 
+// TryPackRevokeRole is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xd547741f.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function revokeRole(bytes32 role, address account) returns()
+func (registry *Registry) TryPackRevokeRole(role [32]byte, account common.Address) ([]byte, error) {
+	return registry.abi.Pack("revokeRole", role, account)
+}
+
 // PackSetAftermarketDeviceBeneficiary is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xbebc0bfc.
+// the contract method with ID 0xbebc0bfc.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setAftermarketDeviceBeneficiary(uint256 nodeId, address beneficiary) returns()
 func (registry *Registry) PackSetAftermarketDeviceBeneficiary(nodeId *big.Int, beneficiary common.Address) []byte {
@@ -1762,8 +2729,18 @@ func (registry *Registry) PackSetAftermarketDeviceBeneficiary(nodeId *big.Int, b
 	return enc
 }
 
+// TryPackSetAftermarketDeviceBeneficiary is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xbebc0bfc.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setAftermarketDeviceBeneficiary(uint256 nodeId, address beneficiary) returns()
+func (registry *Registry) TryPackSetAftermarketDeviceBeneficiary(nodeId *big.Int, beneficiary common.Address) ([]byte, error) {
+	return registry.abi.Pack("setAftermarketDeviceBeneficiary", nodeId, beneficiary)
+}
+
 // PackSetAftermarketDeviceIdProxyAddress is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x4d49d82a.
+// the contract method with ID 0x4d49d82a.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setAftermarketDeviceIdProxyAddress(address addr) returns()
 func (registry *Registry) PackSetAftermarketDeviceIdProxyAddress(addr common.Address) []byte {
@@ -1774,8 +2751,18 @@ func (registry *Registry) PackSetAftermarketDeviceIdProxyAddress(addr common.Add
 	return enc
 }
 
+// TryPackSetAftermarketDeviceIdProxyAddress is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x4d49d82a.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setAftermarketDeviceIdProxyAddress(address addr) returns()
+func (registry *Registry) TryPackSetAftermarketDeviceIdProxyAddress(addr common.Address) ([]byte, error) {
+	return registry.abi.Pack("setAftermarketDeviceIdProxyAddress", addr)
+}
+
 // PackSetAftermarketDeviceInfo is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x4d13b709.
+// the contract method with ID 0x4d13b709.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setAftermarketDeviceInfo(uint256 tokenId, (string,string)[] attrInfo) returns()
 func (registry *Registry) PackSetAftermarketDeviceInfo(tokenId *big.Int, attrInfo []AttributeInfoPair) []byte {
@@ -1786,20 +2773,40 @@ func (registry *Registry) PackSetAftermarketDeviceInfo(tokenId *big.Int, attrInf
 	return enc
 }
 
-// PackSetBaseDataURI is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xe324093f.
+// TryPackSetAftermarketDeviceInfo is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x4d13b709.  This method will return an error
+// if any inputs are invalid/nil.
 //
-// Solidity: function setBaseDataURI(address idProxyAddress, string _baseDataURI) returns()
-func (registry *Registry) PackSetBaseDataURI(idProxyAddress common.Address, baseDataURI string) []byte {
-	enc, err := registry.abi.Pack("setBaseDataURI", idProxyAddress, baseDataURI)
+// Solidity: function setAftermarketDeviceInfo(uint256 tokenId, (string,string)[] attrInfo) returns()
+func (registry *Registry) TryPackSetAftermarketDeviceInfo(tokenId *big.Int, attrInfo []AttributeInfoPair) ([]byte, error) {
+	return registry.abi.Pack("setAftermarketDeviceInfo", tokenId, attrInfo)
+}
+
+// PackSetConnectionsManager is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x2fee22f4.  This method will panic if any
+// invalid/nil inputs are passed.
+//
+// Solidity: function setConnectionsManager(address connectionsManager) returns()
+func (registry *Registry) PackSetConnectionsManager(connectionsManager common.Address) []byte {
+	enc, err := registry.abi.Pack("setConnectionsManager", connectionsManager)
 	if err != nil {
 		panic(err)
 	}
 	return enc
 }
 
+// TryPackSetConnectionsManager is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x2fee22f4.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setConnectionsManager(address connectionsManager) returns()
+func (registry *Registry) TryPackSetConnectionsManager(connectionsManager common.Address) ([]byte, error) {
+	return registry.abi.Pack("setConnectionsManager", connectionsManager)
+}
+
 // PackSetController is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x92eefe9b.
+// the contract method with ID 0x92eefe9b.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setController(address _controller) returns()
 func (registry *Registry) PackSetController(controller common.Address) []byte {
@@ -1810,8 +2817,18 @@ func (registry *Registry) PackSetController(controller common.Address) []byte {
 	return enc
 }
 
+// TryPackSetController is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x92eefe9b.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setController(address _controller) returns()
+func (registry *Registry) TryPackSetController(controller common.Address) ([]byte, error) {
+	return registry.abi.Pack("setController", controller)
+}
+
 // PackSetDcxOperationCost is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xa2fe8c85.
+// the contract method with ID 0xa2fe8c85.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setDcxOperationCost(bytes32 operation, uint256 cost) returns()
 func (registry *Registry) PackSetDcxOperationCost(operation [32]byte, cost *big.Int) []byte {
@@ -1822,8 +2839,40 @@ func (registry *Registry) PackSetDcxOperationCost(operation [32]byte, cost *big.
 	return enc
 }
 
+// TryPackSetDcxOperationCost is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xa2fe8c85.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setDcxOperationCost(bytes32 operation, uint256 cost) returns()
+func (registry *Registry) TryPackSetDcxOperationCost(operation [32]byte, cost *big.Int) ([]byte, error) {
+	return registry.abi.Pack("setDcxOperationCost", operation, cost)
+}
+
+// PackSetDefaultStorageNodeId is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x856f3849.  This method will panic if any
+// invalid/nil inputs are passed.
+//
+// Solidity: function setDefaultStorageNodeId(uint256 storageNodeId) returns()
+func (registry *Registry) PackSetDefaultStorageNodeId(storageNodeId *big.Int) []byte {
+	enc, err := registry.abi.Pack("setDefaultStorageNodeId", storageNodeId)
+	if err != nil {
+		panic(err)
+	}
+	return enc
+}
+
+// TryPackSetDefaultStorageNodeId is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x856f3849.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setDefaultStorageNodeId(uint256 storageNodeId) returns()
+func (registry *Registry) TryPackSetDefaultStorageNodeId(storageNodeId *big.Int) ([]byte, error) {
+	return registry.abi.Pack("setDefaultStorageNodeId", storageNodeId)
+}
+
 // PackSetDeviceDefinitionTable is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x088fafdb.
+// the contract method with ID 0x088fafdb.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setDeviceDefinitionTable(uint256 manufacturerId, uint256 tableId) returns()
 func (registry *Registry) PackSetDeviceDefinitionTable(manufacturerId *big.Int, tableId *big.Int) []byte {
@@ -1834,8 +2883,18 @@ func (registry *Registry) PackSetDeviceDefinitionTable(manufacturerId *big.Int, 
 	return enc
 }
 
+// TryPackSetDeviceDefinitionTable is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x088fafdb.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setDeviceDefinitionTable(uint256 manufacturerId, uint256 tableId) returns()
+func (registry *Registry) TryPackSetDeviceDefinitionTable(manufacturerId *big.Int, tableId *big.Int) ([]byte, error) {
+	return registry.abi.Pack("setDeviceDefinitionTable", manufacturerId, tableId)
+}
+
 // PackSetDimoBaseStreamId is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x9e594424.
+// the contract method with ID 0x9e594424.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setDimoBaseStreamId(string dimoStreamrEns) returns()
 func (registry *Registry) PackSetDimoBaseStreamId(dimoStreamrEns string) []byte {
@@ -1846,8 +2905,18 @@ func (registry *Registry) PackSetDimoBaseStreamId(dimoStreamrEns string) []byte 
 	return enc
 }
 
+// TryPackSetDimoBaseStreamId is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x9e594424.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setDimoBaseStreamId(string dimoStreamrEns) returns()
+func (registry *Registry) TryPackSetDimoBaseStreamId(dimoStreamrEns string) ([]byte, error) {
+	return registry.abi.Pack("setDimoBaseStreamId", dimoStreamrEns)
+}
+
 // PackSetDimoCredit is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x4fa9ff16.
+// the contract method with ID 0x4fa9ff16.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setDimoCredit(address dimoCredit) returns()
 func (registry *Registry) PackSetDimoCredit(dimoCredit common.Address) []byte {
@@ -1858,8 +2927,18 @@ func (registry *Registry) PackSetDimoCredit(dimoCredit common.Address) []byte {
 	return enc
 }
 
+// TryPackSetDimoCredit is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x4fa9ff16.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setDimoCredit(address dimoCredit) returns()
+func (registry *Registry) TryPackSetDimoCredit(dimoCredit common.Address) ([]byte, error) {
+	return registry.abi.Pack("setDimoCredit", dimoCredit)
+}
+
 // PackSetDimoStreamrNode is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x5f450e29.
+// the contract method with ID 0x5f450e29.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setDimoStreamrNode(address dimoStreamrNode) returns()
 func (registry *Registry) PackSetDimoStreamrNode(dimoStreamrNode common.Address) []byte {
@@ -1870,8 +2949,18 @@ func (registry *Registry) PackSetDimoStreamrNode(dimoStreamrNode common.Address)
 	return enc
 }
 
+// TryPackSetDimoStreamrNode is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x5f450e29.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setDimoStreamrNode(address dimoStreamrNode) returns()
+func (registry *Registry) TryPackSetDimoStreamrNode(dimoStreamrNode common.Address) ([]byte, error) {
+	return registry.abi.Pack("setDimoStreamrNode", dimoStreamrNode)
+}
+
 // PackSetDimoToken is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x5b6c1979.
+// the contract method with ID 0x5b6c1979.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setDimoToken(address dimoToken) returns()
 func (registry *Registry) PackSetDimoToken(dimoToken common.Address) []byte {
@@ -1882,8 +2971,18 @@ func (registry *Registry) PackSetDimoToken(dimoToken common.Address) []byte {
 	return enc
 }
 
+// TryPackSetDimoToken is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x5b6c1979.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setDimoToken(address dimoToken) returns()
+func (registry *Registry) TryPackSetDimoToken(dimoToken common.Address) ([]byte, error) {
+	return registry.abi.Pack("setDimoToken", dimoToken)
+}
+
 // PackSetFoundation is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xdb3543f5.
+// the contract method with ID 0xdb3543f5.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setFoundation(address foundation) returns()
 func (registry *Registry) PackSetFoundation(foundation common.Address) []byte {
@@ -1894,44 +2993,18 @@ func (registry *Registry) PackSetFoundation(foundation common.Address) []byte {
 	return enc
 }
 
-// PackSetIntegrationController is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x106129aa.
+// TryPackSetFoundation is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xdb3543f5.  This method will return an error
+// if any inputs are invalid/nil.
 //
-// Solidity: function setIntegrationController(address _controller) returns()
-func (registry *Registry) PackSetIntegrationController(controller common.Address) []byte {
-	enc, err := registry.abi.Pack("setIntegrationController", controller)
-	if err != nil {
-		panic(err)
-	}
-	return enc
-}
-
-// PackSetIntegrationIdProxyAddress is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x636c1d1b.
-//
-// Solidity: function setIntegrationIdProxyAddress(address addr) returns()
-func (registry *Registry) PackSetIntegrationIdProxyAddress(addr common.Address) []byte {
-	enc, err := registry.abi.Pack("setIntegrationIdProxyAddress", addr)
-	if err != nil {
-		panic(err)
-	}
-	return enc
-}
-
-// PackSetIntegrationInfo is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x8d7e6001.
-//
-// Solidity: function setIntegrationInfo(uint256 tokenId, (string,string)[] attrInfoList) returns()
-func (registry *Registry) PackSetIntegrationInfo(tokenId *big.Int, attrInfoList []AttributeInfoPair) []byte {
-	enc, err := registry.abi.Pack("setIntegrationInfo", tokenId, attrInfoList)
-	if err != nil {
-		panic(err)
-	}
-	return enc
+// Solidity: function setFoundation(address foundation) returns()
+func (registry *Registry) TryPackSetFoundation(foundation common.Address) ([]byte, error) {
+	return registry.abi.Pack("setFoundation", foundation)
 }
 
 // PackSetManufacturerIdProxyAddress is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xd159f49a.
+// the contract method with ID 0xd159f49a.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setManufacturerIdProxyAddress(address addr) returns()
 func (registry *Registry) PackSetManufacturerIdProxyAddress(addr common.Address) []byte {
@@ -1942,8 +3015,18 @@ func (registry *Registry) PackSetManufacturerIdProxyAddress(addr common.Address)
 	return enc
 }
 
+// TryPackSetManufacturerIdProxyAddress is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xd159f49a.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setManufacturerIdProxyAddress(address addr) returns()
+func (registry *Registry) TryPackSetManufacturerIdProxyAddress(addr common.Address) ([]byte, error) {
+	return registry.abi.Pack("setManufacturerIdProxyAddress", addr)
+}
+
 // PackSetManufacturerInfo is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x63545ffa.
+// the contract method with ID 0x63545ffa.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setManufacturerInfo(uint256 tokenId, (string,string)[] attrInfoList) returns()
 func (registry *Registry) PackSetManufacturerInfo(tokenId *big.Int, attrInfoList []AttributeInfoPair) []byte {
@@ -1954,8 +3037,18 @@ func (registry *Registry) PackSetManufacturerInfo(tokenId *big.Int, attrInfoList
 	return enc
 }
 
+// TryPackSetManufacturerInfo is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x63545ffa.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setManufacturerInfo(uint256 tokenId, (string,string)[] attrInfoList) returns()
+func (registry *Registry) TryPackSetManufacturerInfo(tokenId *big.Int, attrInfoList []AttributeInfoPair) ([]byte, error) {
+	return registry.abi.Pack("setManufacturerInfo", tokenId, attrInfoList)
+}
+
 // PackSetManufacturerLicense is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xea9ae2f5.
+// the contract method with ID 0xea9ae2f5.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setManufacturerLicense(address manufacturerLicense) returns()
 func (registry *Registry) PackSetManufacturerLicense(manufacturerLicense common.Address) []byte {
@@ -1966,8 +3059,84 @@ func (registry *Registry) PackSetManufacturerLicense(manufacturerLicense common.
 	return enc
 }
 
+// TryPackSetManufacturerLicense is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xea9ae2f5.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setManufacturerLicense(address manufacturerLicense) returns()
+func (registry *Registry) TryPackSetManufacturerLicense(manufacturerLicense common.Address) ([]byte, error) {
+	return registry.abi.Pack("setManufacturerLicense", manufacturerLicense)
+}
+
+// PackSetSacd is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xc63f7dd2.  This method will panic if any
+// invalid/nil inputs are passed.
+//
+// Solidity: function setSacd(address sacd) returns()
+func (registry *Registry) PackSetSacd(sacd common.Address) []byte {
+	enc, err := registry.abi.Pack("setSacd", sacd)
+	if err != nil {
+		panic(err)
+	}
+	return enc
+}
+
+// TryPackSetSacd is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xc63f7dd2.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setSacd(address sacd) returns()
+func (registry *Registry) TryPackSetSacd(sacd common.Address) ([]byte, error) {
+	return registry.abi.Pack("setSacd", sacd)
+}
+
+// PackSetStorageNode is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x6ee4a611.  This method will panic if any
+// invalid/nil inputs are passed.
+//
+// Solidity: function setStorageNode(address storageNode) returns()
+func (registry *Registry) PackSetStorageNode(storageNode common.Address) []byte {
+	enc, err := registry.abi.Pack("setStorageNode", storageNode)
+	if err != nil {
+		panic(err)
+	}
+	return enc
+}
+
+// TryPackSetStorageNode is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x6ee4a611.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setStorageNode(address storageNode) returns()
+func (registry *Registry) TryPackSetStorageNode(storageNode common.Address) ([]byte, error) {
+	return registry.abi.Pack("setStorageNode", storageNode)
+}
+
+// PackSetStorageNodeIdForVehicle is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xae3ed8dd.  This method will panic if any
+// invalid/nil inputs are passed.
+//
+// Solidity: function setStorageNodeIdForVehicle(uint256 vehicleId, uint256 storageNodeId) returns()
+func (registry *Registry) PackSetStorageNodeIdForVehicle(vehicleId *big.Int, storageNodeId *big.Int) []byte {
+	enc, err := registry.abi.Pack("setStorageNodeIdForVehicle", vehicleId, storageNodeId)
+	if err != nil {
+		panic(err)
+	}
+	return enc
+}
+
+// TryPackSetStorageNodeIdForVehicle is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xae3ed8dd.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setStorageNodeIdForVehicle(uint256 vehicleId, uint256 storageNodeId) returns()
+func (registry *Registry) TryPackSetStorageNodeIdForVehicle(vehicleId *big.Int, storageNodeId *big.Int) ([]byte, error) {
+	return registry.abi.Pack("setStorageNodeIdForVehicle", vehicleId, storageNodeId)
+}
+
 // PackSetStreamRegistry is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x0c3cac3b.
+// the contract method with ID 0x0c3cac3b.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setStreamRegistry(address streamRegistry) returns()
 func (registry *Registry) PackSetStreamRegistry(streamRegistry common.Address) []byte {
@@ -1978,8 +3147,18 @@ func (registry *Registry) PackSetStreamRegistry(streamRegistry common.Address) [
 	return enc
 }
 
+// TryPackSetStreamRegistry is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x0c3cac3b.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setStreamRegistry(address streamRegistry) returns()
+func (registry *Registry) TryPackSetStreamRegistry(streamRegistry common.Address) ([]byte, error) {
+	return registry.abi.Pack("setStreamRegistry", streamRegistry)
+}
+
 // PackSetSubscriptionToVehicleStream is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xbb44bb75.
+// the contract method with ID 0xbb44bb75.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setSubscriptionToVehicleStream(uint256 vehicleId, address subscriber, uint256 expirationTime) returns()
 func (registry *Registry) PackSetSubscriptionToVehicleStream(vehicleId *big.Int, subscriber common.Address, expirationTime *big.Int) []byte {
@@ -1990,8 +3169,18 @@ func (registry *Registry) PackSetSubscriptionToVehicleStream(vehicleId *big.Int,
 	return enc
 }
 
+// TryPackSetSubscriptionToVehicleStream is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xbb44bb75.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setSubscriptionToVehicleStream(uint256 vehicleId, address subscriber, uint256 expirationTime) returns()
+func (registry *Registry) TryPackSetSubscriptionToVehicleStream(vehicleId *big.Int, subscriber common.Address, expirationTime *big.Int) ([]byte, error) {
+	return registry.abi.Pack("setSubscriptionToVehicleStream", vehicleId, subscriber, expirationTime)
+}
+
 // PackSetSyntheticDeviceIdProxyAddress is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xecf452d7.
+// the contract method with ID 0xecf452d7.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setSyntheticDeviceIdProxyAddress(address addr) returns()
 func (registry *Registry) PackSetSyntheticDeviceIdProxyAddress(addr common.Address) []byte {
@@ -2002,8 +3191,18 @@ func (registry *Registry) PackSetSyntheticDeviceIdProxyAddress(addr common.Addre
 	return enc
 }
 
+// TryPackSetSyntheticDeviceIdProxyAddress is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xecf452d7.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setSyntheticDeviceIdProxyAddress(address addr) returns()
+func (registry *Registry) TryPackSetSyntheticDeviceIdProxyAddress(addr common.Address) ([]byte, error) {
+	return registry.abi.Pack("setSyntheticDeviceIdProxyAddress", addr)
+}
+
 // PackSetSyntheticDeviceInfo is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x80430e0d.
+// the contract method with ID 0x80430e0d.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setSyntheticDeviceInfo(uint256 tokenId, (string,string)[] attrInfo) returns()
 func (registry *Registry) PackSetSyntheticDeviceInfo(tokenId *big.Int, attrInfo []AttributeInfoPair) []byte {
@@ -2014,8 +3213,18 @@ func (registry *Registry) PackSetSyntheticDeviceInfo(tokenId *big.Int, attrInfo 
 	return enc
 }
 
+// TryPackSetSyntheticDeviceInfo is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x80430e0d.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setSyntheticDeviceInfo(uint256 tokenId, (string,string)[] attrInfo) returns()
+func (registry *Registry) TryPackSetSyntheticDeviceInfo(tokenId *big.Int, attrInfo []AttributeInfoPair) ([]byte, error) {
+	return registry.abi.Pack("setSyntheticDeviceInfo", tokenId, attrInfo)
+}
+
 // PackSetVehicleIdProxyAddress is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x9bfae6da.
+// the contract method with ID 0x9bfae6da.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setVehicleIdProxyAddress(address addr) returns()
 func (registry *Registry) PackSetVehicleIdProxyAddress(addr common.Address) []byte {
@@ -2026,8 +3235,18 @@ func (registry *Registry) PackSetVehicleIdProxyAddress(addr common.Address) []by
 	return enc
 }
 
+// TryPackSetVehicleIdProxyAddress is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x9bfae6da.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setVehicleIdProxyAddress(address addr) returns()
+func (registry *Registry) TryPackSetVehicleIdProxyAddress(addr common.Address) ([]byte, error) {
+	return registry.abi.Pack("setVehicleIdProxyAddress", addr)
+}
+
 // PackSetVehicleInfo is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xd9c3ae61.
+// the contract method with ID 0xd9c3ae61.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setVehicleInfo(uint256 tokenId, (string,string)[] attrInfo) returns()
 func (registry *Registry) PackSetVehicleInfo(tokenId *big.Int, attrInfo []AttributeInfoPair) []byte {
@@ -2038,8 +3257,18 @@ func (registry *Registry) PackSetVehicleInfo(tokenId *big.Int, attrInfo []Attrib
 	return enc
 }
 
+// TryPackSetVehicleInfo is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xd9c3ae61.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setVehicleInfo(uint256 tokenId, (string,string)[] attrInfo) returns()
+func (registry *Registry) TryPackSetVehicleInfo(tokenId *big.Int, attrInfo []AttributeInfoPair) ([]byte, error) {
+	return registry.abi.Pack("setVehicleInfo", tokenId, attrInfo)
+}
+
 // PackSetVehicleStream is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x6f58f093.
+// the contract method with ID 0x6f58f093.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function setVehicleStream(uint256 vehicleId, string streamId) returns()
 func (registry *Registry) PackSetVehicleStream(vehicleId *big.Int, streamId string) []byte {
@@ -2050,8 +3279,18 @@ func (registry *Registry) PackSetVehicleStream(vehicleId *big.Int, streamId stri
 	return enc
 }
 
+// TryPackSetVehicleStream is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x6f58f093.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function setVehicleStream(uint256 vehicleId, string streamId) returns()
+func (registry *Registry) TryPackSetVehicleStream(vehicleId *big.Int, streamId string) ([]byte, error) {
+	return registry.abi.Pack("setVehicleStream", vehicleId, streamId)
+}
+
 // PackSubscribeToVehicleStream is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x37479f7e.
+// the contract method with ID 0x37479f7e.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function subscribeToVehicleStream(uint256 vehicleId, uint256 expirationTime) returns()
 func (registry *Registry) PackSubscribeToVehicleStream(vehicleId *big.Int, expirationTime *big.Int) []byte {
@@ -2062,8 +3301,18 @@ func (registry *Registry) PackSubscribeToVehicleStream(vehicleId *big.Int, expir
 	return enc
 }
 
+// TryPackSubscribeToVehicleStream is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x37479f7e.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function subscribeToVehicleStream(uint256 vehicleId, uint256 expirationTime) returns()
+func (registry *Registry) TryPackSubscribeToVehicleStream(vehicleId *big.Int, expirationTime *big.Int) ([]byte, error) {
+	return registry.abi.Pack("subscribeToVehicleStream", vehicleId, expirationTime)
+}
+
 // PackTransferAftermarketDeviceOwnership is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xff96b761.
+// the contract method with ID 0xff96b761.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function transferAftermarketDeviceOwnership(uint256 aftermarketDeviceNode, address newOwner) returns()
 func (registry *Registry) PackTransferAftermarketDeviceOwnership(aftermarketDeviceNode *big.Int, newOwner common.Address) []byte {
@@ -2074,8 +3323,18 @@ func (registry *Registry) PackTransferAftermarketDeviceOwnership(aftermarketDevi
 	return enc
 }
 
+// TryPackTransferAftermarketDeviceOwnership is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xff96b761.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function transferAftermarketDeviceOwnership(uint256 aftermarketDeviceNode, address newOwner) returns()
+func (registry *Registry) TryPackTransferAftermarketDeviceOwnership(aftermarketDeviceNode *big.Int, newOwner common.Address) ([]byte, error) {
+	return registry.abi.Pack("transferAftermarketDeviceOwnership", aftermarketDeviceNode, newOwner)
+}
+
 // PackUnclaimAftermarketDeviceNode is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x5c129493.
+// the contract method with ID 0x5c129493.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function unclaimAftermarketDeviceNode(uint256[] aftermarketDeviceNodes) returns()
 func (registry *Registry) PackUnclaimAftermarketDeviceNode(aftermarketDeviceNodes []*big.Int) []byte {
@@ -2086,8 +3345,18 @@ func (registry *Registry) PackUnclaimAftermarketDeviceNode(aftermarketDeviceNode
 	return enc
 }
 
+// TryPackUnclaimAftermarketDeviceNode is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x5c129493.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function unclaimAftermarketDeviceNode(uint256[] aftermarketDeviceNodes) returns()
+func (registry *Registry) TryPackUnclaimAftermarketDeviceNode(aftermarketDeviceNodes []*big.Int) ([]byte, error) {
+	return registry.abi.Pack("unclaimAftermarketDeviceNode", aftermarketDeviceNodes)
+}
+
 // PackUnpairAftermarketDevice is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xee4d9596.
+// the contract method with ID 0xee4d9596.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function unpairAftermarketDevice(uint256 aftermarketDeviceNode, uint256 vehicleNode) returns()
 func (registry *Registry) PackUnpairAftermarketDevice(aftermarketDeviceNode *big.Int, vehicleNode *big.Int) []byte {
@@ -2098,8 +3367,18 @@ func (registry *Registry) PackUnpairAftermarketDevice(aftermarketDeviceNode *big
 	return enc
 }
 
+// TryPackUnpairAftermarketDevice is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xee4d9596.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function unpairAftermarketDevice(uint256 aftermarketDeviceNode, uint256 vehicleNode) returns()
+func (registry *Registry) TryPackUnpairAftermarketDevice(aftermarketDeviceNode *big.Int, vehicleNode *big.Int) ([]byte, error) {
+	return registry.abi.Pack("unpairAftermarketDevice", aftermarketDeviceNode, vehicleNode)
+}
+
 // PackUnpairAftermarketDeviceByDeviceNode is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x71193956.
+// the contract method with ID 0x71193956.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function unpairAftermarketDeviceByDeviceNode(uint256[] aftermarketDeviceNodes) returns()
 func (registry *Registry) PackUnpairAftermarketDeviceByDeviceNode(aftermarketDeviceNodes []*big.Int) []byte {
@@ -2110,8 +3389,18 @@ func (registry *Registry) PackUnpairAftermarketDeviceByDeviceNode(aftermarketDev
 	return enc
 }
 
+// TryPackUnpairAftermarketDeviceByDeviceNode is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x71193956.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function unpairAftermarketDeviceByDeviceNode(uint256[] aftermarketDeviceNodes) returns()
+func (registry *Registry) TryPackUnpairAftermarketDeviceByDeviceNode(aftermarketDeviceNodes []*big.Int) ([]byte, error) {
+	return registry.abi.Pack("unpairAftermarketDeviceByDeviceNode", aftermarketDeviceNodes)
+}
+
 // PackUnpairAftermarketDeviceByVehicleNode is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x8c2ee9bb.
+// the contract method with ID 0x8c2ee9bb.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function unpairAftermarketDeviceByVehicleNode(uint256[] vehicleNodes) returns()
 func (registry *Registry) PackUnpairAftermarketDeviceByVehicleNode(vehicleNodes []*big.Int) []byte {
@@ -2122,8 +3411,18 @@ func (registry *Registry) PackUnpairAftermarketDeviceByVehicleNode(vehicleNodes 
 	return enc
 }
 
+// TryPackUnpairAftermarketDeviceByVehicleNode is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x8c2ee9bb.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function unpairAftermarketDeviceByVehicleNode(uint256[] vehicleNodes) returns()
+func (registry *Registry) TryPackUnpairAftermarketDeviceByVehicleNode(vehicleNodes []*big.Int) ([]byte, error) {
+	return registry.abi.Pack("unpairAftermarketDeviceByVehicleNode", vehicleNodes)
+}
+
 // PackUnpairAftermarketDeviceSign is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x3f65997a.
+// the contract method with ID 0x3f65997a.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function unpairAftermarketDeviceSign(uint256 aftermarketDeviceNode, uint256 vehicleNode, bytes signature) returns()
 func (registry *Registry) PackUnpairAftermarketDeviceSign(aftermarketDeviceNode *big.Int, vehicleNode *big.Int, signature []byte) []byte {
@@ -2134,8 +3433,18 @@ func (registry *Registry) PackUnpairAftermarketDeviceSign(aftermarketDeviceNode 
 	return enc
 }
 
+// TryPackUnpairAftermarketDeviceSign is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x3f65997a.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function unpairAftermarketDeviceSign(uint256 aftermarketDeviceNode, uint256 vehicleNode, bytes signature) returns()
+func (registry *Registry) TryPackUnpairAftermarketDeviceSign(aftermarketDeviceNode *big.Int, vehicleNode *big.Int, signature []byte) ([]byte, error) {
+	return registry.abi.Pack("unpairAftermarketDeviceSign", aftermarketDeviceNode, vehicleNode, signature)
+}
+
 // PackUnsetVehicleStream is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xcd90df7e.
+// the contract method with ID 0xcd90df7e.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function unsetVehicleStream(uint256 vehicleId) returns()
 func (registry *Registry) PackUnsetVehicleStream(vehicleId *big.Int) []byte {
@@ -2146,8 +3455,18 @@ func (registry *Registry) PackUnsetVehicleStream(vehicleId *big.Int) []byte {
 	return enc
 }
 
+// TryPackUnsetVehicleStream is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xcd90df7e.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function unsetVehicleStream(uint256 vehicleId) returns()
+func (registry *Registry) TryPackUnsetVehicleStream(vehicleId *big.Int) ([]byte, error) {
+	return registry.abi.Pack("unsetVehicleStream", vehicleId)
+}
+
 // PackUpdateDeviceDefinition is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x182fef60.
+// the contract method with ID 0x182fef60.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function updateDeviceDefinition(uint256 manufacturerId, (string,string,string,string,string) data) returns()
 func (registry *Registry) PackUpdateDeviceDefinition(manufacturerId *big.Int, data DeviceDefinitionUpdateInput) []byte {
@@ -2158,20 +3477,18 @@ func (registry *Registry) PackUpdateDeviceDefinition(manufacturerId *big.Int, da
 	return enc
 }
 
-// PackUpdateIntegrationMinted is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x440707b5.
+// TryPackUpdateDeviceDefinition is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x182fef60.  This method will return an error
+// if any inputs are invalid/nil.
 //
-// Solidity: function updateIntegrationMinted(address from, address to) returns()
-func (registry *Registry) PackUpdateIntegrationMinted(from common.Address, to common.Address) []byte {
-	enc, err := registry.abi.Pack("updateIntegrationMinted", from, to)
-	if err != nil {
-		panic(err)
-	}
-	return enc
+// Solidity: function updateDeviceDefinition(uint256 manufacturerId, (string,string,string,string,string) data) returns()
+func (registry *Registry) TryPackUpdateDeviceDefinition(manufacturerId *big.Int, data DeviceDefinitionUpdateInput) ([]byte, error) {
+	return registry.abi.Pack("updateDeviceDefinition", manufacturerId, data)
 }
 
 // PackUpdateManufacturerMinted is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x20d60248.
+// the contract method with ID 0x20d60248.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function updateManufacturerMinted(address from, address to) returns()
 func (registry *Registry) PackUpdateManufacturerMinted(from common.Address, to common.Address) []byte {
@@ -2182,8 +3499,18 @@ func (registry *Registry) PackUpdateManufacturerMinted(from common.Address, to c
 	return enc
 }
 
+// TryPackUpdateManufacturerMinted is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x20d60248.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function updateManufacturerMinted(address from, address to) returns()
+func (registry *Registry) TryPackUpdateManufacturerMinted(from common.Address, to common.Address) ([]byte, error) {
+	return registry.abi.Pack("updateManufacturerMinted", from, to)
+}
+
 // PackUpdateModule is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x06d1d2a1.
+// the contract method with ID 0x06d1d2a1.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function updateModule(address oldImplementation, address newImplementation, bytes4[] oldSelectors, bytes4[] newSelectors) returns()
 func (registry *Registry) PackUpdateModule(oldImplementation common.Address, newImplementation common.Address, oldSelectors [][4]byte, newSelectors [][4]byte) []byte {
@@ -2194,8 +3521,18 @@ func (registry *Registry) PackUpdateModule(oldImplementation common.Address, new
 	return enc
 }
 
+// TryPackUpdateModule is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x06d1d2a1.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function updateModule(address oldImplementation, address newImplementation, bytes4[] oldSelectors, bytes4[] newSelectors) returns()
+func (registry *Registry) TryPackUpdateModule(oldImplementation common.Address, newImplementation common.Address, oldSelectors [][4]byte, newSelectors [][4]byte) ([]byte, error) {
+	return registry.abi.Pack("updateModule", oldImplementation, newImplementation, oldSelectors, newSelectors)
+}
+
 // PackValidateBurnAndResetNode is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0xea0e7d3a.
+// the contract method with ID 0xea0e7d3a.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function validateBurnAndResetNode(uint256 tokenId) returns()
 func (registry *Registry) PackValidateBurnAndResetNode(tokenId *big.Int) []byte {
@@ -2206,8 +3543,18 @@ func (registry *Registry) PackValidateBurnAndResetNode(tokenId *big.Int) []byte 
 	return enc
 }
 
+// TryPackValidateBurnAndResetNode is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0xea0e7d3a.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function validateBurnAndResetNode(uint256 tokenId) returns()
+func (registry *Registry) TryPackValidateBurnAndResetNode(tokenId *big.Int) ([]byte, error) {
+	return registry.abi.Pack("validateBurnAndResetNode", tokenId)
+}
+
 // PackValidateSdBurnAndResetNode is the Go binding used to pack the parameters required for calling
-// the contract method with ID 0x53c2aa33.
+// the contract method with ID 0x53c2aa33.  This method will panic if any
+// invalid/nil inputs are passed.
 //
 // Solidity: function validateSdBurnAndResetNode(uint256 tokenId) returns()
 func (registry *Registry) PackValidateSdBurnAndResetNode(tokenId *big.Int) []byte {
@@ -2216,6 +3563,50 @@ func (registry *Registry) PackValidateSdBurnAndResetNode(tokenId *big.Int) []byt
 		panic(err)
 	}
 	return enc
+}
+
+// TryPackValidateSdBurnAndResetNode is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x53c2aa33.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function validateSdBurnAndResetNode(uint256 tokenId) returns()
+func (registry *Registry) TryPackValidateSdBurnAndResetNode(tokenId *big.Int) ([]byte, error) {
+	return registry.abi.Pack("validateSdBurnAndResetNode", tokenId)
+}
+
+// PackVehicleIdToStorageNodeId is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x7a26a1ed.  This method will panic if any
+// invalid/nil inputs are passed.
+//
+// Solidity: function vehicleIdToStorageNodeId(uint256 vehicleId) view returns(uint256)
+func (registry *Registry) PackVehicleIdToStorageNodeId(vehicleId *big.Int) []byte {
+	enc, err := registry.abi.Pack("vehicleIdToStorageNodeId", vehicleId)
+	if err != nil {
+		panic(err)
+	}
+	return enc
+}
+
+// TryPackVehicleIdToStorageNodeId is the Go binding used to pack the parameters required for calling
+// the contract method with ID 0x7a26a1ed.  This method will return an error
+// if any inputs are invalid/nil.
+//
+// Solidity: function vehicleIdToStorageNodeId(uint256 vehicleId) view returns(uint256)
+func (registry *Registry) TryPackVehicleIdToStorageNodeId(vehicleId *big.Int) ([]byte, error) {
+	return registry.abi.Pack("vehicleIdToStorageNodeId", vehicleId)
+}
+
+// UnpackVehicleIdToStorageNodeId is the Go binding that unpacks the parameters returned
+// from invoking the contract method with ID 0x7a26a1ed.
+//
+// Solidity: function vehicleIdToStorageNodeId(uint256 vehicleId) view returns(uint256)
+func (registry *Registry) UnpackVehicleIdToStorageNodeId(data []byte) (*big.Int, error) {
+	out, err := registry.abi.Unpack("vehicleIdToStorageNodeId", data)
+	if err != nil {
+		return new(big.Int), err
+	}
+	out0 := abi.ConvertType(out[0], new(big.Int)).(*big.Int)
+	return out0, nil
 }
 
 // RegistryAftermarketDeviceAddressReset represents a AftermarketDeviceAddressReset event raised by the Registry contract.
@@ -2239,7 +3630,7 @@ func (RegistryAftermarketDeviceAddressReset) ContractEventName() string {
 // Solidity: event AftermarketDeviceAddressReset(uint256 indexed manufacturerId, uint256 indexed tokenId, address indexed aftermarketDeviceAddress)
 func (registry *Registry) UnpackAftermarketDeviceAddressResetEvent(log *types.Log) (*RegistryAftermarketDeviceAddressReset, error) {
 	event := "AftermarketDeviceAddressReset"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryAftermarketDeviceAddressReset)
@@ -2280,7 +3671,7 @@ func (RegistryAftermarketDeviceAttributeAdded) ContractEventName() string {
 // Solidity: event AftermarketDeviceAttributeAdded(string attribute)
 func (registry *Registry) UnpackAftermarketDeviceAttributeAddedEvent(log *types.Log) (*RegistryAftermarketDeviceAttributeAdded, error) {
 	event := "AftermarketDeviceAttributeAdded"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryAftermarketDeviceAttributeAdded)
@@ -2320,56 +3711,13 @@ func (RegistryAftermarketDeviceAttributeSet) ContractEventName() string {
 // UnpackAftermarketDeviceAttributeSetEvent is the Go binding that unpacks the event data emitted
 // by contract.
 //
-// Solidity: event AftermarketDeviceAttributeSet(uint256 indexed tokenId, string attribute, string info)
+// Solidity: event AftermarketDeviceAttributeSet(uint256 tokenId, string attribute, string info)
 func (registry *Registry) UnpackAftermarketDeviceAttributeSetEvent(log *types.Log) (*RegistryAftermarketDeviceAttributeSet, error) {
 	event := "AftermarketDeviceAttributeSet"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryAftermarketDeviceAttributeSet)
-	if len(log.Data) > 0 {
-		if err := registry.abi.UnpackIntoInterface(out, event, log.Data); err != nil {
-			return nil, err
-		}
-	}
-	var indexed abi.Arguments
-	for _, arg := range registry.abi.Events[event].Inputs {
-		if arg.Indexed {
-			indexed = append(indexed, arg)
-		}
-	}
-	if err := abi.ParseTopics(out, indexed, log.Topics[1:]); err != nil {
-		return nil, err
-	}
-	out.Raw = log
-	return out, nil
-}
-
-// RegistryAftermarketDeviceAttributeSet0 represents a AftermarketDeviceAttributeSet0 event raised by the Registry contract.
-type RegistryAftermarketDeviceAttributeSet0 struct {
-	TokenId   *big.Int
-	Attribute string
-	Info      string
-	Raw       *types.Log // Blockchain specific contextual infos
-}
-
-const RegistryAftermarketDeviceAttributeSet0EventName = "AftermarketDeviceAttributeSet0"
-
-// ContractEventName returns the user-defined event name.
-func (RegistryAftermarketDeviceAttributeSet0) ContractEventName() string {
-	return RegistryAftermarketDeviceAttributeSet0EventName
-}
-
-// UnpackAftermarketDeviceAttributeSet0Event is the Go binding that unpacks the event data emitted
-// by contract.
-//
-// Solidity: event AftermarketDeviceAttributeSet(uint256 tokenId, string attribute, string info)
-func (registry *Registry) UnpackAftermarketDeviceAttributeSet0Event(log *types.Log) (*RegistryAftermarketDeviceAttributeSet0, error) {
-	event := "AftermarketDeviceAttributeSet0"
-	if log.Topics[0] != registry.abi.Events[event].ID {
-		return nil, errors.New("event signature mismatch")
-	}
-	out := new(RegistryAftermarketDeviceAttributeSet0)
 	if len(log.Data) > 0 {
 		if err := registry.abi.UnpackIntoInterface(out, event, log.Data); err != nil {
 			return nil, err
@@ -2408,7 +3756,7 @@ func (RegistryAftermarketDeviceClaimed) ContractEventName() string {
 // Solidity: event AftermarketDeviceClaimed(uint256 aftermarketDeviceNode, address indexed owner)
 func (registry *Registry) UnpackAftermarketDeviceClaimedEvent(log *types.Log) (*RegistryAftermarketDeviceClaimed, error) {
 	event := "AftermarketDeviceClaimed"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryAftermarketDeviceClaimed)
@@ -2449,7 +3797,7 @@ func (RegistryAftermarketDeviceIdProxySet) ContractEventName() string {
 // Solidity: event AftermarketDeviceIdProxySet(address indexed proxy)
 func (registry *Registry) UnpackAftermarketDeviceIdProxySetEvent(log *types.Log) (*RegistryAftermarketDeviceIdProxySet, error) {
 	event := "AftermarketDeviceIdProxySet"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryAftermarketDeviceIdProxySet)
@@ -2473,9 +3821,9 @@ func (registry *Registry) UnpackAftermarketDeviceIdProxySetEvent(log *types.Log)
 
 // RegistryAftermarketDeviceNodeBurned represents a AftermarketDeviceNodeBurned event raised by the Registry contract.
 type RegistryAftermarketDeviceNodeBurned struct {
-	AdNode *big.Int
-	Owner  common.Address
-	Raw    *types.Log // Blockchain specific contextual infos
+	TokenId *big.Int
+	Owner   common.Address
+	Raw     *types.Log // Blockchain specific contextual infos
 }
 
 const RegistryAftermarketDeviceNodeBurnedEventName = "AftermarketDeviceNodeBurned"
@@ -2488,55 +3836,13 @@ func (RegistryAftermarketDeviceNodeBurned) ContractEventName() string {
 // UnpackAftermarketDeviceNodeBurnedEvent is the Go binding that unpacks the event data emitted
 // by contract.
 //
-// Solidity: event AftermarketDeviceNodeBurned(uint256 indexed adNode, address indexed owner)
+// Solidity: event AftermarketDeviceNodeBurned(uint256 indexed tokenId, address indexed owner)
 func (registry *Registry) UnpackAftermarketDeviceNodeBurnedEvent(log *types.Log) (*RegistryAftermarketDeviceNodeBurned, error) {
 	event := "AftermarketDeviceNodeBurned"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryAftermarketDeviceNodeBurned)
-	if len(log.Data) > 0 {
-		if err := registry.abi.UnpackIntoInterface(out, event, log.Data); err != nil {
-			return nil, err
-		}
-	}
-	var indexed abi.Arguments
-	for _, arg := range registry.abi.Events[event].Inputs {
-		if arg.Indexed {
-			indexed = append(indexed, arg)
-		}
-	}
-	if err := abi.ParseTopics(out, indexed, log.Topics[1:]); err != nil {
-		return nil, err
-	}
-	out.Raw = log
-	return out, nil
-}
-
-// RegistryAftermarketDeviceNodeBurned0 represents a AftermarketDeviceNodeBurned0 event raised by the Registry contract.
-type RegistryAftermarketDeviceNodeBurned0 struct {
-	TokenId *big.Int
-	Owner   common.Address
-	Raw     *types.Log // Blockchain specific contextual infos
-}
-
-const RegistryAftermarketDeviceNodeBurned0EventName = "AftermarketDeviceNodeBurned0"
-
-// ContractEventName returns the user-defined event name.
-func (RegistryAftermarketDeviceNodeBurned0) ContractEventName() string {
-	return RegistryAftermarketDeviceNodeBurned0EventName
-}
-
-// UnpackAftermarketDeviceNodeBurned0Event is the Go binding that unpacks the event data emitted
-// by contract.
-//
-// Solidity: event AftermarketDeviceNodeBurned(uint256 indexed tokenId, address indexed owner)
-func (registry *Registry) UnpackAftermarketDeviceNodeBurned0Event(log *types.Log) (*RegistryAftermarketDeviceNodeBurned0, error) {
-	event := "AftermarketDeviceNodeBurned0"
-	if log.Topics[0] != registry.abi.Events[event].ID {
-		return nil, errors.New("event signature mismatch")
-	}
-	out := new(RegistryAftermarketDeviceNodeBurned0)
 	if len(log.Data) > 0 {
 		if err := registry.abi.UnpackIntoInterface(out, event, log.Data); err != nil {
 			return nil, err
@@ -2577,7 +3883,7 @@ func (RegistryAftermarketDeviceNodeMinted) ContractEventName() string {
 // Solidity: event AftermarketDeviceNodeMinted(uint256 indexed manufacturerId, uint256 tokenId, address indexed aftermarketDeviceAddress, address indexed owner)
 func (registry *Registry) UnpackAftermarketDeviceNodeMintedEvent(log *types.Log) (*RegistryAftermarketDeviceNodeMinted, error) {
 	event := "AftermarketDeviceNodeMinted"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryAftermarketDeviceNodeMinted)
@@ -2620,7 +3926,7 @@ func (RegistryAftermarketDevicePaired) ContractEventName() string {
 // Solidity: event AftermarketDevicePaired(uint256 aftermarketDeviceNode, uint256 vehicleNode, address indexed owner)
 func (registry *Registry) UnpackAftermarketDevicePairedEvent(log *types.Log) (*RegistryAftermarketDevicePaired, error) {
 	event := "AftermarketDevicePaired"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryAftermarketDevicePaired)
@@ -2663,7 +3969,7 @@ func (RegistryAftermarketDeviceTransferred) ContractEventName() string {
 // Solidity: event AftermarketDeviceTransferred(uint256 indexed aftermarketDeviceNode, address indexed oldOwner, address indexed newOwner)
 func (registry *Registry) UnpackAftermarketDeviceTransferredEvent(log *types.Log) (*RegistryAftermarketDeviceTransferred, error) {
 	event := "AftermarketDeviceTransferred"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryAftermarketDeviceTransferred)
@@ -2704,10 +4010,52 @@ func (RegistryAftermarketDeviceUnclaimed) ContractEventName() string {
 // Solidity: event AftermarketDeviceUnclaimed(uint256 indexed aftermarketDeviceNode)
 func (registry *Registry) UnpackAftermarketDeviceUnclaimedEvent(log *types.Log) (*RegistryAftermarketDeviceUnclaimed, error) {
 	event := "AftermarketDeviceUnclaimed"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryAftermarketDeviceUnclaimed)
+	if len(log.Data) > 0 {
+		if err := registry.abi.UnpackIntoInterface(out, event, log.Data); err != nil {
+			return nil, err
+		}
+	}
+	var indexed abi.Arguments
+	for _, arg := range registry.abi.Events[event].Inputs {
+		if arg.Indexed {
+			indexed = append(indexed, arg)
+		}
+	}
+	if err := abi.ParseTopics(out, indexed, log.Topics[1:]); err != nil {
+		return nil, err
+	}
+	out.Raw = log
+	return out, nil
+}
+
+// RegistryAftermarketDeviceUnclaimed0 represents a AftermarketDeviceUnclaimed0 event raised by the Registry contract.
+type RegistryAftermarketDeviceUnclaimed0 struct {
+	AftermarketDeviceNode *big.Int
+	Owner                 common.Address
+	Raw                   *types.Log // Blockchain specific contextual infos
+}
+
+const RegistryAftermarketDeviceUnclaimed0EventName = "AftermarketDeviceUnclaimed0"
+
+// ContractEventName returns the user-defined event name.
+func (RegistryAftermarketDeviceUnclaimed0) ContractEventName() string {
+	return RegistryAftermarketDeviceUnclaimed0EventName
+}
+
+// UnpackAftermarketDeviceUnclaimed0Event is the Go binding that unpacks the event data emitted
+// by contract.
+//
+// Solidity: event AftermarketDeviceUnclaimed(uint256 indexed aftermarketDeviceNode, address indexed owner)
+func (registry *Registry) UnpackAftermarketDeviceUnclaimed0Event(log *types.Log) (*RegistryAftermarketDeviceUnclaimed0, error) {
+	event := "AftermarketDeviceUnclaimed0"
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
+		return nil, errors.New("event signature mismatch")
+	}
+	out := new(RegistryAftermarketDeviceUnclaimed0)
 	if len(log.Data) > 0 {
 		if err := registry.abi.UnpackIntoInterface(out, event, log.Data); err != nil {
 			return nil, err
@@ -2744,98 +4092,13 @@ func (RegistryAftermarketDeviceUnpaired) ContractEventName() string {
 // UnpackAftermarketDeviceUnpairedEvent is the Go binding that unpacks the event data emitted
 // by contract.
 //
-// Solidity: event AftermarketDeviceUnpaired(uint256 indexed aftermarketDeviceNode, uint256 indexed vehicleNode, address indexed owner)
+// Solidity: event AftermarketDeviceUnpaired(uint256 aftermarketDeviceNode, uint256 vehicleNode, address indexed owner)
 func (registry *Registry) UnpackAftermarketDeviceUnpairedEvent(log *types.Log) (*RegistryAftermarketDeviceUnpaired, error) {
 	event := "AftermarketDeviceUnpaired"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryAftermarketDeviceUnpaired)
-	if len(log.Data) > 0 {
-		if err := registry.abi.UnpackIntoInterface(out, event, log.Data); err != nil {
-			return nil, err
-		}
-	}
-	var indexed abi.Arguments
-	for _, arg := range registry.abi.Events[event].Inputs {
-		if arg.Indexed {
-			indexed = append(indexed, arg)
-		}
-	}
-	if err := abi.ParseTopics(out, indexed, log.Topics[1:]); err != nil {
-		return nil, err
-	}
-	out.Raw = log
-	return out, nil
-}
-
-// RegistryAftermarketDeviceUnpaired0 represents a AftermarketDeviceUnpaired0 event raised by the Registry contract.
-type RegistryAftermarketDeviceUnpaired0 struct {
-	AftermarketDeviceNode *big.Int
-	VehicleNode           *big.Int
-	Owner                 common.Address
-	Raw                   *types.Log // Blockchain specific contextual infos
-}
-
-const RegistryAftermarketDeviceUnpaired0EventName = "AftermarketDeviceUnpaired0"
-
-// ContractEventName returns the user-defined event name.
-func (RegistryAftermarketDeviceUnpaired0) ContractEventName() string {
-	return RegistryAftermarketDeviceUnpaired0EventName
-}
-
-// UnpackAftermarketDeviceUnpaired0Event is the Go binding that unpacks the event data emitted
-// by contract.
-//
-// Solidity: event AftermarketDeviceUnpaired(uint256 aftermarketDeviceNode, uint256 vehicleNode, address indexed owner)
-func (registry *Registry) UnpackAftermarketDeviceUnpaired0Event(log *types.Log) (*RegistryAftermarketDeviceUnpaired0, error) {
-	event := "AftermarketDeviceUnpaired0"
-	if log.Topics[0] != registry.abi.Events[event].ID {
-		return nil, errors.New("event signature mismatch")
-	}
-	out := new(RegistryAftermarketDeviceUnpaired0)
-	if len(log.Data) > 0 {
-		if err := registry.abi.UnpackIntoInterface(out, event, log.Data); err != nil {
-			return nil, err
-		}
-	}
-	var indexed abi.Arguments
-	for _, arg := range registry.abi.Events[event].Inputs {
-		if arg.Indexed {
-			indexed = append(indexed, arg)
-		}
-	}
-	if err := abi.ParseTopics(out, indexed, log.Topics[1:]); err != nil {
-		return nil, err
-	}
-	out.Raw = log
-	return out, nil
-}
-
-// RegistryBaseDataURISet represents a BaseDataURISet event raised by the Registry contract.
-type RegistryBaseDataURISet struct {
-	IdProxyAddress common.Address
-	DataUri        string
-	Raw            *types.Log // Blockchain specific contextual infos
-}
-
-const RegistryBaseDataURISetEventName = "BaseDataURISet"
-
-// ContractEventName returns the user-defined event name.
-func (RegistryBaseDataURISet) ContractEventName() string {
-	return RegistryBaseDataURISetEventName
-}
-
-// UnpackBaseDataURISetEvent is the Go binding that unpacks the event data emitted
-// by contract.
-//
-// Solidity: event BaseDataURISet(address idProxyAddress, string dataUri)
-func (registry *Registry) UnpackBaseDataURISetEvent(log *types.Log) (*RegistryBaseDataURISet, error) {
-	event := "BaseDataURISet"
-	if log.Topics[0] != registry.abi.Events[event].ID {
-		return nil, errors.New("event signature mismatch")
-	}
-	out := new(RegistryBaseDataURISet)
 	if len(log.Data) > 0 {
 		if err := registry.abi.UnpackIntoInterface(out, event, log.Data); err != nil {
 			return nil, err
@@ -2875,10 +4138,51 @@ func (RegistryBeneficiarySet) ContractEventName() string {
 // Solidity: event BeneficiarySet(address indexed idProxyAddress, uint256 indexed nodeId, address indexed beneficiary)
 func (registry *Registry) UnpackBeneficiarySetEvent(log *types.Log) (*RegistryBeneficiarySet, error) {
 	event := "BeneficiarySet"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryBeneficiarySet)
+	if len(log.Data) > 0 {
+		if err := registry.abi.UnpackIntoInterface(out, event, log.Data); err != nil {
+			return nil, err
+		}
+	}
+	var indexed abi.Arguments
+	for _, arg := range registry.abi.Events[event].Inputs {
+		if arg.Indexed {
+			indexed = append(indexed, arg)
+		}
+	}
+	if err := abi.ParseTopics(out, indexed, log.Topics[1:]); err != nil {
+		return nil, err
+	}
+	out.Raw = log
+	return out, nil
+}
+
+// RegistryConnectionsManagerSet represents a ConnectionsManagerSet event raised by the Registry contract.
+type RegistryConnectionsManagerSet struct {
+	ConnectionsManager common.Address
+	Raw                *types.Log // Blockchain specific contextual infos
+}
+
+const RegistryConnectionsManagerSetEventName = "ConnectionsManagerSet"
+
+// ContractEventName returns the user-defined event name.
+func (RegistryConnectionsManagerSet) ContractEventName() string {
+	return RegistryConnectionsManagerSetEventName
+}
+
+// UnpackConnectionsManagerSetEvent is the Go binding that unpacks the event data emitted
+// by contract.
+//
+// Solidity: event ConnectionsManagerSet(address indexed connectionsManager)
+func (registry *Registry) UnpackConnectionsManagerSetEvent(log *types.Log) (*RegistryConnectionsManagerSet, error) {
+	event := "ConnectionsManagerSet"
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
+		return nil, errors.New("event signature mismatch")
+	}
+	out := new(RegistryConnectionsManagerSet)
 	if len(log.Data) > 0 {
 		if err := registry.abi.UnpackIntoInterface(out, event, log.Data); err != nil {
 			return nil, err
@@ -2916,7 +4220,7 @@ func (RegistryControllerSet) ContractEventName() string {
 // Solidity: event ControllerSet(address indexed controller)
 func (registry *Registry) UnpackControllerSetEvent(log *types.Log) (*RegistryControllerSet, error) {
 	event := "ControllerSet"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryControllerSet)
@@ -2958,7 +4262,7 @@ func (RegistryDeviceDefinitionDeleted) ContractEventName() string {
 // Solidity: event DeviceDefinitionDeleted(uint256 indexed tableId, string id)
 func (registry *Registry) UnpackDeviceDefinitionDeletedEvent(log *types.Log) (*RegistryDeviceDefinitionDeleted, error) {
 	event := "DeviceDefinitionDeleted"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryDeviceDefinitionDeleted)
@@ -3000,7 +4304,7 @@ func (RegistryDeviceDefinitionIdSet) ContractEventName() string {
 // Solidity: event DeviceDefinitionIdSet(uint256 indexed vehicleId, string ddId)
 func (registry *Registry) UnpackDeviceDefinitionIdSetEvent(log *types.Log) (*RegistryDeviceDefinitionIdSet, error) {
 	event := "DeviceDefinitionIdSet"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryDeviceDefinitionIdSet)
@@ -3044,7 +4348,7 @@ func (RegistryDeviceDefinitionInserted) ContractEventName() string {
 // Solidity: event DeviceDefinitionInserted(uint256 indexed tableId, string id, string model, uint256 year)
 func (registry *Registry) UnpackDeviceDefinitionInsertedEvent(log *types.Log) (*RegistryDeviceDefinitionInserted, error) {
 	event := "DeviceDefinitionInserted"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryDeviceDefinitionInserted)
@@ -3087,7 +4391,7 @@ func (RegistryDeviceDefinitionTableCreated) ContractEventName() string {
 // Solidity: event DeviceDefinitionTableCreated(address indexed tableOwner, uint256 indexed manufacturerId, uint256 indexed tableId)
 func (registry *Registry) UnpackDeviceDefinitionTableCreatedEvent(log *types.Log) (*RegistryDeviceDefinitionTableCreated, error) {
 	event := "DeviceDefinitionTableCreated"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryDeviceDefinitionTableCreated)
@@ -3129,7 +4433,7 @@ func (RegistryDeviceDefinitionUpdated) ContractEventName() string {
 // Solidity: event DeviceDefinitionUpdated(uint256 indexed tableId, string id)
 func (registry *Registry) UnpackDeviceDefinitionUpdatedEvent(log *types.Log) (*RegistryDeviceDefinitionUpdated, error) {
 	event := "DeviceDefinitionUpdated"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryDeviceDefinitionUpdated)
@@ -3170,7 +4474,7 @@ func (RegistryDimoCreditSet) ContractEventName() string {
 // Solidity: event DimoCreditSet(address indexed dimoCredit)
 func (registry *Registry) UnpackDimoCreditSetEvent(log *types.Log) (*RegistryDimoCreditSet, error) {
 	event := "DimoCreditSet"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryDimoCreditSet)
@@ -3211,7 +4515,7 @@ func (RegistryDimoStreamrEnsSet) ContractEventName() string {
 // Solidity: event DimoStreamrEnsSet(string dimoStreamrEns)
 func (registry *Registry) UnpackDimoStreamrEnsSetEvent(log *types.Log) (*RegistryDimoStreamrEnsSet, error) {
 	event := "DimoStreamrEnsSet"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryDimoStreamrEnsSet)
@@ -3252,7 +4556,7 @@ func (RegistryDimoStreamrNodeSet) ContractEventName() string {
 // Solidity: event DimoStreamrNodeSet(address dimoStreamrNode)
 func (registry *Registry) UnpackDimoStreamrNodeSetEvent(log *types.Log) (*RegistryDimoStreamrNodeSet, error) {
 	event := "DimoStreamrNodeSet"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryDimoStreamrNodeSet)
@@ -3293,7 +4597,7 @@ func (RegistryDimoTokenSet) ContractEventName() string {
 // Solidity: event DimoTokenSet(address indexed dimoToken)
 func (registry *Registry) UnpackDimoTokenSetEvent(log *types.Log) (*RegistryDimoTokenSet, error) {
 	event := "DimoTokenSet"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryDimoTokenSet)
@@ -3334,177 +4638,10 @@ func (RegistryFoundationSet) ContractEventName() string {
 // Solidity: event FoundationSet(address indexed foundation)
 func (registry *Registry) UnpackFoundationSetEvent(log *types.Log) (*RegistryFoundationSet, error) {
 	event := "FoundationSet"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryFoundationSet)
-	if len(log.Data) > 0 {
-		if err := registry.abi.UnpackIntoInterface(out, event, log.Data); err != nil {
-			return nil, err
-		}
-	}
-	var indexed abi.Arguments
-	for _, arg := range registry.abi.Events[event].Inputs {
-		if arg.Indexed {
-			indexed = append(indexed, arg)
-		}
-	}
-	if err := abi.ParseTopics(out, indexed, log.Topics[1:]); err != nil {
-		return nil, err
-	}
-	out.Raw = log
-	return out, nil
-}
-
-// RegistryIntegrationAttributeAdded represents a IntegrationAttributeAdded event raised by the Registry contract.
-type RegistryIntegrationAttributeAdded struct {
-	Attribute string
-	Raw       *types.Log // Blockchain specific contextual infos
-}
-
-const RegistryIntegrationAttributeAddedEventName = "IntegrationAttributeAdded"
-
-// ContractEventName returns the user-defined event name.
-func (RegistryIntegrationAttributeAdded) ContractEventName() string {
-	return RegistryIntegrationAttributeAddedEventName
-}
-
-// UnpackIntegrationAttributeAddedEvent is the Go binding that unpacks the event data emitted
-// by contract.
-//
-// Solidity: event IntegrationAttributeAdded(string attribute)
-func (registry *Registry) UnpackIntegrationAttributeAddedEvent(log *types.Log) (*RegistryIntegrationAttributeAdded, error) {
-	event := "IntegrationAttributeAdded"
-	if log.Topics[0] != registry.abi.Events[event].ID {
-		return nil, errors.New("event signature mismatch")
-	}
-	out := new(RegistryIntegrationAttributeAdded)
-	if len(log.Data) > 0 {
-		if err := registry.abi.UnpackIntoInterface(out, event, log.Data); err != nil {
-			return nil, err
-		}
-	}
-	var indexed abi.Arguments
-	for _, arg := range registry.abi.Events[event].Inputs {
-		if arg.Indexed {
-			indexed = append(indexed, arg)
-		}
-	}
-	if err := abi.ParseTopics(out, indexed, log.Topics[1:]); err != nil {
-		return nil, err
-	}
-	out.Raw = log
-	return out, nil
-}
-
-// RegistryIntegrationAttributeSet represents a IntegrationAttributeSet event raised by the Registry contract.
-type RegistryIntegrationAttributeSet struct {
-	TokenId   *big.Int
-	Attribute string
-	Info      string
-	Raw       *types.Log // Blockchain specific contextual infos
-}
-
-const RegistryIntegrationAttributeSetEventName = "IntegrationAttributeSet"
-
-// ContractEventName returns the user-defined event name.
-func (RegistryIntegrationAttributeSet) ContractEventName() string {
-	return RegistryIntegrationAttributeSetEventName
-}
-
-// UnpackIntegrationAttributeSetEvent is the Go binding that unpacks the event data emitted
-// by contract.
-//
-// Solidity: event IntegrationAttributeSet(uint256 indexed tokenId, string attribute, string info)
-func (registry *Registry) UnpackIntegrationAttributeSetEvent(log *types.Log) (*RegistryIntegrationAttributeSet, error) {
-	event := "IntegrationAttributeSet"
-	if log.Topics[0] != registry.abi.Events[event].ID {
-		return nil, errors.New("event signature mismatch")
-	}
-	out := new(RegistryIntegrationAttributeSet)
-	if len(log.Data) > 0 {
-		if err := registry.abi.UnpackIntoInterface(out, event, log.Data); err != nil {
-			return nil, err
-		}
-	}
-	var indexed abi.Arguments
-	for _, arg := range registry.abi.Events[event].Inputs {
-		if arg.Indexed {
-			indexed = append(indexed, arg)
-		}
-	}
-	if err := abi.ParseTopics(out, indexed, log.Topics[1:]); err != nil {
-		return nil, err
-	}
-	out.Raw = log
-	return out, nil
-}
-
-// RegistryIntegrationIdProxySet represents a IntegrationIdProxySet event raised by the Registry contract.
-type RegistryIntegrationIdProxySet struct {
-	Proxy common.Address
-	Raw   *types.Log // Blockchain specific contextual infos
-}
-
-const RegistryIntegrationIdProxySetEventName = "IntegrationIdProxySet"
-
-// ContractEventName returns the user-defined event name.
-func (RegistryIntegrationIdProxySet) ContractEventName() string {
-	return RegistryIntegrationIdProxySetEventName
-}
-
-// UnpackIntegrationIdProxySetEvent is the Go binding that unpacks the event data emitted
-// by contract.
-//
-// Solidity: event IntegrationIdProxySet(address proxy)
-func (registry *Registry) UnpackIntegrationIdProxySetEvent(log *types.Log) (*RegistryIntegrationIdProxySet, error) {
-	event := "IntegrationIdProxySet"
-	if log.Topics[0] != registry.abi.Events[event].ID {
-		return nil, errors.New("event signature mismatch")
-	}
-	out := new(RegistryIntegrationIdProxySet)
-	if len(log.Data) > 0 {
-		if err := registry.abi.UnpackIntoInterface(out, event, log.Data); err != nil {
-			return nil, err
-		}
-	}
-	var indexed abi.Arguments
-	for _, arg := range registry.abi.Events[event].Inputs {
-		if arg.Indexed {
-			indexed = append(indexed, arg)
-		}
-	}
-	if err := abi.ParseTopics(out, indexed, log.Topics[1:]); err != nil {
-		return nil, err
-	}
-	out.Raw = log
-	return out, nil
-}
-
-// RegistryIntegrationNodeMinted represents a IntegrationNodeMinted event raised by the Registry contract.
-type RegistryIntegrationNodeMinted struct {
-	TokenId *big.Int
-	Owner   common.Address
-	Raw     *types.Log // Blockchain specific contextual infos
-}
-
-const RegistryIntegrationNodeMintedEventName = "IntegrationNodeMinted"
-
-// ContractEventName returns the user-defined event name.
-func (RegistryIntegrationNodeMinted) ContractEventName() string {
-	return RegistryIntegrationNodeMintedEventName
-}
-
-// UnpackIntegrationNodeMintedEvent is the Go binding that unpacks the event data emitted
-// by contract.
-//
-// Solidity: event IntegrationNodeMinted(uint256 indexed tokenId, address indexed owner)
-func (registry *Registry) UnpackIntegrationNodeMintedEvent(log *types.Log) (*RegistryIntegrationNodeMinted, error) {
-	event := "IntegrationNodeMinted"
-	if log.Topics[0] != registry.abi.Events[event].ID {
-		return nil, errors.New("event signature mismatch")
-	}
-	out := new(RegistryIntegrationNodeMinted)
 	if len(log.Data) > 0 {
 		if err := registry.abi.UnpackIntoInterface(out, event, log.Data); err != nil {
 			return nil, err
@@ -3542,7 +4679,7 @@ func (RegistryManufacturerAttributeAdded) ContractEventName() string {
 // Solidity: event ManufacturerAttributeAdded(string attribute)
 func (registry *Registry) UnpackManufacturerAttributeAddedEvent(log *types.Log) (*RegistryManufacturerAttributeAdded, error) {
 	event := "ManufacturerAttributeAdded"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryManufacturerAttributeAdded)
@@ -3585,7 +4722,7 @@ func (RegistryManufacturerAttributeSet) ContractEventName() string {
 // Solidity: event ManufacturerAttributeSet(uint256 tokenId, string attribute, string info)
 func (registry *Registry) UnpackManufacturerAttributeSetEvent(log *types.Log) (*RegistryManufacturerAttributeSet, error) {
 	event := "ManufacturerAttributeSet"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryManufacturerAttributeSet)
@@ -3626,7 +4763,7 @@ func (RegistryManufacturerIdProxySet) ContractEventName() string {
 // Solidity: event ManufacturerIdProxySet(address indexed proxy)
 func (registry *Registry) UnpackManufacturerIdProxySetEvent(log *types.Log) (*RegistryManufacturerIdProxySet, error) {
 	event := "ManufacturerIdProxySet"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryManufacturerIdProxySet)
@@ -3667,7 +4804,7 @@ func (RegistryManufacturerLicenseSet) ContractEventName() string {
 // Solidity: event ManufacturerLicenseSet(address indexed manufacturerLicense)
 func (registry *Registry) UnpackManufacturerLicenseSetEvent(log *types.Log) (*RegistryManufacturerLicenseSet, error) {
 	event := "ManufacturerLicenseSet"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryManufacturerLicenseSet)
@@ -3710,7 +4847,7 @@ func (RegistryManufacturerNodeMinted) ContractEventName() string {
 // Solidity: event ManufacturerNodeMinted(string name, uint256 tokenId, address indexed owner)
 func (registry *Registry) UnpackManufacturerNodeMintedEvent(log *types.Log) (*RegistryManufacturerNodeMinted, error) {
 	event := "ManufacturerNodeMinted"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryManufacturerNodeMinted)
@@ -3752,7 +4889,7 @@ func (RegistryManufacturerTableSet) ContractEventName() string {
 // Solidity: event ManufacturerTableSet(uint256 indexed manufacturerId, uint256 indexed tableId)
 func (registry *Registry) UnpackManufacturerTableSetEvent(log *types.Log) (*RegistryManufacturerTableSet, error) {
 	event := "ManufacturerTableSet"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryManufacturerTableSet)
@@ -3794,7 +4931,7 @@ func (RegistryModuleAdded) ContractEventName() string {
 // Solidity: event ModuleAdded(address indexed moduleAddr, bytes4[] selectors)
 func (registry *Registry) UnpackModuleAddedEvent(log *types.Log) (*RegistryModuleAdded, error) {
 	event := "ModuleAdded"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryModuleAdded)
@@ -3836,7 +4973,7 @@ func (RegistryModuleRemoved) ContractEventName() string {
 // Solidity: event ModuleRemoved(address indexed moduleAddr, bytes4[] selectors)
 func (registry *Registry) UnpackModuleRemovedEvent(log *types.Log) (*RegistryModuleRemoved, error) {
 	event := "ModuleRemoved"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryModuleRemoved)
@@ -3880,7 +5017,7 @@ func (RegistryModuleUpdated) ContractEventName() string {
 // Solidity: event ModuleUpdated(address indexed oldImplementation, address indexed newImplementation, bytes4[] oldSelectors, bytes4[] newSelectors)
 func (registry *Registry) UnpackModuleUpdatedEvent(log *types.Log) (*RegistryModuleUpdated, error) {
 	event := "ModuleUpdated"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryModuleUpdated)
@@ -3922,7 +5059,7 @@ func (RegistryOperationCostSet) ContractEventName() string {
 // Solidity: event OperationCostSet(bytes32 operation, uint256 cost)
 func (registry *Registry) UnpackOperationCostSetEvent(log *types.Log) (*RegistryOperationCostSet, error) {
 	event := "OperationCostSet"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryOperationCostSet)
@@ -3965,7 +5102,7 @@ func (RegistryRoleAdminChanged) ContractEventName() string {
 // Solidity: event RoleAdminChanged(bytes32 indexed role, bytes32 indexed previousAdminRole, bytes32 indexed newAdminRole)
 func (registry *Registry) UnpackRoleAdminChangedEvent(log *types.Log) (*RegistryRoleAdminChanged, error) {
 	event := "RoleAdminChanged"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryRoleAdminChanged)
@@ -4008,7 +5145,7 @@ func (RegistryRoleGranted) ContractEventName() string {
 // Solidity: event RoleGranted(bytes32 indexed role, address indexed account, address indexed sender)
 func (registry *Registry) UnpackRoleGrantedEvent(log *types.Log) (*RegistryRoleGranted, error) {
 	event := "RoleGranted"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryRoleGranted)
@@ -4051,10 +5188,92 @@ func (RegistryRoleRevoked) ContractEventName() string {
 // Solidity: event RoleRevoked(bytes32 indexed role, address indexed account, address indexed sender)
 func (registry *Registry) UnpackRoleRevokedEvent(log *types.Log) (*RegistryRoleRevoked, error) {
 	event := "RoleRevoked"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryRoleRevoked)
+	if len(log.Data) > 0 {
+		if err := registry.abi.UnpackIntoInterface(out, event, log.Data); err != nil {
+			return nil, err
+		}
+	}
+	var indexed abi.Arguments
+	for _, arg := range registry.abi.Events[event].Inputs {
+		if arg.Indexed {
+			indexed = append(indexed, arg)
+		}
+	}
+	if err := abi.ParseTopics(out, indexed, log.Topics[1:]); err != nil {
+		return nil, err
+	}
+	out.Raw = log
+	return out, nil
+}
+
+// RegistrySacdSet represents a SacdSet event raised by the Registry contract.
+type RegistrySacdSet struct {
+	Sacd common.Address
+	Raw  *types.Log // Blockchain specific contextual infos
+}
+
+const RegistrySacdSetEventName = "SacdSet"
+
+// ContractEventName returns the user-defined event name.
+func (RegistrySacdSet) ContractEventName() string {
+	return RegistrySacdSetEventName
+}
+
+// UnpackSacdSetEvent is the Go binding that unpacks the event data emitted
+// by contract.
+//
+// Solidity: event SacdSet(address indexed sacd)
+func (registry *Registry) UnpackSacdSetEvent(log *types.Log) (*RegistrySacdSet, error) {
+	event := "SacdSet"
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
+		return nil, errors.New("event signature mismatch")
+	}
+	out := new(RegistrySacdSet)
+	if len(log.Data) > 0 {
+		if err := registry.abi.UnpackIntoInterface(out, event, log.Data); err != nil {
+			return nil, err
+		}
+	}
+	var indexed abi.Arguments
+	for _, arg := range registry.abi.Events[event].Inputs {
+		if arg.Indexed {
+			indexed = append(indexed, arg)
+		}
+	}
+	if err := abi.ParseTopics(out, indexed, log.Topics[1:]); err != nil {
+		return nil, err
+	}
+	out.Raw = log
+	return out, nil
+}
+
+// RegistryStorageNodeSet represents a StorageNodeSet event raised by the Registry contract.
+type RegistryStorageNodeSet struct {
+	StorageNode common.Address
+	Raw         *types.Log // Blockchain specific contextual infos
+}
+
+const RegistryStorageNodeSetEventName = "StorageNodeSet"
+
+// ContractEventName returns the user-defined event name.
+func (RegistryStorageNodeSet) ContractEventName() string {
+	return RegistryStorageNodeSetEventName
+}
+
+// UnpackStorageNodeSetEvent is the Go binding that unpacks the event data emitted
+// by contract.
+//
+// Solidity: event StorageNodeSet(address indexed storageNode)
+func (registry *Registry) UnpackStorageNodeSetEvent(log *types.Log) (*RegistryStorageNodeSet, error) {
+	event := "StorageNodeSet"
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
+		return nil, errors.New("event signature mismatch")
+	}
+	out := new(RegistryStorageNodeSet)
 	if len(log.Data) > 0 {
 		if err := registry.abi.UnpackIntoInterface(out, event, log.Data); err != nil {
 			return nil, err
@@ -4092,7 +5311,7 @@ func (RegistryStreamRegistrySet) ContractEventName() string {
 // Solidity: event StreamRegistrySet(address streamRegistry)
 func (registry *Registry) UnpackStreamRegistrySetEvent(log *types.Log) (*RegistryStreamRegistrySet, error) {
 	event := "StreamRegistrySet"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryStreamRegistrySet)
@@ -4135,7 +5354,7 @@ func (RegistrySubscribedToVehicleStream) ContractEventName() string {
 // Solidity: event SubscribedToVehicleStream(string streamId, address indexed subscriber, uint256 expirationTime)
 func (registry *Registry) UnpackSubscribedToVehicleStreamEvent(log *types.Log) (*RegistrySubscribedToVehicleStream, error) {
 	event := "SubscribedToVehicleStream"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistrySubscribedToVehicleStream)
@@ -4176,7 +5395,7 @@ func (RegistrySyntheticDeviceAttributeAdded) ContractEventName() string {
 // Solidity: event SyntheticDeviceAttributeAdded(string attribute)
 func (registry *Registry) UnpackSyntheticDeviceAttributeAddedEvent(log *types.Log) (*RegistrySyntheticDeviceAttributeAdded, error) {
 	event := "SyntheticDeviceAttributeAdded"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistrySyntheticDeviceAttributeAdded)
@@ -4219,7 +5438,7 @@ func (RegistrySyntheticDeviceAttributeSet) ContractEventName() string {
 // Solidity: event SyntheticDeviceAttributeSet(uint256 indexed tokenId, string attribute, string info)
 func (registry *Registry) UnpackSyntheticDeviceAttributeSetEvent(log *types.Log) (*RegistrySyntheticDeviceAttributeSet, error) {
 	event := "SyntheticDeviceAttributeSet"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistrySyntheticDeviceAttributeSet)
@@ -4260,7 +5479,7 @@ func (RegistrySyntheticDeviceIdProxySet) ContractEventName() string {
 // Solidity: event SyntheticDeviceIdProxySet(address proxy)
 func (registry *Registry) UnpackSyntheticDeviceIdProxySetEvent(log *types.Log) (*RegistrySyntheticDeviceIdProxySet, error) {
 	event := "SyntheticDeviceIdProxySet"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistrySyntheticDeviceIdProxySet)
@@ -4303,7 +5522,7 @@ func (RegistrySyntheticDeviceNodeBurned) ContractEventName() string {
 // Solidity: event SyntheticDeviceNodeBurned(uint256 indexed syntheticDeviceNode, uint256 indexed vehicleNode, address indexed owner)
 func (registry *Registry) UnpackSyntheticDeviceNodeBurnedEvent(log *types.Log) (*RegistrySyntheticDeviceNodeBurned, error) {
 	event := "SyntheticDeviceNodeBurned"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistrySyntheticDeviceNodeBurned)
@@ -4327,7 +5546,7 @@ func (registry *Registry) UnpackSyntheticDeviceNodeBurnedEvent(log *types.Log) (
 
 // RegistrySyntheticDeviceNodeMinted represents a SyntheticDeviceNodeMinted event raised by the Registry contract.
 type RegistrySyntheticDeviceNodeMinted struct {
-	IntegrationNode        *big.Int
+	ConnectionId           *big.Int
 	SyntheticDeviceNode    *big.Int
 	VehicleNode            *big.Int
 	SyntheticDeviceAddress common.Address
@@ -4345,10 +5564,10 @@ func (RegistrySyntheticDeviceNodeMinted) ContractEventName() string {
 // UnpackSyntheticDeviceNodeMintedEvent is the Go binding that unpacks the event data emitted
 // by contract.
 //
-// Solidity: event SyntheticDeviceNodeMinted(uint256 integrationNode, uint256 syntheticDeviceNode, uint256 indexed vehicleNode, address indexed syntheticDeviceAddress, address indexed owner)
+// Solidity: event SyntheticDeviceNodeMinted(uint256 connectionId, uint256 syntheticDeviceNode, uint256 indexed vehicleNode, address indexed syntheticDeviceAddress, address indexed owner)
 func (registry *Registry) UnpackSyntheticDeviceNodeMintedEvent(log *types.Log) (*RegistrySyntheticDeviceNodeMinted, error) {
 	event := "SyntheticDeviceNodeMinted"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistrySyntheticDeviceNodeMinted)
@@ -4389,7 +5608,7 @@ func (RegistryVehicleAttributeAdded) ContractEventName() string {
 // Solidity: event VehicleAttributeAdded(string attribute)
 func (registry *Registry) UnpackVehicleAttributeAddedEvent(log *types.Log) (*RegistryVehicleAttributeAdded, error) {
 	event := "VehicleAttributeAdded"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryVehicleAttributeAdded)
@@ -4430,7 +5649,7 @@ func (RegistryVehicleAttributeRemoved) ContractEventName() string {
 // Solidity: event VehicleAttributeRemoved(string attribute)
 func (registry *Registry) UnpackVehicleAttributeRemovedEvent(log *types.Log) (*RegistryVehicleAttributeRemoved, error) {
 	event := "VehicleAttributeRemoved"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryVehicleAttributeRemoved)
@@ -4470,56 +5689,13 @@ func (RegistryVehicleAttributeSet) ContractEventName() string {
 // UnpackVehicleAttributeSetEvent is the Go binding that unpacks the event data emitted
 // by contract.
 //
-// Solidity: event VehicleAttributeSet(uint256 indexed tokenId, string attribute, string info)
+// Solidity: event VehicleAttributeSet(uint256 tokenId, string attribute, string info)
 func (registry *Registry) UnpackVehicleAttributeSetEvent(log *types.Log) (*RegistryVehicleAttributeSet, error) {
 	event := "VehicleAttributeSet"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryVehicleAttributeSet)
-	if len(log.Data) > 0 {
-		if err := registry.abi.UnpackIntoInterface(out, event, log.Data); err != nil {
-			return nil, err
-		}
-	}
-	var indexed abi.Arguments
-	for _, arg := range registry.abi.Events[event].Inputs {
-		if arg.Indexed {
-			indexed = append(indexed, arg)
-		}
-	}
-	if err := abi.ParseTopics(out, indexed, log.Topics[1:]); err != nil {
-		return nil, err
-	}
-	out.Raw = log
-	return out, nil
-}
-
-// RegistryVehicleAttributeSet0 represents a VehicleAttributeSet0 event raised by the Registry contract.
-type RegistryVehicleAttributeSet0 struct {
-	TokenId   *big.Int
-	Attribute string
-	Info      string
-	Raw       *types.Log // Blockchain specific contextual infos
-}
-
-const RegistryVehicleAttributeSet0EventName = "VehicleAttributeSet0"
-
-// ContractEventName returns the user-defined event name.
-func (RegistryVehicleAttributeSet0) ContractEventName() string {
-	return RegistryVehicleAttributeSet0EventName
-}
-
-// UnpackVehicleAttributeSet0Event is the Go binding that unpacks the event data emitted
-// by contract.
-//
-// Solidity: event VehicleAttributeSet(uint256 tokenId, string attribute, string info)
-func (registry *Registry) UnpackVehicleAttributeSet0Event(log *types.Log) (*RegistryVehicleAttributeSet0, error) {
-	event := "VehicleAttributeSet0"
-	if log.Topics[0] != registry.abi.Events[event].ID {
-		return nil, errors.New("event signature mismatch")
-	}
-	out := new(RegistryVehicleAttributeSet0)
 	if len(log.Data) > 0 {
 		if err := registry.abi.UnpackIntoInterface(out, event, log.Data); err != nil {
 			return nil, err
@@ -4557,7 +5733,7 @@ func (RegistryVehicleIdProxySet) ContractEventName() string {
 // Solidity: event VehicleIdProxySet(address indexed proxy)
 func (registry *Registry) UnpackVehicleIdProxySetEvent(log *types.Log) (*RegistryVehicleIdProxySet, error) {
 	event := "VehicleIdProxySet"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryVehicleIdProxySet)
@@ -4599,7 +5775,7 @@ func (RegistryVehicleNodeBurned) ContractEventName() string {
 // Solidity: event VehicleNodeBurned(uint256 indexed vehicleNode, address indexed owner)
 func (registry *Registry) UnpackVehicleNodeBurnedEvent(log *types.Log) (*RegistryVehicleNodeBurned, error) {
 	event := "VehicleNodeBurned"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryVehicleNodeBurned)
@@ -4642,7 +5818,7 @@ func (RegistryVehicleNodeMinted) ContractEventName() string {
 // Solidity: event VehicleNodeMinted(uint256 manufacturerNode, uint256 tokenId, address owner)
 func (registry *Registry) UnpackVehicleNodeMintedEvent(log *types.Log) (*RegistryVehicleNodeMinted, error) {
 	event := "VehicleNodeMinted"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryVehicleNodeMinted)
@@ -4664,32 +5840,30 @@ func (registry *Registry) UnpackVehicleNodeMintedEvent(log *types.Log) (*Registr
 	return out, nil
 }
 
-// RegistryVehicleNodeMintedWithDeviceDefinition represents a VehicleNodeMintedWithDeviceDefinition event raised by the Registry contract.
-type RegistryVehicleNodeMintedWithDeviceDefinition struct {
-	ManufacturerId     *big.Int
-	VehicleId          *big.Int
-	Owner              common.Address
-	DeviceDefinitionId string
-	Raw                *types.Log // Blockchain specific contextual infos
+// RegistryVehicleStorageNodeIdSet represents a VehicleStorageNodeIdSet event raised by the Registry contract.
+type RegistryVehicleStorageNodeIdSet struct {
+	VehicleId     *big.Int
+	StorageNodeId *big.Int
+	Raw           *types.Log // Blockchain specific contextual infos
 }
 
-const RegistryVehicleNodeMintedWithDeviceDefinitionEventName = "VehicleNodeMintedWithDeviceDefinition"
+const RegistryVehicleStorageNodeIdSetEventName = "VehicleStorageNodeIdSet"
 
 // ContractEventName returns the user-defined event name.
-func (RegistryVehicleNodeMintedWithDeviceDefinition) ContractEventName() string {
-	return RegistryVehicleNodeMintedWithDeviceDefinitionEventName
+func (RegistryVehicleStorageNodeIdSet) ContractEventName() string {
+	return RegistryVehicleStorageNodeIdSetEventName
 }
 
-// UnpackVehicleNodeMintedWithDeviceDefinitionEvent is the Go binding that unpacks the event data emitted
+// UnpackVehicleStorageNodeIdSetEvent is the Go binding that unpacks the event data emitted
 // by contract.
 //
-// Solidity: event VehicleNodeMintedWithDeviceDefinition(uint256 indexed manufacturerId, uint256 indexed vehicleId, address indexed owner, string deviceDefinitionId)
-func (registry *Registry) UnpackVehicleNodeMintedWithDeviceDefinitionEvent(log *types.Log) (*RegistryVehicleNodeMintedWithDeviceDefinition, error) {
-	event := "VehicleNodeMintedWithDeviceDefinition"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+// Solidity: event VehicleStorageNodeIdSet(uint256 indexed vehicleId, uint256 indexed storageNodeId)
+func (registry *Registry) UnpackVehicleStorageNodeIdSetEvent(log *types.Log) (*RegistryVehicleStorageNodeIdSet, error) {
+	event := "VehicleStorageNodeIdSet"
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
-	out := new(RegistryVehicleNodeMintedWithDeviceDefinition)
+	out := new(RegistryVehicleStorageNodeIdSet)
 	if len(log.Data) > 0 {
 		if err := registry.abi.UnpackIntoInterface(out, event, log.Data); err != nil {
 			return nil, err
@@ -4728,7 +5902,7 @@ func (RegistryVehicleStreamSet) ContractEventName() string {
 // Solidity: event VehicleStreamSet(uint256 indexed vehicleId, string streamId)
 func (registry *Registry) UnpackVehicleStreamSetEvent(log *types.Log) (*RegistryVehicleStreamSet, error) {
 	event := "VehicleStreamSet"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryVehicleStreamSet)
@@ -4770,7 +5944,7 @@ func (RegistryVehicleStreamUnset) ContractEventName() string {
 // Solidity: event VehicleStreamUnset(uint256 indexed vehicleId, string streamId)
 func (registry *Registry) UnpackVehicleStreamUnsetEvent(log *types.Log) (*RegistryVehicleStreamUnset, error) {
 	event := "VehicleStreamUnset"
-	if log.Topics[0] != registry.abi.Events[event].ID {
+	if len(log.Topics) == 0 || log.Topics[0] != registry.abi.Events[event].ID {
 		return nil, errors.New("event signature mismatch")
 	}
 	out := new(RegistryVehicleStreamUnset)
@@ -4804,9 +5978,6 @@ func (registry *Registry) UnpackError(raw []byte) (any, error) {
 	if bytes.Equal(raw[:4], registry.abi.Errors["AdPaired"].ID.Bytes()[:4]) {
 		return registry.UnpackAdPairedError(raw[4:])
 	}
-	if bytes.Equal(raw[:4], registry.abi.Errors["AlreadyController"].ID.Bytes()[:4]) {
-		return registry.UnpackAlreadyControllerError(raw[4:])
-	}
 	if bytes.Equal(raw[:4], registry.abi.Errors["AttributeExists"].ID.Bytes()[:4]) {
 		return registry.UnpackAttributeExistsError(raw[4:])
 	}
@@ -4821,9 +5992,6 @@ func (registry *Registry) UnpackError(raw []byte) (any, error) {
 	}
 	if bytes.Equal(raw[:4], registry.abi.Errors["DeviceAlreadyRegistered"].ID.Bytes()[:4]) {
 		return registry.UnpackDeviceAlreadyRegisteredError(raw[4:])
-	}
-	if bytes.Equal(raw[:4], registry.abi.Errors["IntegrationNameRegisterd"].ID.Bytes()[:4]) {
-		return registry.UnpackIntegrationNameRegisterdError(raw[4:])
 	}
 	if bytes.Equal(raw[:4], registry.abi.Errors["InvalidAdSignature"].ID.Bytes()[:4]) {
 		return registry.UnpackInvalidAdSignatureError(raw[4:])
@@ -4849,14 +6017,11 @@ func (registry *Registry) UnpackError(raw []byte) (any, error) {
 	if bytes.Equal(raw[:4], registry.abi.Errors["InvalidSigner"].ID.Bytes()[:4]) {
 		return registry.UnpackInvalidSignerError(raw[4:])
 	}
-	if bytes.Equal(raw[:4], registry.abi.Errors["MustBeAdmin"].ID.Bytes()[:4]) {
-		return registry.UnpackMustBeAdminError(raw[4:])
+	if bytes.Equal(raw[:4], registry.abi.Errors["InvalidStorageNode"].ID.Bytes()[:4]) {
+		return registry.UnpackInvalidStorageNodeError(raw[4:])
 	}
 	if bytes.Equal(raw[:4], registry.abi.Errors["NoStreamrPermission"].ID.Bytes()[:4]) {
 		return registry.UnpackNoStreamrPermissionError(raw[4:])
-	}
-	if bytes.Equal(raw[:4], registry.abi.Errors["NotAllowed"].ID.Bytes()[:4]) {
-		return registry.UnpackNotAllowedError(raw[4:])
 	}
 	if bytes.Equal(raw[:4], registry.abi.Errors["OnlyNftProxy"].ID.Bytes()[:4]) {
 		return registry.UnpackOnlyNftProxyError(raw[4:])
@@ -4964,30 +6129,6 @@ func RegistryAdPairedErrorID() common.Hash {
 func (registry *Registry) UnpackAdPairedError(raw []byte) (*RegistryAdPaired, error) {
 	out := new(RegistryAdPaired)
 	if err := registry.abi.UnpackIntoInterface(out, "AdPaired", raw); err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-// RegistryAlreadyController represents a AlreadyController error raised by the Registry contract.
-type RegistryAlreadyController struct {
-	Addr common.Address
-}
-
-// ErrorID returns the hash of canonical representation of the error's signature.
-//
-// Solidity: error AlreadyController(address addr)
-func RegistryAlreadyControllerErrorID() common.Hash {
-	return common.HexToHash("0xb9f36dab682f7f8ca87b0868b069d7d0eb63befea87eefbc1b91e8c423de5e34")
-}
-
-// UnpackAlreadyControllerError is the Go binding used to decode the provided
-// error data into the corresponding Go error struct.
-//
-// Solidity: error AlreadyController(address addr)
-func (registry *Registry) UnpackAlreadyControllerError(raw []byte) (*RegistryAlreadyController, error) {
-	out := new(RegistryAlreadyController)
-	if err := registry.abi.UnpackIntoInterface(out, "AlreadyController", raw); err != nil {
 		return nil, err
 	}
 	return out, nil
@@ -5108,30 +6249,6 @@ func RegistryDeviceAlreadyRegisteredErrorID() common.Hash {
 func (registry *Registry) UnpackDeviceAlreadyRegisteredError(raw []byte) (*RegistryDeviceAlreadyRegistered, error) {
 	out := new(RegistryDeviceAlreadyRegistered)
 	if err := registry.abi.UnpackIntoInterface(out, "DeviceAlreadyRegistered", raw); err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-// RegistryIntegrationNameRegisterd represents a IntegrationNameRegisterd error raised by the Registry contract.
-type RegistryIntegrationNameRegisterd struct {
-	Name string
-}
-
-// ErrorID returns the hash of canonical representation of the error's signature.
-//
-// Solidity: error IntegrationNameRegisterd(string name)
-func RegistryIntegrationNameRegisterdErrorID() common.Hash {
-	return common.HexToHash("0xb9cb244b905d8c4cb82a4f222314ca745355dcca8b2385958dbae66d6c4dcf5b")
-}
-
-// UnpackIntegrationNameRegisterdError is the Go binding used to decode the provided
-// error data into the corresponding Go error struct.
-//
-// Solidity: error IntegrationNameRegisterd(string name)
-func (registry *Registry) UnpackIntegrationNameRegisterdError(raw []byte) (*RegistryIntegrationNameRegisterd, error) {
-	out := new(RegistryIntegrationNameRegisterd)
-	if err := registry.abi.UnpackIntoInterface(out, "IntegrationNameRegisterd", raw); err != nil {
 		return nil, err
 	}
 	return out, nil
@@ -5325,25 +6442,25 @@ func (registry *Registry) UnpackInvalidSignerError(raw []byte) (*RegistryInvalid
 	return out, nil
 }
 
-// RegistryMustBeAdmin represents a MustBeAdmin error raised by the Registry contract.
-type RegistryMustBeAdmin struct {
-	Addr common.Address
+// RegistryInvalidStorageNode represents a InvalidStorageNode error raised by the Registry contract.
+type RegistryInvalidStorageNode struct {
+	StorageNodeId *big.Int
 }
 
 // ErrorID returns the hash of canonical representation of the error's signature.
 //
-// Solidity: error MustBeAdmin(address addr)
-func RegistryMustBeAdminErrorID() common.Hash {
-	return common.HexToHash("0x33c5677b638479da810b97c8dab008c633e22229ecb8569336cfe572966313e9")
+// Solidity: error InvalidStorageNode(uint256 storageNodeId)
+func RegistryInvalidStorageNodeErrorID() common.Hash {
+	return common.HexToHash("0x65745f79c5d0bb62a0725993661b73ba477e33a665bb90b94f80e32e1a53fa91")
 }
 
-// UnpackMustBeAdminError is the Go binding used to decode the provided
+// UnpackInvalidStorageNodeError is the Go binding used to decode the provided
 // error data into the corresponding Go error struct.
 //
-// Solidity: error MustBeAdmin(address addr)
-func (registry *Registry) UnpackMustBeAdminError(raw []byte) (*RegistryMustBeAdmin, error) {
-	out := new(RegistryMustBeAdmin)
-	if err := registry.abi.UnpackIntoInterface(out, "MustBeAdmin", raw); err != nil {
+// Solidity: error InvalidStorageNode(uint256 storageNodeId)
+func (registry *Registry) UnpackInvalidStorageNodeError(raw []byte) (*RegistryInvalidStorageNode, error) {
+	out := new(RegistryInvalidStorageNode)
+	if err := registry.abi.UnpackIntoInterface(out, "InvalidStorageNode", raw); err != nil {
 		return nil, err
 	}
 	return out, nil
@@ -5369,30 +6486,6 @@ func RegistryNoStreamrPermissionErrorID() common.Hash {
 func (registry *Registry) UnpackNoStreamrPermissionError(raw []byte) (*RegistryNoStreamrPermission, error) {
 	out := new(RegistryNoStreamrPermission)
 	if err := registry.abi.UnpackIntoInterface(out, "NoStreamrPermission", raw); err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-// RegistryNotAllowed represents a NotAllowed error raised by the Registry contract.
-type RegistryNotAllowed struct {
-	Addr common.Address
-}
-
-// ErrorID returns the hash of canonical representation of the error's signature.
-//
-// Solidity: error NotAllowed(address addr)
-func RegistryNotAllowedErrorID() common.Hash {
-	return common.HexToHash("0xfa5cd00ff5c4577b9857716999b0b260131d9f5bcbb69f0fa80d6ba972753c88")
-}
-
-// UnpackNotAllowedError is the Go binding used to decode the provided
-// error data into the corresponding Go error struct.
-//
-// Solidity: error NotAllowed(address addr)
-func (registry *Registry) UnpackNotAllowedError(raw []byte) (*RegistryNotAllowed, error) {
-	out := new(RegistryNotAllowed)
-	if err := registry.abi.UnpackIntoInterface(out, "NotAllowed", raw); err != nil {
 		return nil, err
 	}
 	return out, nil

@@ -58,7 +58,7 @@ Those transactions are sent on behalf of the configured default AA wallet. Some 
 #### Minting a Vehicle ID
 
 ```go
-result, _, err := client.MintVehicleWithDD(<MINT_VEHIICLE_WITH_DD_INPUT>, false, false)
+result, _, err := client.MintVehicle(<MANUFACTURER_NODE>, <OWNER>, <ATTR_INFO>, <SACD_INPUT>, false, false)
 if err != nil {
     panic(err)
 }
@@ -69,10 +69,10 @@ fmt.Println(hexutil.Encode(*result.UserOperationHash))
 #### Minting a Vehicle ID with Synthetic Device
 
 ```go
-vehicleToMint := <VEHICLE_TO_MINT_INPUT>
+vehicleToMint := <MINT_VEHICLE_AND_SD_INPUT>
 
-// Get TypedData for signing by SD Wallet	
-typedSd := client.GetMintVehicleAndSDTypedData(...)
+// Get TypedData for signing by SD Wallet
+typedSd := client.GetMintVehicleAndSDTypedDataV2(<CONNECTION_ID>)
 
 // Sign with SD Wallet
 sdSignature := <SD_SIGNATURE>
@@ -80,8 +80,8 @@ sdSignature := <SD_SIGNATURE>
 // Add to payload
 vehicleToMint.SyntheticDeviceSig = sdSignature
 
-// Get TypedData for signing by Vehicle owner	
-typedV := client.GetMintVehicleWithDDTypedData(...)
+// Get TypedData for signing by Vehicle owner
+typedV := client.GetMintVehicleSignTypedData(<MANUFACTURER_NODE>, <OWNER>, <ATTR_INFO>)
 
 // Sign with the owner
 ownerSignature := <OWNER_SIGNATURE>
@@ -90,7 +90,7 @@ ownerSignature := <OWNER_SIGNATURE>
 vehicleToMint.VehicleOwnerSig = ownerSignature
 
 // Mint the vehicle
-result, _, err = client.MintVehicleAndSDWithDD(vehicleToMint, false, false)
+result, _, err = client.MintVehicleAndSD(&vehicleToMint, false, false)
 if err != nil {
     panic(err)
 }
@@ -111,7 +111,7 @@ With this option enabled the calls will return when the transaction is finished 
 the `Receipt` field will be filled with all receipt data, which can be used to extract additional information from logs, etc.
 
 ```go
-result, _, err := client.MintVehicleWithDD(<MINT_VEHIICLE_WITH_DD_INPUT>, true, false)
+result, _, err := client.MintVehicle(<MANUFACTURER_NODE>, <OWNER>, <ATTR_INFO>, <SACD_INPUT>, true, false)
 if err != nil {
     panic(err)
 }
@@ -130,13 +130,13 @@ The easiest way is to use the `getResult bool` argument, which is available for 
 is returned as the second return value.
 
 ```go
-opResult, mintResult, err := client.MintVehicleWithDD(<MINT_VEHIICLE_WITH_DD_INPUT>, true, true)
+opResult, mintResult, err := client.MintVehicle(<MANUFACTURER_NODE>, <OWNER>, <ATTR_INFO>, <SACD_INPUT>, true, true)
 if err != nil {
     panic(err)
 }
 
-fmt.Println("Operation Hash:", hexutil.Encode(*op.UserOperationHash))
-fmt.Println("Minted Vehicle TokenID:", mintResult.VehicleId)
+fmt.Println("Operation Hash:", hexutil.Encode(*opResult.UserOperationHash))
+fmt.Println("Minted Vehicle TokenID:", mintResult.TokenId)
 ```
 
 When operations have to be divided into two steps (e.g. getting UserOperation and Hash, then sending it as a second call)
