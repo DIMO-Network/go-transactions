@@ -110,29 +110,30 @@ func (c *Client) GetReceipt(result *zerodev.UserOperationResult) (receipt *zerod
 	return c.ZerodevClient.GetUserOperationReceipt(result)
 }
 
-func (c *Client) MintVehicleWithDD(data *registry.MintVehicleWithDeviceDefinition, waitForReceipt bool, getResult bool) (*zerodev.UserOperationResult, *MintVehicleWithDDResult, error) {
-	userOpData := c.Registry.PackMintVehicleWithDeviceDefinition(data.ManufacturerNode, data.Owner, data.DeviceDefinitionId, data.Attributes, data.SacdInput)
+// MintVehicle mints a vehicle directly. Caller must have MINT_VEHICLE_ROLE on the registry.
+func (c *Client) MintVehicle(manufacturerNode *big.Int, owner common.Address, attrInfo []registry.AttributeInfoPair, sacdInput registry.SacdInput, waitForReceipt bool, getResult bool) (*zerodev.UserOperationResult, *MintVehicleResult, error) {
+	userOpData := c.Registry.PackMintVehicle0(manufacturerNode, owner, attrInfo, sacdInput)
 	opResult, err := c.executeUserOperation(userOpData, waitForReceipt)
 
-	var mintResult *MintVehicleWithDDResult
+	var mintResult *MintVehicleResult
 	if getResult {
-		mintResult, _ = c.GetMintVehicleWithDDResult(opResult)
+		mintResult, _ = c.GetMintVehicleResult(opResult)
 	}
 
 	return opResult, mintResult, err
 }
 
-type MintVehicleWithDDResult struct {
-	registry.RegistryVehicleNodeMintedWithDeviceDefinition
+type MintVehicleResult struct {
+	registry.RegistryVehicleNodeMinted
 }
 
-func (c *Client) GetMintVehicleWithDDResult(result *zerodev.UserOperationResult) (*MintVehicleWithDDResult, error) {
+func (c *Client) GetMintVehicleResult(result *zerodev.UserOperationResult) (*MintVehicleResult, error) {
 	if result == nil || result.Receipt == nil {
 		return nil, errors.New("no receipt to get the result")
 	}
 
 	var err error
-	var event *registry.RegistryVehicleNodeMintedWithDeviceDefinition
+	var event *registry.RegistryVehicleNodeMinted
 
 	for _, log := range result.Receipt.Logs {
 		// we want to check only registry events
@@ -140,7 +141,7 @@ func (c *Client) GetMintVehicleWithDDResult(result *zerodev.UserOperationResult)
 			continue
 		}
 
-		event, err = c.Registry.UnpackVehicleNodeMintedWithDeviceDefinitionEvent(&log)
+		event, err = c.Registry.UnpackVehicleNodeMintedEvent(&log)
 		if err != nil {
 			continue
 		}
@@ -148,41 +149,41 @@ func (c *Client) GetMintVehicleWithDDResult(result *zerodev.UserOperationResult)
 	}
 
 	if event != nil {
-		return &MintVehicleWithDDResult{
-			RegistryVehicleNodeMintedWithDeviceDefinition: *event,
+		return &MintVehicleResult{
+			RegistryVehicleNodeMinted: *event,
 		}, nil
 	}
 
 	return nil, errors.New("no result found")
 }
 
-// MintVehicleAndSDWithDD mints a vehicle and paired synthetic device using data with a device definition. No SACD input is required.
-// Requires SD signature of typed data returned by GetMintVehicleAndSDTypedData
-// Requires Vehicle Owner signature of typed data returned by GetMintVehicleWithDDTypedData
-func (c *Client) MintVehicleAndSDWithDD(data *registry.MintVehicleAndSdWithDdInput, waitForReceipt bool, getResult bool) (*zerodev.UserOperationResult, *MintVehicleAndSDWithDDResult, error) {
-	userOpData := c.Registry.PackMintVehicleAndSdWithDeviceDefinitionSign(*data)
+// MintVehicleAndSD mints a vehicle and paired synthetic device. No SACD input is required.
+// Requires SD signature of typed data returned by GetMintVehicleAndSDTypedDataV2
+// Requires Vehicle Owner signature of typed data returned by GetMintVehicleSignTypedData
+func (c *Client) MintVehicleAndSD(data *registry.MintVehicleAndSdInput, waitForReceipt bool, getResult bool) (*zerodev.UserOperationResult, *MintVehicleAndSDResult, error) {
+	userOpData := c.Registry.PackMintVehicleAndSdSign0(*data)
 	opResult, err := c.executeUserOperation(userOpData, waitForReceipt)
 
-	var mintResult *MintVehicleAndSDWithDDResult
+	var mintResult *MintVehicleAndSDResult
 	if getResult {
-		mintResult, _ = c.GetMintVehicleAndSDWithDDResult(opResult)
+		mintResult, _ = c.GetMintVehicleAndSDResult(opResult)
 	}
 
 	return opResult, mintResult, err
 }
 
-type MintVehicleAndSDWithDDResult struct {
-	registry.RegistryVehicleNodeMintedWithDeviceDefinition
+type MintVehicleAndSDResult struct {
+	registry.RegistryVehicleNodeMinted
 	registry.RegistrySyntheticDeviceNodeMinted
 }
 
-func (c *Client) GetMintVehicleAndSDWithDDResult(result *zerodev.UserOperationResult) (*MintVehicleAndSDWithDDResult, error) {
+func (c *Client) GetMintVehicleAndSDResult(result *zerodev.UserOperationResult) (*MintVehicleAndSDResult, error) {
 	if result == nil || result.Receipt == nil {
 		return nil, errors.New("no receipt to get the result")
 	}
 
 	var err error
-	var vehicleEvent *registry.RegistryVehicleNodeMintedWithDeviceDefinition
+	var vehicleEvent *registry.RegistryVehicleNodeMinted
 	var sdEvent *registry.RegistrySyntheticDeviceNodeMinted
 
 	for _, log := range result.Receipt.Logs {
@@ -191,7 +192,7 @@ func (c *Client) GetMintVehicleAndSDWithDDResult(result *zerodev.UserOperationRe
 			continue
 		}
 
-		vehicleEvent, err = c.Registry.UnpackVehicleNodeMintedWithDeviceDefinitionEvent(&log)
+		vehicleEvent, err = c.Registry.UnpackVehicleNodeMintedEvent(&log)
 		if err != nil {
 			continue
 		}
@@ -212,9 +213,9 @@ func (c *Client) GetMintVehicleAndSDWithDDResult(result *zerodev.UserOperationRe
 	}
 
 	if vehicleEvent != nil && sdEvent != nil {
-		return &MintVehicleAndSDWithDDResult{
-			RegistryVehicleNodeMintedWithDeviceDefinition: *vehicleEvent,
-			RegistrySyntheticDeviceNodeMinted:             *sdEvent,
+		return &MintVehicleAndSDResult{
+			RegistryVehicleNodeMinted:         *vehicleEvent,
+			RegistrySyntheticDeviceNodeMinted: *sdEvent,
 		}, nil
 	}
 
@@ -350,26 +351,26 @@ func (c *Client) GetSafeTransferFromResult(result *zerodev.UserOperationResult) 
 	return nil, errors.New("no result found")
 }
 
-// MintVehicleAndSDWithDDAndSACD mints a vehicle and paired synthetic device using data with a device definition and separate SACD.
-// Requires SD signature of typed data returned by GetMintVehicleAndSDTypedData
-// Requires Vehicle Owner signature of typed data returned by GetMintVehicleWithDDTypedData
-func (c *Client) MintVehicleAndSDWithDDAndSACD(data *registry.MintVehicleAndSdWithDdInput, sacdInput registry.SacdInput, waitForReceipt bool, getResult bool) (*zerodev.UserOperationResult, *MintVehicleAndSDWithDDResult, error) {
-	userOpData := c.Registry.PackMintVehicleAndSdWithDeviceDefinitionSignAndSacd(*data, sacdInput)
+// MintVehicleAndSDAndSACD mints a vehicle and paired synthetic device with separate SACD input.
+// Requires SD signature of typed data returned by GetMintVehicleAndSDTypedDataV2
+// Requires Vehicle Owner signature of typed data returned by GetMintVehicleSignTypedData
+func (c *Client) MintVehicleAndSDAndSACD(data *registry.MintVehicleAndSdInput, sacdInput registry.SacdInput, waitForReceipt bool, getResult bool) (*zerodev.UserOperationResult, *MintVehicleAndSDResult, error) {
+	userOpData := c.Registry.PackMintVehicleAndSdSignAndSacd0(*data, sacdInput)
 	opResult, err := c.executeUserOperation(userOpData, waitForReceipt)
 
-	var mintResult *MintVehicleAndSDWithDDResult
+	var mintResult *MintVehicleAndSDResult
 	if getResult {
-		mintResult, _ = c.GetMintVehicleAndSDWithDDResult(opResult)
+		mintResult, _ = c.GetMintVehicleAndSDResult(opResult)
 	}
 
 	return opResult, mintResult, err
 }
 
-// MintVehicleAndSDWithDDBatch mints vehicles and paired synthetic devices in batches using data with a device definition and SACD input.
-// Requires SD signature of typed data returned by GetMintVehicleAndSDTypedData
-// Requires Vehicle Owner signature of typed data returned by GetMintVehicleWithDDTypedData
-func (c *Client) MintVehicleAndSDWithDDBatch(data []registry.MintVehicleAndSdWithDdInputBatch, waitForReceipt bool, getResult bool) (*zerodev.UserOperationResult, error) {
-	userOpData := c.Registry.PackMintVehicleAndSdWithDeviceDefinitionSignBatch(data)
+// MintVehicleAndSDBatch mints vehicles and paired synthetic devices in batches with SACD input.
+// Requires SD signature of typed data returned by GetMintVehicleAndSDTypedDataV2
+// Requires Vehicle Owner signature of typed data returned by GetMintVehicleSignTypedData
+func (c *Client) MintVehicleAndSDBatch(data []registry.MintVehicleAndSdInputBatch, waitForReceipt bool, getResult bool) (*zerodev.UserOperationResult, error) {
+	userOpData := c.Registry.PackMintVehicleAndSdSignBatch0(data)
 	return c.executeUserOperation(userOpData, waitForReceipt)
 }
 
@@ -576,8 +577,8 @@ func (c *Client) GetMintVehicleAndSDTypedDataV2(connectionID *big.Int) *signer.T
 	}
 }
 
-// GetMintVehicleWithDDTypedData generates TypedData for signing by Vehicle owner whenever Vehicle with Device Definition is minted
-func (c *Client) GetMintVehicleWithDDTypedData(manufacturerNode *big.Int, owner common.Address, deviceDefinitionId string, attributeInfoPairs []registry.AttributeInfoPair) *signer.TypedData {
+// GetMintVehicleSignTypedData generates TypedData for signing by the vehicle owner whenever a vehicle is minted.
+func (c *Client) GetMintVehicleSignTypedData(manufacturerNode *big.Int, owner common.Address, attributeInfoPairs []registry.AttributeInfoPair) *signer.TypedData {
 	attributes := []string{}
 	infos := []string{}
 
@@ -594,15 +595,14 @@ func (c *Client) GetMintVehicleWithDDTypedData(manufacturerNode *big.Int, owner 
 				{Name: "chainId", Type: "uint256"},
 				{Name: "verifyingContract", Type: "address"},
 			},
-			"MintVehicleWithDeviceDefinitionSign": []signer.Type{
+			"MintVehicleSign": []signer.Type{
 				{Name: "manufacturerNode", Type: "uint256"},
 				{Name: "owner", Type: "address"},
-				{Name: "deviceDefinitionId", Type: "string"},
 				{Name: "attributes", Type: "string[]"},
 				{Name: "infos", Type: "string[]"},
 			},
 		},
-		PrimaryType: "MintVehicleWithDeviceDefinitionSign",
+		PrimaryType: "MintVehicleSign",
 		Domain: signer.TypedDataDomain{
 			Name:              "DIMO",
 			Version:           "1",
@@ -610,11 +610,10 @@ func (c *Client) GetMintVehicleWithDDTypedData(manufacturerNode *big.Int, owner 
 			VerifyingContract: c.RegistryAddress.String(),
 		},
 		Message: signer.TypedDataMessage{
-			"manufacturerNode":   math.NewHexOrDecimal256(manufacturerNode.Int64()),
-			"owner":              owner.Hex(),
-			"deviceDefinitionId": deviceDefinitionId,
-			"attributes":         attributes,
-			"infos":              infos,
+			"manufacturerNode": math.NewHexOrDecimal256(manufacturerNode.Int64()),
+			"owner":            owner.Hex(),
+			"attributes":       attributes,
+			"infos":            infos,
 		},
 	}
 }
